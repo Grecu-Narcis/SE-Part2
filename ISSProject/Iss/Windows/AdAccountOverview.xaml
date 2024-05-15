@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Iss.Windows.AdAccountOverview"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Iss.Windows"
+        mc:Ignorable="d" Height="450" Width="800">
+    <Grid Background="White">
+        <StackPanel>
+            <Button Content="Home" Width="50" HorizontalAlignment="Left" Margin="5" Click="HomeButton_Click">
+            </Button>
+            <TextBlock Text="Account Overview" FontSize="20" Margin="35,0,0,0" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Margin="35,10,20,20">
+                <StackPanel>
+                    <TextBlock Text="Company Name" FontWeight="Bold"/>
+                    <TextBlock Name ="companyName" Text="Secondary Text"/>
+                    <TextBlock  Text="Domain of activity" FontWeight="Bold"/>
+                    <TextBlock Name ="domainOfActivity" Text="Secondary Text"/>
+                    <TextBlock Text="CIF" FontWeight="Bold"/>
+                    <TextBlock Name ="CIF" Text="Secondary Text"/>
+                </StackPanel>
+                <StackPanel Margin="200,0,0,0">
+                    <TextBlock Text="Site URL" FontWeight="Bold"/>
+                    <TextBlock Name ="URL" Text="Secondary Text"/>
+                    <TextBlock Text="Company address" FontWeight="Bold"/>
+                    <TextBlock Name ="address" Text="Secondary Text"/>
+                    <TextBlock Text="Legal Institution" FontWeight="Bold"/>
+                    <TextBlock Name ="legalInstitution" Text="Secondary Text"/>
+                </StackPanel>
+                <StackPanel Margin="140,0,0,0">
+                    <Button Content="+ Request a collaboration" Width="160" Margin="5" Background="#800080" Foreground="White" Click="RequestButton_Click"/>
+                    <Button Content="+ See active collaborations" Width="160" Margin="5" Background="#800080" Foreground="White" Click="seeActiveCollaborationsButton_Click"/>
+                    <Button Content="+ Buy subscriptions and OTP" Width="160" Margin="5" Background="#800080" Foreground="White" Click="Button_Click"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,20">
+                <StackPanel HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal" Margin="0,5,1,1" Background="White" HorizontalAlignment="Center" >
+                        <TextBlock Text="Ad name:" />
+                        <TextBox Name="searchAdBox" Width="140" Height="20" Margin="2,0,0,0" Opacity="0.5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Button Name="searchAd" Content="Search" Width="50" Height="20" Margin="2,0,0,0" Foreground="Black" Background="{x:Null}" BorderBrush="Purple" Click="searchAd_Click"/>
+                    </StackPanel>
+                    <TextBlock Text="Ads" Width="250" HorizontalAlignment="Left"/>
+                    <ListBox SelectionChanged="Ads_SelectionChanged" Name="Ads"  Width="250" Height="150" Background="White" BorderBrush="Purple" BorderThickness="1" HorizontalAlignment="Left"/>
+                    <Button Name="AddAd" Content="Add Ad" Width="250" Margin="0,10,0,0" Background="#800080" Foreground="White" Click="AddAd_Click"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal" Margin="0,5,1,1" Background="White" HorizontalAlignment="Center" >
+                        <TextBlock Text="Set name:" />
+                        <TextBox Name="searchAdSetBox" Width="140" Height="20" Margin="2,0,0,0"  Opacity="0.5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Button Name="searchAdSet" Content="Search" Width="50" Height="20" Margin="2,0,0,0" Foreground="Black" Background="{x:Null}" BorderBrush="Purple" Click="searchAdSet_Click"/>
+                    </StackPanel>
+                    <TextBlock Text="Ad Sets" Width="250" HorizontalAlignment="Left"/>
+                    <ListBox SelectionChanged="AdSets_SelectionChanged" Name="AdSetss"  Width="250" Height="150" Background="White" BorderBrush="Purple" BorderThickness="1" HorizontalAlignment="Left"/>
+                    <Button Name="AddAdSet" Content="Add Ad Set" Width="250" Margin="0,10,0,0" Background="#800080" Foreground="White" Click="addAdSetButton_Click"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal" Margin="0,5,1,1" Background="White" HorizontalAlignment="Center" >
+                        <TextBlock Text="Name:" />
+                        <TextBox Name="searchCampaignBox" Width="150" Height="20" Margin="2,0,0,0"  Opacity="0.5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Button Name="searchCampaign" Content="Search" Width="50" Height="20" Margin="2,0,0,0" Foreground="Black" Background="{x:Null}" BorderBrush="Purple" Click="searchCampaign_Click"/>
+                    </StackPanel>
+                    <TextBlock Text="Campaigns" Width="250" HorizontalAlignment="Left"/>
+                    <ListBox SelectionChanged="Campaign_SelectionChanged" Name="Campaigns"  Width="250" Height="150" Background="White" BorderBrush="Purple" BorderThickness="1" HorizontalAlignment="Left"/>
+                    <Button Name="AddCampaign" Content="Add Campaign" Width="250" Margin="0,10,0,0" Background="#800080" Foreground="White" Click="AddCampaign_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

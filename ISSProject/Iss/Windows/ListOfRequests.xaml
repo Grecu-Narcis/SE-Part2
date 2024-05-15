@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Iss.Windows.ListOfRequests"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Iss.Windows"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="Purple">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border BorderThickness="10" BorderBrush="White" CornerRadius="20">
+                <TextBlock Height="380" Width="700" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40 20 10 10">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="25" FontWeight="DemiBold" >Collaboration Requests</TextBlock>
+                               <Button Content="Start Page" Width="80" Height="25" HorizontalAlignment="Left" Margin="280 5 0 0" Click="StartPageButton_Click"></Button>
+                        </StackPanel>
+                    
+                     
+                        
+                     <ListBox x:Name="requestsListView" Width="450" Height="240" Margin="10"
+SelectionMode="Single" >
+                           <ListBox.ItemTemplate>
+                               <DataTemplate>
+                                   <StackPanel Orientation="Horizontal">
+                                       <TextBlock Text="{Binding}" Margin="5"/>
+                                       <TextBlock Text="+" Margin="5">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                       </TextBlock>
+                                   </StackPanel>
+                               </DataTemplate>
+                           </ListBox.ItemTemplate>
+                       </ListBox>
+                 
+                         <StackPanel Orientation="Horizontal">
+                             <Button Name="requestDetailsButton" Content="REQUEST DETAILS" Click="DetailsButton_Click" Background="Purple" Foreground="White" Margin="50 20 0 0" Width="100" Height="28"></Button>
+                             <Button Name="acceptButton" Content="ACCEPT" Click="AcceptButton_Click" Background="Purple" Foreground="White" Margin="50 20 0 0" Width="100" Height="28"></Button>
+                             <Button Name="declineButton" Content="DECLINE" Click="DeclineButton_Click" Background="Purple" Foreground="White" Margin="50 20 0 0" Width="100" Height="28"></Button>
+                             <Button Name="negociateButton" Content="NEGOCIATE" Click="NegociateButton_Click" Background="Purple" Foreground="White" Margin="50 20 0 0" Width="100" Height="28"></Button>
+                             
+                         </StackPanel>  
+                          </StackPanel>
+                </TextBlock>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</UserControl>
