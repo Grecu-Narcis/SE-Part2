@@ -33,7 +33,7 @@ namespace Iss.Windows
             string URL = newURLTextBox.Text;
             string password = newPasswordTextBox.Password;
             string location = newLocationTextBox.Text;
-            adAccountService.editAdAccount(nameOfCompany, URL, password, location);
+            adAccountService.EditAdAccount(nameOfCompany, URL, password, location);
             User.User.getInstance().Name = nameOfCompany;
             User.User.getInstance().Password = password;
             MessageBox.Show("Changes saved successfully!");

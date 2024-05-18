@@ -28,7 +28,7 @@ namespace Iss.Windows
         public CreateAdSet()
         {
             InitializeComponent();
-            itemListBox.SetValue(ItemsControl.ItemsSourceProperty, adService.getAdsThatAreNotInAdSet());
+            itemListBox.SetValue(ItemsControl.ItemsSourceProperty, adService.GetAdsThatAreNotInAdSet());
             selectionComboBox.SelectedIndex = 0;
         }
 

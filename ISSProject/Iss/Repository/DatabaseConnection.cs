@@ -12,27 +12,22 @@ namespace Iss.Repository
     {
         public static string ConnectionString = "Data Source = NARCIS\\SQLEXPRESS02; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;";
 
-        public SqlConnection sqlConnection { get; private set; } =  new SqlConnection(ConnectionString);
-
-
-
-        
+        public SqlConnection SqlConnection { get; private set; } = new SqlConnection(ConnectionString);
 
         public virtual void OpenConnection()
         {
-            if (sqlConnection.State == ConnectionState.Closed)
+            if (SqlConnection.State == ConnectionState.Closed)
             {
-                sqlConnection.Open();
+                SqlConnection.Open();
             }
         }
 
         public virtual void CloseConnection()
         {
-            if (sqlConnection.State == ConnectionState.Open)
+            if (SqlConnection.State == ConnectionState.Open)
             {
-                sqlConnection.Close();
+                SqlConnection.Close();
             }
         }
-     
     }
 }

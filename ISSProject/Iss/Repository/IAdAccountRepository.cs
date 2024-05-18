@@ -1,19 +1,19 @@
-﻿using Iss.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Iss.Entity;
 
 namespace Iss.Repository
 {
     public interface IAdAccountRepository
     {
-        public AdAccount getAdAccount(string nameOfCompany, string password);
-        public void addAdAccount(AdAccount adAccountToAdd);
-        public List<Ad> getAdsForCurrentUser();
-        public List<AdSet> getAdSetsForCurrentUser();
-        public List<Campaign> getCampaignsForCurrentUser();
-        public void editAdAccount(String nameOfCompany, String URL, String password, String location);
+        public AdAccount GetAdAccount(string nameOfCompany, string password);
+        public void AddAdAccount(AdAccount adAccountToAdd);
+        public List<Ad> GetAdsForCurrentUser();
+        public List<AdSet> GetAdSetsForCurrentUser();
+        public List<Campaign> GetCampaignsForCurrentUser();
+        public void EditAdAccount(string nameOfCompany, string url, string password, string location);
     }
 }

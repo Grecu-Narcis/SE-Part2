@@ -132,7 +132,7 @@ namespace Iss.Tests.Repository
        );
 
             // Act
-            repository.createCollaboration(collaboration);
+            repository.CreateCollaboration(collaboration);
 
             // Assert
             // Add assertions to verify that the collaboration was inserted into the database
@@ -163,7 +163,7 @@ namespace Iss.Tests.Repository
             var repository = new CollaborationRepository(new DatabaseConnection(), new SqlDataAdapterWrapper());
 
             // Act
-            var collaborations = repository.getCollaborationsForInfluencer();
+            var collaborations = repository.GetCollaborationsForInfluencer();
 
             // Assert
             // Add assertions to verify the returned list of collaborations

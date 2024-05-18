@@ -16,11 +16,11 @@ namespace Iss.Repository
         private DatabaseConnection databaseConnection = new DatabaseConnection();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
-        public void addCampaign(Campaign campaignToAdd)
+        public void AddCampaign(Campaign campaignToAdd)
         {
             databaseConnection.OpenConnection();
             string query = "INSERT INTO Campaign(Name, StartDate, Duration, AdAccountID) values (@campaignName, @startDate, @duration, @adAccountID)";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@campaignName", campaignToAdd.campaignName);
             command.Parameters.AddWithValue("@startDate", campaignToAdd.startDate);
             command.Parameters.AddWithValue("@duration", campaignToAdd.duration);
@@ -30,12 +30,12 @@ namespace Iss.Repository
             databaseConnection.CloseConnection();
         }
 
-        public Campaign getCampaignByName(Campaign campaignToGetByName)
+        public Campaign GetCampaignByName(Campaign campaignToGetByName)
         {
             DataSet dataSet = new DataSet();
             databaseConnection.OpenConnection();
             string query = "SELECT * FROM Campaign WHERE Name = @campaignName";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@campaignName", campaignToGetByName.campaignName);
             dataAdapter.SelectCommand = command;
             dataAdapter.SelectCommand.ExecuteNonQuery();
@@ -52,11 +52,11 @@ namespace Iss.Repository
             return campaignToGetByName;
         }
 
-        public void addAdSetToCampaign(Campaign campaignToAddAdSet, AdSet adSet)
+        public void AddAdSetToCampaign(Campaign campaignToAddAdSet, AdSet adSet)
         {
             databaseConnection.OpenConnection();
             string query = "UPDATE AdSet SET CampaignID = @campaignID WHERE ID = @adSetID";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@campaignID", campaignToAddAdSet.campaignId);
             command.Parameters.AddWithValue("@adSetID", adSet.Id);
             dataAdapter.UpdateCommand = command;
@@ -64,11 +64,11 @@ namespace Iss.Repository
             databaseConnection.CloseConnection();
         }
 
-        public void deleteAdSetFromCampaign(Campaign campaignToDeleteAdSet, AdSet adSet)
+        public void DeleteAdSetFromCampaign(Campaign campaignToDeleteAdSet, AdSet adSet)
         {
             databaseConnection.OpenConnection();
             string query = "UPDATE AdSet SET CampaignID = NULL WHERE ID = @adSetID";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@campaignID", campaignToDeleteAdSet.campaignId);
             command.Parameters.AddWithValue("@adSetID", adSet.Id);
             dataAdapter.UpdateCommand = command;
@@ -76,22 +76,22 @@ namespace Iss.Repository
             databaseConnection.CloseConnection();
         }
 
-        public void deleteCampaign(Campaign campaignToDelete)
+        public void DeleteCampaign(Campaign campaignToDelete)
         {
             databaseConnection.OpenConnection();
             string query = "DELETE FROM Campaign WHERE ID = @adAccountId";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@adAccountId", campaignToDelete.campaignId);
             dataAdapter.DeleteCommand = command;
             dataAdapter.DeleteCommand.ExecuteNonQuery();
             databaseConnection.CloseConnection();
         }
 
-        public void updateCampaign(Campaign campaignToUpdate)
+        public void UpdateCampaign(Campaign campaignToUpdate)
         {
             databaseConnection.OpenConnection();
             string query = "UPDATE Campaign SET Name=@name, StartDate=@date, Duration=@duration WHERE ID = @adAccountId";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@adAccountId", campaignToUpdate.campaignId);
             command.Parameters.AddWithValue("@name", campaignToUpdate.campaignName);
             command.Parameters.AddWithValue("@date", campaignToUpdate.startDate);

@@ -28,10 +28,10 @@ namespace Iss.Tests.Service
             );
 
             // Act
-            adService.addAd(ad);
+            adService.AddAd(ad);
 
             // Assert
-            mockAdRepository.Verify(x => x.addAd(ad), Times.Once);
+            mockAdRepository.Verify(x => x.AddAd(ad), Times.Once);
         }
 
         [Fact]
@@ -42,10 +42,10 @@ namespace Iss.Tests.Service
             var adService = new AdService(mockAdRepository.Object);
 
             // Act
-            var result = adService.getAdsThatAreNotInAdSet();
+            var result = adService.GetAdsThatAreNotInAdSet();
 
             // Assert
-            mockAdRepository.Verify(x => x.getAdsThatAreNotInAdSet(), Times.Once);
+            mockAdRepository.Verify(x => x.GetAdsThatAreNotInAdSet(), Times.Once);
         }
 
         [Fact]
@@ -63,10 +63,10 @@ namespace Iss.Tests.Service
             );
 
             // Act
-            adService.updateAd(ad);
+            adService.UpdateAd(ad);
 
             // Assert
-            mockAdRepository.Verify(x => x.updateAd(ad), Times.Once);
+            mockAdRepository.Verify(x => x.UpdateAd(ad), Times.Once);
         }
 
         [Fact]
@@ -79,10 +79,10 @@ namespace Iss.Tests.Service
             string adName = "TestAdName";
 
             // Act
-            var result = adService.getAdByName(adName);
+            var result = adService.GetAdByName(adName);
 
             // Assert
-            mockAdRepository.Verify(x => x.getAdByName(adName), Times.Once);
+            mockAdRepository.Verify(x => x.GetAdByName(adName), Times.Once);
         }
 
         [Fact]
@@ -100,10 +100,10 @@ namespace Iss.Tests.Service
             );
 
             // Act
-            adService.deleteAd(ad);
+            adService.DeleteAd(ad);
 
             // Assert
-            mockAdRepository.Verify(x => x.deleteAd(ad), Times.Once);
+            mockAdRepository.Verify(x => x.DeleteAd(ad), Times.Once);
         }
 
         [Fact]
@@ -119,7 +119,7 @@ namespace Iss.Tests.Service
             var result = adService.GetAdsFromAdSet(adSetId);
 
             // Assert
-            mockAdRepository.Verify(x => x.getAdsForAdSet(adSetId), Times.Once);
+            mockAdRepository.Verify(x => x.GetAdsForAdSet(adSetId), Times.Once);
         }
     }
 }

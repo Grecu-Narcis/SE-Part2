@@ -9,13 +9,14 @@ namespace Iss.Database
 {
     public class SqlCommandWrapper : ISqlCommandWrapper
     {
-        private readonly SqlCommand _sqlCommand;
-        public SqlCommandWrapper(SqlCommand sqlCommand) {
-            _sqlCommand = sqlCommand;
+        private readonly SqlCommand sqlCommand;
+        public SqlCommandWrapper(SqlCommand sqlCommand)
+        {
+            this.sqlCommand = sqlCommand;
         }
         public int ExecuteScalar()
         {
-            return (int)_sqlCommand.ExecuteScalar();
+            return (int)sqlCommand.ExecuteScalar();
         }
     }
 }

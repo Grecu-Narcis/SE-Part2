@@ -1,19 +1,20 @@
-﻿using Iss.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Iss.Entity;
+
 namespace Iss.Service
 {
     internal interface ICampaignService
     {
-        public void addCampaign(Campaign campaignToAdd);
-        public Campaign getCampaignByName(Campaign campaignToGetByName);
-        public void deleteCampaign(Campaign campaignToDelete);
-        public void addAdSetToCampaign(Campaign campaignToAddAdSet, AdSet adSet);
-        public void deleteAdSetFromCampaign(Campaign campaignToDeleteAdSet, AdSet adSet);
-        public void updateCampaign(Campaign campaignToUpdate);
+        public void AddCampaign(Campaign campaignToAdd);
+        public Campaign GetCampaignByName(Campaign campaignToGetByName);
+        public void DeleteCampaign(Campaign campaignToDelete);
+        public void AddAdSetToCampaign(Campaign campaignToAddAdSet, AdSet adSet);
+        public void DeleteAdSetFromCampaign(Campaign campaignToDeleteAdSet, AdSet adSet);
+        public void UpdateCampaign(Campaign campaignToUpdate);
     }
 }

@@ -43,7 +43,7 @@ namespace Iss.Windows
                 adSets.Add(adSet);
             }
             Campaign campaign = new Campaign(nameTextBox.Text, startDatePicker.SelectedDate.Value, int.Parse(durationTextBox.Text), adSets);
-            campaignService.addCampaign(campaign);
+            campaignService.AddCampaign(campaign);
 
             MessageBox.Show("Camapign created with " + adSets.Count + " ad sets", "Camapign Created", MessageBoxButton.OK, MessageBoxImage.Information);
 

@@ -22,10 +22,10 @@ namespace Iss.Tests.Repository
             var ad = new Ad("TestProductName", "test.jpg", "TestDescription", "https://example.com");
 
             // Act
-            adRepository.addAd(ad);
+            adRepository.AddAd(ad);
 
             // Assert
-            var addedAd = adRepository.getAdByName("TestProductName");
+            var addedAd = adRepository.GetAdByName("TestProductName");
             Assert.NotNull(addedAd);
             Assert.Equal("TestProductName", addedAd.ProductName);
             Assert.Equal("test.jpg", addedAd.Photo);
@@ -33,10 +33,10 @@ namespace Iss.Tests.Repository
             Assert.Equal("https://example.com", addedAd.WebsiteLink);
 
             // Act (Delete the ad)
-            adRepository.deleteAd(ad);
+            adRepository.DeleteAd(ad);
 
             // Assert
-            var deletedAd = adRepository.getAdByName("TestProductName");
+            var deletedAd = adRepository.GetAdByName("TestProductName");
             Assert.Null(deletedAd);
         }
 
@@ -48,8 +48,8 @@ namespace Iss.Tests.Repository
 
             // Create a new ad and add it to the database
             var ad = new Ad("TestProductName", "test.jpg", "TestDescription", "https://example.com");
-            adRepository.addAd(ad);
-            ad.Id = adRepository.getAdByName("TestProductName").Id;
+            adRepository.AddAd(ad);
+            ad.Id = adRepository.GetAdByName("TestProductName").Id;
 
             // Modify the ad
             ad.Photo = "updated_test.jpg";
@@ -57,11 +57,11 @@ namespace Iss.Tests.Repository
             ad.WebsiteLink = "https://updated-example.com";
 
             // Act
-            adRepository.updateAd(ad);
+            adRepository.UpdateAd(ad);
 
             // Assert
             // Retrieve the updated ad from the database
-            var updatedAd = adRepository.getAdByName("TestProductName");
+            var updatedAd = adRepository.GetAdByName("TestProductName");
 
             // Check if the ad was updated correctly
             Assert.NotNull(updatedAd);
@@ -71,7 +71,7 @@ namespace Iss.Tests.Repository
             Assert.Equal("https://updated-example.com", updatedAd.WebsiteLink);
 
             // Cleanup (Delete the ad)
-            adRepository.deleteAd(updatedAd);
+            adRepository.DeleteAd(updatedAd);
         }
 
         [Fact]
@@ -82,7 +82,7 @@ namespace Iss.Tests.Repository
             var adName = "ExistingAdName";
 
             // Act
-            var result = adRepository.getAdByName(adName);
+            var result = adRepository.GetAdByName(adName);
 
             // Assert
             // Assert that result is not null and has the correct name
@@ -98,7 +98,7 @@ namespace Iss.Tests.Repository
             var adName = "NonExistingAdName";
 
             // Act
-            var result = adRepository.getAdByName(adName);
+            var result = adRepository.GetAdByName(adName);
 
             // Assert
             Assert.Null(result);
@@ -111,7 +111,7 @@ namespace Iss.Tests.Repository
             var adRepository = new AdRepository("1");
 
             // Act
-            var result = adRepository.getAdsThatAreNotInAdSet();
+            var result = adRepository.GetAdsThatAreNotInAdSet();
 
             // Assert
             // Assert that result is not null and has the expected number of ads
@@ -127,7 +127,7 @@ namespace Iss.Tests.Repository
             var adSetId = "1";
 
             // Act
-            var result = adRepository.getAdsForAdSet(adSetId);
+            var result = adRepository.GetAdsForAdSet(adSetId);
 
             // Assert
             // Assert that result is not null and has the expected number of ads
@@ -143,7 +143,7 @@ namespace Iss.Tests.Repository
             var adSetId = "0";
 
             // Act
-            var result = adRepository.getAdsForAdSet(adSetId);
+            var result = adRepository.GetAdsForAdSet(adSetId);
 
             // Assert
             // Assert that result is not null and is an empty list

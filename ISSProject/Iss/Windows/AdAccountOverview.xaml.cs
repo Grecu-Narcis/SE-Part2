@@ -39,7 +39,7 @@ namespace Iss.Windows
         private void PopulateAds()
         {
             // Get ads for the current user
-            ads = adAccountService.getAdsForCurrentUser();
+            ads = adAccountService.GetAdsForCurrentUser();
             Ads.Items.Clear();
             foreach (var ad in ads)
             {
@@ -49,7 +49,7 @@ namespace Iss.Windows
 
         private void PopulateAdSets()
         {
-            adSets = adAccountService.getAdSetsForCurrentUser();
+            adSets = adAccountService.GetAdSetsForCurrentUser();
             AdSetss.Items.Clear();
             foreach (var adSet in adSets)
             {
@@ -59,7 +59,7 @@ namespace Iss.Windows
 
         private void PopulateCampaigns()
         {
-            campaigns = adAccountService.getCampaignsForCurrentUser();
+            campaigns = adAccountService.GetCampaignsForCurrentUser();
             Campaigns.Items.Clear();
             foreach (var campaign in campaigns)
             {
@@ -70,7 +70,7 @@ namespace Iss.Windows
         private void PopulateAccountDetails()
         {
             // Get the user's account details
-            AdAccount userAccount = adAccountService.getAccount();
+            AdAccount userAccount = adAccountService.GetAccount();
 
             // Populate the text fields
             if (userAccount != null)
@@ -131,7 +131,7 @@ namespace Iss.Windows
 
         private void searchAd_Click(object sender, RoutedEventArgs e)
         {
-            ads = adAccountService.getAdsForCurrentUser();
+            ads = adAccountService.GetAdsForCurrentUser();
             //filter ads by the text box
             Ads.Items.Clear();
             foreach (var ad in ads)
@@ -147,7 +147,7 @@ namespace Iss.Windows
 
         private void searchAdSet_Click(object sender, RoutedEventArgs e)
         {
-            adSets = adAccountService.getAdSetsForCurrentUser();
+            adSets = adAccountService.GetAdSetsForCurrentUser();
             //filter ad sets by the text box
             AdSetss.Items.Clear();
             foreach (var adSet in adSets)
@@ -162,7 +162,7 @@ namespace Iss.Windows
 
         private void searchCampaign_Click(object sender, RoutedEventArgs e)
         {
-            campaigns = adAccountService.getCampaignsForCurrentUser();
+            campaigns = adAccountService.GetCampaignsForCurrentUser();
             Campaigns.Items.Clear();
             foreach (var campaign in campaigns)
             {

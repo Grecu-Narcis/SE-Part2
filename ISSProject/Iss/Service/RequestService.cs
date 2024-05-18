@@ -1,15 +1,16 @@
-﻿using Iss.Entity;
-using Iss.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Iss.User;
 
+using Iss.Entity;
+using Iss.Repository;
+
 namespace Iss.Service
 {
-    internal class RequestService: IRequestService
+    internal class RequestService : IRequestService
     {
         private IRequestRepository requestRepository;
 
@@ -23,54 +24,56 @@ namespace Iss.Service
             this.requestRepository = new RequestRepository();
         }
 
-        public void addRequest(Request requestToAdd)
+        public void AddRequest(Request requestToAdd)
         {
-            this.requestRepository.addRequest(requestToAdd);
+            this.requestRepository.AddRequest(requestToAdd);
         }
 
-  
-        public void deleteRequest(Request requestToDelete)
+        public void DeleteRequest(Request requestToDelete)
         {
-            this.requestRepository.deleteRequest(requestToDelete);
+            this.requestRepository.DeleteRequest(requestToDelete);
         }
 
-        public int getInfluencerId()
+        public int GetInfluencerId()
         {
-            return this.requestRepository.getInfluencerId();
+            return this.requestRepository.GetInfluencerId();
         }
 
-        public List<Request> getRequestsForInfluencer()
+        public List<Request> GetRequestsForInfluencer()
         {
-            return this.requestRepository.getRequestsForInfluencer();
+            return this.requestRepository.GetRequestsForInfluencer();
         }
 
-        public Request getRequestWithTitle(string title)
+        public Request GetRequestWithTitle(string title)
         {
-            //parse the requestToDelete list and find the requestToDelete with given title
+            // parse the requestToDelete list and find the requestToDelete with given title
+            List<Request> requestsList = this.requestRepository.GetRequestsList();
 
-            List < Request > requestsList = this.requestRepository.getRequestsList();
-
-            if(requestsList == null)
+            if (requestsList == null)
+            {
                 return null;
+            }
 
             foreach (Request request in requestsList)
             {
                 if (request.collaborationTitle == title)
+                {
                     return request;
+                }
             }
             return null;
         }
 
-        public List<Request> getRequestsForAdAccount()
+        public List<Request> GetRequestsForAdAccount()
         {
-            return this.requestRepository.getRequestsForAdAccount();
+            return this.requestRepository.GetRequestsForAdAccount();
         }
 
-        public void updateRequest(Request requestToUpdate, string newCompensation, string newContentRequirements)
+        public void UpdateRequest(Request requestToUpdate, string newCompensation, string newContentRequirements)
         {
             requestToUpdate.compensation = newCompensation;
             requestToUpdate.contentRequirements = newContentRequirements;
-            this.requestRepository.updateRequest(requestToUpdate);
+            this.requestRepository.UpdateRequest(requestToUpdate);
         }
     }
 }

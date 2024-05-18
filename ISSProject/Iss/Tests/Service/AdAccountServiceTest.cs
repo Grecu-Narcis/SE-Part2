@@ -26,10 +26,10 @@ namespace Iss.Tests.Service
             var adAccountService = new AdAccountService(mockAdAccountRepository.Object);
 
             //Act
-            adAccountService.addAdAccount(testingAccount);
+            adAccountService.AddAdAccount(testingAccount);
 
             //Assert
-            mockAdAccountRepository.Verify(x => x.addAdAccount(testingAccount), Times.Once);
+            mockAdAccountRepository.Verify(x => x.AddAdAccount(testingAccount), Times.Once);
         }
 
         /*
@@ -59,7 +59,7 @@ namespace Iss.Tests.Service
             var adAccountService = new AdAccountService(mockAdAccountRepository.Object);
 
             //Act
-            Action act = () => adAccountService.login("name", "password");
+            Action act = () => adAccountService.Login("name", "password");
 
             //Assert
             Assert.Throws<InvalidOperationException>(act);
@@ -74,10 +74,10 @@ namespace Iss.Tests.Service
             var adAccountService = new AdAccountService(mockAdAccountRepository.Object);
 
             //Act
-            adAccountService.getAdsForCurrentUser();
+            adAccountService.GetAdsForCurrentUser();
 
             //Assert
-            mockAdAccountRepository.Verify(x => x.getAdsForCurrentUser(), Times.Once);
+            mockAdAccountRepository.Verify(x => x.GetAdsForCurrentUser(), Times.Once);
         }
 
         [Fact]
@@ -88,10 +88,10 @@ namespace Iss.Tests.Service
             var adAccountService = new AdAccountService(mockAdAccountRepository.Object);
 
             //Act
-            adAccountService.getAdSetsForCurrentUser();
+            adAccountService.GetAdSetsForCurrentUser();
 
             //Assert
-            mockAdAccountRepository.Verify(x => x.getAdSetsForCurrentUser(), Times.Once);
+            mockAdAccountRepository.Verify(x => x.GetAdSetsForCurrentUser(), Times.Once);
         }
 
         [Fact]
@@ -102,10 +102,10 @@ namespace Iss.Tests.Service
             var adAccountService = new AdAccountService(mockAdAccountRepository.Object);
 
             //Act
-            adAccountService.getCampaignsForCurrentUser();
+            adAccountService.GetCampaignsForCurrentUser();
 
             //Assert
-            mockAdAccountRepository.Verify(x => x.getCampaignsForCurrentUser(), Times.Once);
+            mockAdAccountRepository.Verify(x => x.GetCampaignsForCurrentUser(), Times.Once);
         }
 
         [Fact]
@@ -116,10 +116,10 @@ namespace Iss.Tests.Service
             var adAccountService = new AdAccountService(mockAdAccountRepository.Object);
 
             //Act
-            adAccountService.editAdAccount("name", "site", "password", "location");
+            adAccountService.EditAdAccount("name", "site", "password", "location");
 
             //Assert
-            mockAdAccountRepository.Verify(x => x.editAdAccount("name", "site", "password", "location"), Times.Once);
+            mockAdAccountRepository.Verify(x => x.EditAdAccount("name", "site", "password", "location"), Times.Once);
         }
 
     }

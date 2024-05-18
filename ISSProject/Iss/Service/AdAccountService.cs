@@ -1,16 +1,16 @@
-﻿using Iss.Entity;
-using Iss.Repository;
-using Iss.User;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Iss.Entity;
+using Iss.Repository;
+using Iss.User;
 
 namespace Iss.Service
 {
-    public class AdAccountService: IAdAccountService 
+    public class AdAccountService : IAdAccountService
     {
         private IAdAccountRepository adAccountRepository;
 
@@ -24,9 +24,9 @@ namespace Iss.Service
             this.adAccountRepository = new AdAccountRepository();
         }
 
-        public void login(string username, string password)
+        public void Login(string username, string password)
         {
-            AdAccount adAccount = adAccountRepository.getAdAccount(username, password);
+            AdAccount adAccount = adAccountRepository.GetAdAccount(username, password);
             if (adAccount != null)
             {
                 User.User.getInstance().Id = adAccount.adAccountId;
@@ -39,33 +39,34 @@ namespace Iss.Service
             }
         }
 
-        public AdAccount getAccount()
+        public AdAccount GetAccount()
         {
-            return adAccountRepository.getAdAccount(User.User.getInstance().Name, User.User.getInstance().Password);
+            return adAccountRepository.GetAdAccount(User.User.getInstance().Name, User.User.getInstance().Password);
         }
 
-        public List<Ad> getAdsForCurrentUser() {
-            return adAccountRepository.getAdsForCurrentUser();
+        public List<Ad> GetAdsForCurrentUser()
+        {
+            return adAccountRepository.GetAdsForCurrentUser();
         }
 
-        public List<AdSet> getAdSetsForCurrentUser()
+        public List<AdSet> GetAdSetsForCurrentUser()
         {
-            return adAccountRepository.getAdSetsForCurrentUser();
+            return adAccountRepository.GetAdSetsForCurrentUser();
         }
 
-        public List<Campaign> getCampaignsForCurrentUser()
+        public List<Campaign> GetCampaignsForCurrentUser()
         {
-            return adAccountRepository.getCampaignsForCurrentUser();
+            return adAccountRepository.GetCampaignsForCurrentUser();
         }
 
-        public void addAdAccount(AdAccount account)
+        public void AddAdAccount(AdAccount account)
         {
-            this.adAccountRepository.addAdAccount(account);
+            this.adAccountRepository.AddAdAccount(account);
         }
 
-        public void editAdAccount(String nameOfCompany, String URL, String password, String location)
+        public void EditAdAccount(string nameOfCompany, string url, string password, string location)
         {
-            this.adAccountRepository.editAdAccount(nameOfCompany, URL, password, location);
+            this.adAccountRepository.EditAdAccount(nameOfCompany, url, password, location);
         }
     }
 }

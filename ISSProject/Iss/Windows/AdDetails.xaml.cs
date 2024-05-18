@@ -64,7 +64,7 @@ namespace Iss.Windows
                 string description = textDescription.Text;
                 string link = textLink.Text;
                 
-                Ad oldAd = this.adService.getAdByName(ad.ProductName);
+                Ad oldAd = this.adService.GetAdByName(ad.ProductName);
                 ad = oldAd;
 
                 // Create Ad object
@@ -79,7 +79,7 @@ namespace Iss.Windows
                 );
 
                 // Add the ad using AdService
-                adService.updateAd(newAd);
+                adService.UpdateAd(newAd);
 
                 // Show success message or navigate to another page
                 MessageBox.Show("Ad updated successfully!");
@@ -122,7 +122,7 @@ namespace Iss.Windows
         {
             try
             {
-                this.adService.deleteAd(ad);
+                this.adService.DeleteAd(ad);
                 MessageBox.Show("Ad deleted succesfully");
                 AdAccountOverview adAccountOverview = new AdAccountOverview();
                 this.Content = adAccountOverview;

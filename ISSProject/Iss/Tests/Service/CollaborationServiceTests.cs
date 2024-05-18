@@ -32,10 +32,10 @@ namespace Iss.Tests.Service
         );
 
             // Act
-            collaborationService.addCollaboration(collaboration);
+            collaborationService.AddCollaboration(collaboration);
 
             // Assert
-            mockCollaborationRepository.Verify(x => x.createCollaboration(collaboration), Times.Once);
+            mockCollaborationRepository.Verify(x => x.CreateCollaboration(collaboration), Times.Once);
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace Iss.Tests.Service
             var collaborationService = new CollaborationService(mockCollaborationRepository.Object);
 
             // Act
-            var result = collaborationService.getCollaborationForAdAccount();
+            var result = collaborationService.GetCollaborationForAdAccount();
 
             // Assert
             mockCollaborationRepository.Verify(x => x.GetCollaborationsForAdAccount(), Times.Once);
@@ -60,10 +60,10 @@ namespace Iss.Tests.Service
             var collaborationService = new CollaborationService(mockCollaborationRepository.Object);
 
             // Act
-            var result = collaborationService.getCollaborationForInfluencer();
+            var result = collaborationService.GetCollaborationForInfluencer();
 
             // Assert
-            mockCollaborationRepository.Verify(x => x.getCollaborationsForInfluencer(), Times.Once);
+            mockCollaborationRepository.Verify(x => x.GetCollaborationsForInfluencer(), Times.Once);
         }
 
         [Fact]
@@ -77,7 +77,7 @@ namespace Iss.Tests.Service
             mockCollaborationRepository.Setup(x => x.GetCollaborationsForAdAccount()).Returns(activeCollaborations);
 
             // Act
-            var result = collaborationService.getActiveCollaborationForAdAccount();
+            var result = collaborationService.GetActiveCollaborationForAdAccount();
 
             // Assert
             Assert.Equal(activeCollaborations, result);

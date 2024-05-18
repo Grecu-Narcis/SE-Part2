@@ -18,10 +18,10 @@ namespace Iss.Tests.Service
             var paymentService = new PaymentService(mockPaymentRepository.Object);
 
             // Act
-            paymentService.addOneAd();
+            paymentService.AddOneAd();
 
             // Assert
-            mockPaymentRepository.Verify(x => x.addOneAd(), Times.Once);
+            mockPaymentRepository.Verify(x => x.AddOneAd(), Times.Once);
         }
 
         [Fact]
@@ -32,10 +32,10 @@ namespace Iss.Tests.Service
             var paymentService = new PaymentService(mockPaymentRepository.Object);
 
             // Act
-            paymentService.addOneAdSet();
+            paymentService.AddOneAdSet();
 
             // Assert
-            mockPaymentRepository.Verify(x => x.addOneAdSet(), Times.Once);
+            mockPaymentRepository.Verify(x => x.AddOneAdSet(), Times.Once);
         }
 
         [Fact]
@@ -46,10 +46,10 @@ namespace Iss.Tests.Service
             var paymentService = new PaymentService(mockPaymentRepository.Object);
 
             // Act
-            paymentService.addOneCampaign();
+            paymentService.AddOneCampaign();
 
             // Assert
-            mockPaymentRepository.Verify(x => x.addOneCampaign(), Times.Once);
+            mockPaymentRepository.Verify(x => x.AddOneCampaign(), Times.Once);
         }
 
         [Fact]
@@ -60,10 +60,10 @@ namespace Iss.Tests.Service
             var paymentService = new PaymentService(mockPaymentRepository.Object);
 
             // Act
-            paymentService.addBasicSubscription();
+            paymentService.AddBasicSubscription();
 
             // Assert
-            mockPaymentRepository.Verify(x => x.addSubscription("Basic"), Times.Once);
+            mockPaymentRepository.Verify(x => x.AddSubscription("Basic"), Times.Once);
         }
 
         [Fact]
@@ -74,10 +74,10 @@ namespace Iss.Tests.Service
             var paymentService = new PaymentService(mockPaymentRepository.Object);
 
             // Act
-            paymentService.addSilverSubscription();
+            paymentService.AddSilverSubscription();
 
             // Assert
-            mockPaymentRepository.Verify(x => x.addSubscription("Silver"), Times.Once);
+            mockPaymentRepository.Verify(x => x.AddSubscription("Silver"), Times.Once);
         }
 
         [Fact]
@@ -88,10 +88,10 @@ namespace Iss.Tests.Service
             var paymentService = new PaymentService(mockPaymentRepository.Object);
 
             // Act
-            paymentService.addGoldSubscription();
+            paymentService.AddGoldSubscription();
 
             // Assert
-            mockPaymentRepository.Verify(x => x.addSubscription("Gold"), Times.Once);
+            mockPaymentRepository.Verify(x => x.AddSubscription("Gold"), Times.Once);
         }
     }
 }

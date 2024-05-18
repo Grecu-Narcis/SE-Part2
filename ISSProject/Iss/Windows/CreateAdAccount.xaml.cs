@@ -29,8 +29,8 @@ namespace Iss.Windows
             string authorisingInstitution = AuthorisingInstitutionComboBox.Text;
             //TODO! implement the creation of the account
             AdAccount account = new AdAccount(nameOfCompany, domainOfActivity, siteUrl, password, taxIdentificationNumber, headquartersLocation, authorisingInstitution);
-            adAccountService.addAdAccount(account);
-            adAccountService.login(nameOfCompany, password);
+            adAccountService.AddAdAccount(account);
+            adAccountService.Login(nameOfCompany, password);
             //make the main window appear after button click
             MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
             mainWindow.homePage = new HomePage();

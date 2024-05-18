@@ -33,7 +33,7 @@ namespace Iss.Windows
         public CampaignDetails(Campaign campaign)
         {
             InitializeComponent();
-            this.campaign = campaignService.getCampaignByName(campaign);
+            this.campaign = campaignService.GetCampaignByName(campaign);
             this.Populate();
         }
 
@@ -52,7 +52,7 @@ namespace Iss.Windows
         {
             try
             {
-                this.campaignService.deleteCampaign(campaign);
+                this.campaignService.DeleteCampaign(campaign);
                 MessageBox.Show("Campaign deleted succesfully");
                 AdAccountOverview adAccountOverview = new AdAccountOverview();
                 this.Content = adAccountOverview;
@@ -91,14 +91,14 @@ namespace Iss.Windows
             try
             {
                 Campaign newCampaign = new Campaign(campaign.campaignId, nameTextBox.Text, startDatePicker.SelectedDate.Value, int.Parse(durationTextBox.Text));
-                campaignService.updateCampaign(newCampaign);
+                campaignService.UpdateCampaign(newCampaign);
                 foreach (AdSet adset in itemListBox1.Items)
                 {
-                    this.campaignService.addAdSetToCampaign(newCampaign, adset);
+                    this.campaignService.AddAdSetToCampaign(newCampaign, adset);
                 }
                 foreach (AdSet adset in itemListBox2.Items)
                 {
-                    this.campaignService.deleteAdSetFromCampaign(newCampaign, adset);
+                    this.campaignService.DeleteAdSetFromCampaign(newCampaign, adset);
                 }
 
                 MessageBox.Show("Campaign updated");

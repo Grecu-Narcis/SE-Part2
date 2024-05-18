@@ -1,12 +1,13 @@
-﻿using Iss.Entity;
-using Iss.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Iss.Entity;
+using Iss.Repository;
 
 namespace Iss.Repository
 {
@@ -22,13 +23,12 @@ namespace Iss.Repository
         /// Retrieves a list of influencers from the database.
         /// </summary>
         /// <returns>A list of <see cref="Influencer"/> objects representing influencers.</returns>
-
         public List<Influencer> GetInfluencers()
         {
             List<Influencer> influencers = new List<Influencer>();
             DataSet dataSet = new DataSet();
             string query = "SELECT * FROM Influencer";
-            SqlCommand command = new SqlCommand(query, this.databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, this.databaseConnection.SqlConnection);
             this.databaseConnection.OpenConnection();
             this.databaseDataAdapter.SelectCommand = command;
             this.databaseDataAdapter.SelectCommand.ExecuteNonQuery();

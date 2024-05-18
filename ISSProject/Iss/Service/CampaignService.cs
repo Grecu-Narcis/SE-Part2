@@ -1,10 +1,11 @@
-﻿using Iss.Entity;
-using Iss.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Iss.Entity;
+using Iss.Repository;
 
 namespace Iss.Service
 {
@@ -22,11 +23,11 @@ namespace Iss.Service
             this.campaignRepository = new CampaignRepository();
         }
 
-        public void addCampaign(Campaign campaignToAdd)
+        public void AddCampaign(Campaign campaignToAdd)
         {
-            this.campaignRepository.addCampaign(campaignToAdd);
+            this.campaignRepository.AddCampaign(campaignToAdd);
 
-            Campaign campaignFromRepository = campaignRepository.getCampaignByName(campaignToAdd);
+            Campaign campaignFromRepository = campaignRepository.GetCampaignByName(campaignToAdd);
 
             if (campaignFromRepository == null)
             {
@@ -38,34 +39,34 @@ namespace Iss.Service
 
             foreach (AdSet adSet in currentAdSet)
             {
-                campaignRepository.addAdSetToCampaign(campaignFromRepository, adSet);
+                campaignRepository.AddAdSetToCampaign(campaignFromRepository, adSet);
             }
         }
 
-        public Campaign getCampaignByName(Campaign campaignToGetByName)
+        public Campaign GetCampaignByName(Campaign campaignToGetByName)
         {
-            Campaign campaignToReturn =  campaignRepository.getCampaignByName(campaignToGetByName);
+            Campaign campaignToReturn = campaignRepository.GetCampaignByName(campaignToGetByName);
             return campaignToReturn;
         }
 
-        public void deleteCampaign(Campaign campaignToDelete)
+        public void DeleteCampaign(Campaign campaignToDelete)
         {
-            campaignRepository.deleteCampaign(campaignToDelete);
+            campaignRepository.DeleteCampaign(campaignToDelete);
         }
 
-        public void addAdSetToCampaign(Campaign campaignToAddAdSet, AdSet adSet)
+        public void AddAdSetToCampaign(Campaign campaignToAddAdSet, AdSet adSet)
         {
-            campaignRepository.addAdSetToCampaign(campaignToAddAdSet, adSet);
+            campaignRepository.AddAdSetToCampaign(campaignToAddAdSet, adSet);
         }
 
-        public void deleteAdSetFromCampaign(Campaign campaignToDeleteAdSet, AdSet adSet)
+        public void DeleteAdSetFromCampaign(Campaign campaignToDeleteAdSet, AdSet adSet)
         {
-            campaignRepository.deleteAdSetFromCampaign(campaignToDeleteAdSet, adSet);
+            campaignRepository.DeleteAdSetFromCampaign(campaignToDeleteAdSet, adSet);
         }
 
-        public void updateCampaign(Campaign campaignToUpdate)
+        public void UpdateCampaign(Campaign campaignToUpdate)
         {
-            campaignRepository.updateCampaign(campaignToUpdate);
+            campaignRepository.UpdateCampaign(campaignToUpdate);
         }
     }
 }

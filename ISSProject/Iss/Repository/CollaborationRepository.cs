@@ -1,6 +1,4 @@
-﻿using Iss.Database;
-using Iss.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,14 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Iss.Database;
+using Iss.Entity;
 
 namespace Iss.Repository
 {
     internal class CollaborationRepository : IColaborationRepository
     {
-
-        IDatabaseConnection databaseConnection;
-        ISqlDataAdapterWrapper adapter;
+        private IDatabaseConnection databaseConnection;
+        private ISqlDataAdapterWrapper adapter;
 
         public CollaborationRepository()
         {
@@ -28,21 +27,20 @@ namespace Iss.Repository
             this.adapter = adapter;
         }
 
-        public void createCollaboration(Collaboration collaboration)
+        public void CreateCollaboration(Collaboration collaboration)
         {
-
             databaseConnection.OpenConnection();
 
             string influencerQuery = "SELECT ID FROM Influencer WHERE Name='Selly'";
 
-            SqlCommand influencerCommand = new SqlCommand(influencerQuery, databaseConnection.sqlConnection);
+            SqlCommand influencerCommand = new SqlCommand(influencerQuery, databaseConnection.SqlConnection);
             // Execute the query to get the influencer ID
             int influencerId = Convert.ToInt32(influencerCommand.ExecuteScalar());
 
             string query = @"INSERT INTO Collaboration (AdAccountID, InfluencerID, Status, AdOverview, CollaborationTitle, ContentRequirements, CollaborationFee,  StartDate, EndDate) 
                                 VALUES (@AdAccountID, @InfluencerID, @Status, @AdOverview, @CollaborationTitle, @ContentRequirements, @CollaborationFee, @StartDate, @EndDate)";
 
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@AdAccountID", User.User.getInstance().Id);
             command.Parameters.AddWithValue("@InfluencerID", influencerId);
             command.Parameters.AddWithValue("@Status", collaboration.status);
@@ -66,15 +64,15 @@ namespace Iss.Repository
 
             string query = "SELECT * FROM Collaboration WHERE AdAccountID = @AdAccountID";
 
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             System.Diagnostics.Debug.WriteLine(User.User.getInstance().Id);
             command.Parameters.AddWithValue("@AdAccountID", User.User.getInstance().Id);
 
             // Set the SelectCommand property of the SqlDataAdapter
             adapter.SelectCommand(command);
             adapter.ExecuteNonQuery(command);
-            // Remove unnecessary code that sets InsertCommand and calls ExecuteNonQuery
 
+            // Remove unnecessary code that sets InsertCommand and calls ExecuteNonQuery
             adapter.Fill(dataSet);
             foreach (DataRow dataRow in dataSet.Tables[0].Rows)
             {
@@ -89,37 +87,34 @@ namespace Iss.Repository
             return collaborations;
         }
 
-
-        public List<Collaboration> getCollaborationsForInfluencer()
+        public List<Collaboration> GetCollaborationsForInfluencer()
         {
-
             List<Collaboration> collaborations = new List<Collaboration>();
             DataSet dataSet = new DataSet();
             databaseConnection.OpenConnection();
 
             string query = "SELECT * FROM Collaboration WHERE InfluencerID = @InfluencerID";
 
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
-            
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
+
             System.Diagnostics.Debug.WriteLine(User.User.getInstance().Id);
             command.Parameters.AddWithValue("@InfluencerID", 1);
 
             // Set the SelectCommand property of the SqlDataAdapter
             adapter.SelectCommand(command);
             adapter.ExecuteNonQuery(command);
-            // Remove unnecessary code that sets InsertCommand and calls ExecuteNonQuery
 
+            // Remove unnecessary code that sets InsertCommand and calls ExecuteNonQuery
             adapter.Fill(dataSet);
             foreach (DataRow dataRow in dataSet.Tables[0].Rows)
             {
-
                 collaborations.Add(new Collaboration(Convert.ToInt32(dataRow["CollaborationID"]),
-                    Convert.ToDateTime(dataRow["StartDate"]), Convert.ToBoolean(dataRow["Status"]),
-                    dataRow["ContentRequirements"].ToString(), dataRow["AdOverview"].ToString(),
-                    dataRow["CollaborationFee"].ToString(), Convert.ToDateTime(dataRow["EndDate"]).Day - Convert.ToDateTime(dataRow["StartDate"]).Day,
-                    dataRow["CollaborationTitle"].ToString()));
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                Convert.ToDateTime(dataRow["StartDate"]), Convert.ToBoolean(dataRow["Status"]),
+                dataRow["ContentRequirements"].ToString(), dataRow["AdOverview"].ToString(),
+                dataRow["CollaborationFee"].ToString(), Convert.ToDateTime(dataRow["EndDate"]).Day - Convert.ToDateTime(dataRow["StartDate"]).Day,
+                dataRow["CollaborationTitle"].ToString()));
             }
+
             databaseConnection.CloseConnection();
             return collaborations;
         }

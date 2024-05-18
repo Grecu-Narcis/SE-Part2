@@ -38,7 +38,7 @@ namespace Iss.Windows
             nameTextBox.Text = adSet.Name;
             selectionComboBox.Text = adSet.TargetAudience;
 
-            list2 = adService.getAdsThatAreNotInAdSet();
+            list2 = adService.GetAdsThatAreNotInAdSet();
             itemListBox2.SetValue(ItemsControl.ItemsSourceProperty, list2);
             PopulateCurrentAds();
         }

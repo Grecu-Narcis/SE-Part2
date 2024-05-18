@@ -9,10 +9,8 @@ namespace Iss.Repository
 {
     public interface IDatabaseConnection
     {
-
-        SqlConnection sqlConnection { get; }
+        public SqlConnection SqlConnection { get; }
         public void OpenConnection();
         public void CloseConnection();
-       
     }
 }

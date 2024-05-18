@@ -38,7 +38,7 @@ namespace Iss
             string password = textPassword.Password;
             try
             {
-                adAccountService.login(username, password);
+                adAccountService.Login(username, password);
 
                 // Open the new window containing the HomePage user control
                 this.homePage = new HomePage();

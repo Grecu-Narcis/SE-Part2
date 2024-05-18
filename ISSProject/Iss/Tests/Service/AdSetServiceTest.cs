@@ -37,7 +37,7 @@ namespace Iss.Tests.Service
             adSetService.AddAdSet(testingAdSet);
 
             // Assert
-            mockAdSetRepository.Verify(x => x.addAdSet(testingAdSet), Times.Once);
+            mockAdSetRepository.Verify(x => x.AddAdSet(testingAdSet), Times.Once);
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace Iss.Tests.Service
             adSetService.AddAdToAdSet(testingAdSet, testingAd);
 
             // Assert
-            mockAdSetRepository.Verify(x => x.addAdToAdSet(testingAdSet, testingAd), Times.Once);
+            mockAdSetRepository.Verify(x => x.AddAdToAdSet(testingAdSet, testingAd), Times.Once);
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace Iss.Tests.Service
             adSetService.RemoveAdFromAdSet(testingAdSet, testingAd);
 
             // Assert
-            mockAdSetRepository.Verify(x => x.removeAdFromAdSet(testingAdSet, testingAd), Times.Once);
+            mockAdSetRepository.Verify(x => x.RemoveAdFromAdSet(testingAdSet, testingAd), Times.Once);
         }
 
         [Fact]
@@ -79,7 +79,7 @@ namespace Iss.Tests.Service
             adSetService.GetAdSetsThatAreNotInCampaign();
 
             // Assert
-            mockAdSetRepository.Verify(x => x.getAdSetsThatAreNotInCampaign(), Times.Once);
+            mockAdSetRepository.Verify(x => x.GetAdSetsThatAreNotInCampaign(), Times.Once);
         }
 
         [Fact]
@@ -93,7 +93,7 @@ namespace Iss.Tests.Service
             adSetService.GetAdSetsInCampaign("1");
 
             // Assert
-            mockAdSetRepository.Verify(x => x.getAdSetsInCampaign("1"), Times.Once);
+            mockAdSetRepository.Verify(x => x.GetAdSetsInCampaign("1"), Times.Once);
         }
 
         [Fact]
@@ -107,7 +107,7 @@ namespace Iss.Tests.Service
             adSetService.GetAdSetByName(testingAdSet);
 
             // Assert
-            mockAdSetRepository.Verify(x => x.getAdSetByName(testingAdSet), Times.Once);
+            mockAdSetRepository.Verify(x => x.GetAdSetByName(testingAdSet), Times.Once);
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace Iss.Tests.Service
             adSetService.UpdateAdSet(testingAdSet);
 
             // Assert
-            mockAdSetRepository.Verify(x => x.updateAdSet(testingAdSet), Times.Once);
+            mockAdSetRepository.Verify(x => x.UpdateAdSet(testingAdSet), Times.Once);
         }
 
         [Fact]
@@ -135,7 +135,7 @@ namespace Iss.Tests.Service
             adSetService.DeleteAdSet(testingAdSet);
 
             // Assert
-            mockAdSetRepository.Verify(x => x.deleteAdSet(testingAdSet), Times.Once);
+            mockAdSetRepository.Verify(x => x.DeleteAdSet(testingAdSet), Times.Once);
         }
     }
 }

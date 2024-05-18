@@ -16,11 +16,11 @@ namespace Iss.Repository
         private DatabaseConnection databaseConnection = new DatabaseConnection();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
-        public void addAdSet(AdSet adSet)
+        public void AddAdSet(AdSet adSet)
         {
             databaseConnection.OpenConnection();
             string query = "INSERT INTO AdSet(Name, TargetAudience, AdAccountID) values (@name, @targetAudience, @AdAccountID)";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@name", adSet.Name);
             command.Parameters.AddWithValue("@targetAudience", adSet.TargetAudience);
             command.Parameters.AddWithValue("@AdAccountID", User.User.getInstance().Id);
@@ -29,22 +29,22 @@ namespace Iss.Repository
             databaseConnection.CloseConnection();
         }
 
-        public void deleteAdSet(AdSet adSet)
+        public void DeleteAdSet(AdSet adSet)
         {
             databaseConnection.OpenConnection();
             string query = "DELETE FROM AdSet WHERE ID=@id";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@id", adSet.Id);
             dataAdapter.DeleteCommand = command;
             dataAdapter.DeleteCommand.ExecuteNonQuery();
             databaseConnection.CloseConnection();
         }
 
-        public void updateAdSet(AdSet adSet)
+        public void UpdateAdSet(AdSet adSet)
         {
             databaseConnection.OpenConnection();
             string query = "UPDATE AdSet SET Name=@Name, TargetAudience=@audience";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@name", adSet.Name);
             command.Parameters.AddWithValue("@audience", adSet.TargetAudience);
             dataAdapter.UpdateCommand = command;
@@ -52,12 +52,12 @@ namespace Iss.Repository
             databaseConnection.CloseConnection();
         }
 
-        public AdSet getAdSetByName(AdSet adSet)
+        public AdSet GetAdSetByName(AdSet adSet)
         {
             DataSet dataSet = new DataSet();
             databaseConnection.OpenConnection();
             string query = "SELECT * FROM AdSet WHERE Name = @name";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@name", adSet.Name);
             dataAdapter.SelectCommand = command;
             dataAdapter.SelectCommand.ExecuteNonQuery();
@@ -74,11 +74,11 @@ namespace Iss.Repository
             return adSet;
         }
 
-        public void addAdToAdSet(AdSet adSet, Ad ad)
+        public void AddAdToAdSet(AdSet adSet, Ad ad)
         {
             databaseConnection.OpenConnection();
             string query = "UPDATE Ad SET AdSetID = @adSetID WHERE ID = @adID";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@adSetID", adSet.Id);
             command.Parameters.AddWithValue("@adID", ad.Id);
             dataAdapter.UpdateCommand = command;
@@ -86,11 +86,11 @@ namespace Iss.Repository
             databaseConnection.CloseConnection();
         }
 
-        public void removeAdFromAdSet(AdSet adSet, Ad ad)
+        public void RemoveAdFromAdSet(AdSet adSet, Ad ad)
         {
             databaseConnection.OpenConnection();
             string query = "UPDATE Ad SET AdSetID = NULL WHERE ID = @adID";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@adSetID", adSet.Id);
             command.Parameters.AddWithValue("@adID", ad.Id);
             dataAdapter.UpdateCommand = command;
@@ -98,13 +98,13 @@ namespace Iss.Repository
             databaseConnection.CloseConnection();
         }
 
-        public List<AdSet> getAdSetsThatAreNotInCampaign()
+        public List<AdSet> GetAdSetsThatAreNotInCampaign()
         {
             List<AdSet> adSets = new List<AdSet>();
             DataSet dataSet = new DataSet();
             databaseConnection.OpenConnection();
             string query = "SELECT * FROM AdSet WHERE CampaignID IS NULL AND AdAccountID=@id";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@id", User.User.getInstance().Id);
             dataAdapter.SelectCommand = command;
             dataAdapter.SelectCommand.ExecuteNonQuery();
@@ -121,13 +121,13 @@ namespace Iss.Repository
             return adSets;
         }
 
-        public List<AdSet> getAdSetsInCampaign(string id)
+        public List<AdSet> GetAdSetsInCampaign(string id)
         {
             List<AdSet> adSets = new List<AdSet>();
             DataSet dataSet = new DataSet();
             databaseConnection.OpenConnection();
             string query = "SELECT * FROM AdSet WHERE CampaignID=@id";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@id", id);
             dataAdapter.SelectCommand = command;
             dataAdapter.SelectCommand.ExecuteNonQuery();

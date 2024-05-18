@@ -31,10 +31,10 @@ namespace Iss.Tests.Service
             var campaignService = new CampaignService(mockCampaignRepository.Object);
 
             // Act
-            campaignService.addCampaign(testingCampaign);
+            campaignService.AddCampaign(testingCampaign);
 
             // Assert
-            mockCampaignRepository.Verify(x => x.addCampaign(testingCampaign), Times.Once);
+            mockCampaignRepository.Verify(x => x.AddCampaign(testingCampaign), Times.Once);
         }
 
         [Fact]
@@ -45,10 +45,10 @@ namespace Iss.Tests.Service
             var campaignService = new CampaignService(mockCampaignRepository.Object);
 
             // Act
-            campaignService.getCampaignByName(testingCampaign);
+            campaignService.GetCampaignByName(testingCampaign);
 
             // Assert
-            mockCampaignRepository.Verify(x => x.getCampaignByName(testingCampaign), Times.Once);
+            mockCampaignRepository.Verify(x => x.GetCampaignByName(testingCampaign), Times.Once);
         }
 
         [Fact]
@@ -59,10 +59,10 @@ namespace Iss.Tests.Service
             var campaignService = new CampaignService(mockCampaignRepository.Object);
 
             // Act
-            campaignService.deleteCampaign(testingCampaign);
+            campaignService.DeleteCampaign(testingCampaign);
 
             // Assert
-            mockCampaignRepository.Verify(x => x.deleteCampaign(testingCampaign), Times.Once);
+            mockCampaignRepository.Verify(x => x.DeleteCampaign(testingCampaign), Times.Once);
         }
 
         [Fact]
@@ -73,10 +73,10 @@ namespace Iss.Tests.Service
             var campaignService = new CampaignService(mockCampaignRepository.Object);
 
             // Act
-            campaignService.addAdSetToCampaign(testingCampaign, testingAdSet);
+            campaignService.AddAdSetToCampaign(testingCampaign, testingAdSet);
 
             // Assert
-            mockCampaignRepository.Verify(x => x.addAdSetToCampaign(testingCampaign, testingAdSet), Times.Once);
+            mockCampaignRepository.Verify(x => x.AddAdSetToCampaign(testingCampaign, testingAdSet), Times.Once);
         }
 
         [Fact]
@@ -87,10 +87,10 @@ namespace Iss.Tests.Service
             var campaignService = new CampaignService(mockCampaignRepository.Object);
 
             // Act
-            campaignService.deleteAdSetFromCampaign(testingCampaign, testingAdSet);
+            campaignService.DeleteAdSetFromCampaign(testingCampaign, testingAdSet);
 
             // Assert
-            mockCampaignRepository.Verify(x => x.deleteAdSetFromCampaign(testingCampaign, testingAdSet), Times.Once);
+            mockCampaignRepository.Verify(x => x.DeleteAdSetFromCampaign(testingCampaign, testingAdSet), Times.Once);
         }
 
         [Fact]
@@ -106,10 +106,10 @@ namespace Iss.Tests.Service
                                                duration: 51);
 
             // Act
-            campaignService.updateCampaign(updatedCampaign);
+            campaignService.UpdateCampaign(updatedCampaign);
 
             // Assert
-            mockCampaignRepository.Verify(x => x.updateCampaign(updatedCampaign), Times.Once);
+            mockCampaignRepository.Verify(x => x.UpdateCampaign(updatedCampaign), Times.Once);
         }
     }
 }

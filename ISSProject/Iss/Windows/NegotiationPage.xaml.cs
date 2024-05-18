@@ -62,7 +62,7 @@ namespace Iss.Windows
                 request.adAccountAccept = false;
                 request.influencerAccept = true;
             }
-            requestService.updateRequest(request, newCompensation, newContentRequirements);
+            requestService.UpdateRequest(request, newCompensation, newContentRequirements);
             MessageBox.Show("Negotiation sent!");
             //go back to the request page
             ListOfRequests listOfRequests = new ListOfRequests(isAddAccount);

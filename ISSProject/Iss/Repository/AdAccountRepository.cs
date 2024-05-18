@@ -1,5 +1,4 @@
-﻿using Iss.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -9,14 +8,16 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
+using Iss.Entity;
+
 namespace Iss.Repository
 {
-    public class AdAccountRepository: IAdAccountRepository
+    public class AdAccountRepository : IAdAccountRepository
     {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        SqlDataAdapter adapter = new SqlDataAdapter();
+        private DatabaseConnection databaseConnection = new DatabaseConnection();
+        private SqlDataAdapter adapter = new SqlDataAdapter();
 
-        public AdAccount getAdAccount(string nameOfCompany, string password)
+        public AdAccount GetAdAccount(string nameOfCompany, string password)
         {
             AdAccount adAccount = null;
             databaseConnection.OpenConnection();
@@ -24,10 +25,10 @@ namespace Iss.Repository
             DataSet dataSet = new DataSet();
 
             string query = "SELECT * FROM AdAccount WHERE NameOfCompany = @nameOfCompany AND Password = @password";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@nameOfCompany", nameOfCompany);
             command.Parameters.AddWithValue("@password", password);
-            
+
             dataAdapter.SelectCommand = command;
             dataAdapter.SelectCommand.ExecuteNonQuery();
             dataAdapter.Fill(dataSet);
@@ -35,18 +36,18 @@ namespace Iss.Repository
             if (dataSet.Tables[0].Rows.Count > 0)
             {
                 DataRow dataRow = dataSet.Tables[0].Rows[0];
-                adAccount = new AdAccount(dataRow["ID"].ToString(),dataRow["NameOfCompany"].ToString(), dataRow["DomainOfActivity"].ToString(), dataRow["WebSiteUrl"].ToString(), dataRow["Password"].ToString(), dataRow["TaxIdentificationNumber"].ToString(), dataRow["HeadquartersLocation"].ToString(), dataRow["AuthorizingInstitution"].ToString());
+                adAccount = new AdAccount(dataRow["ID"].ToString(), dataRow["NameOfCompany"].ToString(), dataRow["DomainOfActivity"].ToString(), dataRow["WebSiteUrl"].ToString(), dataRow["Password"].ToString(), dataRow["TaxIdentificationNumber"].ToString(), dataRow["HeadquartersLocation"].ToString(), dataRow["AuthorizingInstitution"].ToString());
             }
 
             databaseConnection.CloseConnection();
             return adAccount;
-        }   
+        }
 
-        public void addAdAccount(AdAccount adAccount)
+        public void AddAdAccount(AdAccount adAccount)
         {
             databaseConnection.OpenConnection();
             string query = "INSERT INTO AdAccount (NameOfCompany, DomainOfActivity, WebSiteUrl, Password, TaxIdentificationNumber, HeadquartersLocation, AuthorizingInstitution) VALUES (@nameOfCompany, @domainOfActivity, @webSiteUrl, @password, @taxIdentificationNumber, @headquartersLocation, @authorizingInstitution)";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@nameOfCompany", adAccount.nameOfCompany);
             command.Parameters.AddWithValue("@domainOfActivity", adAccount.domainOfActivity);
             command.Parameters.AddWithValue("@webSiteUrl", adAccount.siteUrl);
@@ -58,13 +59,13 @@ namespace Iss.Repository
             databaseConnection.CloseConnection();
         }
 
-        public List<Ad> getAdsForCurrentUser()
+        public List<Ad> GetAdsForCurrentUser()
         {
             List<Ad> ads = new List<Ad>();
             DataSet dataSet = new DataSet();
             databaseConnection.OpenConnection();
             string query = "SELECT * FROM Ad WHERE AdAccountId = @adAccountId";
-            SqlCommand command = new SqlCommand(@query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(@query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);
             adapter.SelectCommand = command;
             dataSet.Clear();
@@ -78,12 +79,12 @@ namespace Iss.Repository
             return ads;
         }
 
-        public List<AdSet> getAdSetsForCurrentUser()
+        public List<AdSet> GetAdSetsForCurrentUser()
         {
             databaseConnection.OpenConnection();
             DataSet dataSet = new DataSet();
             string query = "SELECT * FROM AdSet WHERE AdAccountID = @adAccountId";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);
             adapter.SelectCommand = command;
             adapter.SelectCommand.ExecuteNonQuery();
@@ -102,12 +103,12 @@ namespace Iss.Repository
             return adSets;
         }
 
-        public List<Campaign> getCampaignsForCurrentUser()
+        public List<Campaign> GetCampaignsForCurrentUser()
         {
             databaseConnection.OpenConnection();
             DataSet dataSet = new DataSet();
             string query = "SELECT * FROM Campaign WHERE AdAccountID = @adAccountId";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);
             adapter.SelectCommand = command;
             adapter.SelectCommand.ExecuteNonQuery();
@@ -124,15 +125,15 @@ namespace Iss.Repository
                 campaigns.Add(campaign);
             }
             databaseConnection.CloseConnection();
-            return campaigns;   
+            return campaigns;
         }
-        public void editAdAccount(String nameOfCompany, String URL, String password, String location)
+        public void EditAdAccount(string nameOfCompany, string url, string password, string location)
         {
             databaseConnection.OpenConnection();
             string query = "UPDATE AdAccount SET NameOfCompany = @nameOfCompany, WebSiteUrl = @webSiteUrl, Password = @password, HeadquartersLocation = @headquartersLocation WHERE ID = @adAccountId";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
+            SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@nameOfCompany", nameOfCompany);
-            command.Parameters.AddWithValue("@webSiteUrl", URL);
+            command.Parameters.AddWithValue("@webSiteUrl", url);
             command.Parameters.AddWithValue("@password", password);
             command.Parameters.AddWithValue("@headquartersLocation", location);
             command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);

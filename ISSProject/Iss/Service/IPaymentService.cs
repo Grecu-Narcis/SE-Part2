@@ -8,11 +8,11 @@ namespace Iss.Service
 {
     public interface IPaymentService
     {
-        void addOneAd();
-        void addOneAdSet();
-        void addOneCampaign();
-        void addBasicSubscription();
-        void addSilverSubscription();
-        void addGoldSubscription();
+        void AddOneAd();
+        void AddOneAdSet();
+        void AddOneCampaign();
+        void AddBasicSubscription();
+        void AddSilverSubscription();
+        void AddGoldSubscription();
     }
 }

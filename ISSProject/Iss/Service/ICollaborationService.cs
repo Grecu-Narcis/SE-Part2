@@ -1,17 +1,18 @@
-﻿using Iss.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Iss.Entity;
+
 namespace Iss.Service
 {
     internal interface ICollaborationService
     {
-        public void addCollaboration(Collaboration collaboration);
-        public List<Collaboration> getCollaborationForAdAccount();
-        public List<Collaboration> getCollaborationForInfluencer();
-        public List<Collaboration> getActiveCollaborationForAdAccount();
+        public void AddCollaboration(Collaboration collaboration);
+        public List<Collaboration> GetCollaborationForAdAccount();
+        public List<Collaboration> GetCollaborationForInfluencer();
+        public List<Collaboration> GetActiveCollaborationForAdAccount();
     }
 }

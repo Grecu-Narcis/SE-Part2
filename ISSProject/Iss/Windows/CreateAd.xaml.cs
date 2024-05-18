@@ -57,7 +57,7 @@ namespace Iss.Windows
                 );
 
                 // Add the ad using AdService
-                adService.addAd(ad);
+                adService.AddAd(ad);
 
                 // Show success message or navigate to another page
                 MessageBox.Show("Ad created successfully!");

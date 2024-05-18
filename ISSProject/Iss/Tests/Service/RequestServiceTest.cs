@@ -32,10 +32,10 @@ namespace Iss.Tests.Service
             var requestService = new RequestService(mockRequestRepository.Object);
 
             //Act
-            requestService.addRequest(testingRequest);
+            requestService.AddRequest(testingRequest);
 
             //Assert
-            mockRequestRepository.Verify(x => x.addRequest(testingRequest), Times.Once);
+            mockRequestRepository.Verify(x => x.AddRequest(testingRequest), Times.Once);
         }
 
         [Fact]
@@ -46,10 +46,10 @@ namespace Iss.Tests.Service
             var requestService = new RequestService(mockRequestRepository.Object);
 
             //Act
-            requestService.deleteRequest(testingRequest);
+            requestService.DeleteRequest(testingRequest);
 
             //Assert
-            mockRequestRepository.Verify(x => x.deleteRequest(testingRequest), Times.Once);
+            mockRequestRepository.Verify(x => x.DeleteRequest(testingRequest), Times.Once);
         }
 
         [Fact]
@@ -60,10 +60,10 @@ namespace Iss.Tests.Service
             var requestService = new RequestService(mockRequestRepository.Object);
 
             //Act
-            requestService.getInfluencerId();
+            requestService.GetInfluencerId();
 
             //Assert
-            mockRequestRepository.Verify(x => x.getInfluencerId(), Times.Once);
+            mockRequestRepository.Verify(x => x.GetInfluencerId(), Times.Once);
         }
 
         [Fact]
@@ -74,10 +74,10 @@ namespace Iss.Tests.Service
             var requestService = new RequestService(mockRequestRepository.Object);
 
             //Act
-            requestService.getRequestsForInfluencer();
+            requestService.GetRequestsForInfluencer();
 
             //Assert
-            mockRequestRepository.Verify(x => x.getRequestsForInfluencer(), Times.Once);
+            mockRequestRepository.Verify(x => x.GetRequestsForInfluencer(), Times.Once);
         }
 
         [Fact]
@@ -87,13 +87,13 @@ namespace Iss.Tests.Service
             var mockRequestRepository = new Mock<IRequestRepository>();
             var requestService = new RequestService(mockRequestRepository.Object);
 
-            requestService.addRequest(testingRequest);
+            requestService.AddRequest(testingRequest);
 
             //Act
-            requestService.getRequestWithTitle("title");
+            requestService.GetRequestWithTitle("title");
 
             //Assert
-            mockRequestRepository.Verify(x => x.getRequestsList(), Times.Once);
+            mockRequestRepository.Verify(x => x.GetRequestsList(), Times.Once);
         }
 
         [Fact]
@@ -104,10 +104,10 @@ namespace Iss.Tests.Service
             var requestService = new RequestService(mockRequestRepository.Object);
 
             //Act
-            requestService.getRequestsForAdAccount();
+            requestService.GetRequestsForAdAccount();
 
             //Assert
-            mockRequestRepository.Verify(x => x.getRequestsForAdAccount(), Times.Once);
+            mockRequestRepository.Verify(x => x.GetRequestsForAdAccount(), Times.Once);
         }
 
         [Fact]
@@ -118,10 +118,10 @@ namespace Iss.Tests.Service
             var requestService = new RequestService(mockRequestRepository.Object);
 
             //Act
-            requestService.updateRequest(testingRequest, "newCompensation", "newContentRequirements");
+            requestService.UpdateRequest(testingRequest, "newCompensation", "newContentRequirements");
 
             //Assert
-            mockRequestRepository.Verify(x => x.updateRequest(testingRequest), Times.Once);
+            mockRequestRepository.Verify(x => x.UpdateRequest(testingRequest), Times.Once);
         }   
     }
 }

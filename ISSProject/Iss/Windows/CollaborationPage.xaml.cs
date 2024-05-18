@@ -45,7 +45,7 @@ namespace Iss.Windows
         public void populateListViewAdAccount()
         {
             
-            collaborations = collaborationService.getActiveCollaborationForAdAccount();
+            collaborations = collaborationService.GetActiveCollaborationForAdAccount();
 
             foreach (Collaboration collaboration in collaborations)
             {
@@ -58,7 +58,7 @@ namespace Iss.Windows
         public void populateListView()
         {
             
-            collaborations = collaborationService.getCollaborationForInfluencer();
+            collaborations = collaborationService.GetCollaborationForInfluencer();
 
             foreach (Collaboration collaboration in collaborations)
             {

@@ -62,7 +62,7 @@ namespace Iss.Windows
                 //Add the request using RequestService
                
                 RequestService requestService = new RequestService();
-                requestService.addRequest(request);
+                requestService.AddRequest(request);
 
                 // Show success message or navigate to another page
                 MessageBox.Show("Request created successfully!");

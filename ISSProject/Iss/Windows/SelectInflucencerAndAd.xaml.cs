@@ -43,7 +43,7 @@ namespace Iss.Windows
 
         private void PopulateAds()
         {
-            List<Ad> currentAds = AdAccountService.getAdsForCurrentUser();
+            List<Ad> currentAds = AdAccountService.GetAdsForCurrentUser();
             adListBox.Items.Clear();
             foreach (var ad in currentAds)
             {
@@ -66,7 +66,7 @@ namespace Iss.Windows
 
         private void searchAdTextButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Ad> currentAds = AdAccountService.getAdsForCurrentUser();
+            List<Ad> currentAds = AdAccountService.GetAdsForCurrentUser();
             adListBox.Items.Clear();
             foreach (Ad ad in currentAds)
             {

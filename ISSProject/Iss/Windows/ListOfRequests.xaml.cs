@@ -43,12 +43,12 @@ namespace Iss.Windows
             if (isAdAccount)
             {
                 // Get requests for the current user
-                requests = requestService.getRequestsForAdAccount();
+                requests = requestService.GetRequestsForAdAccount();
             }
             else
             {
                 // Get requests for the current user
-                requests = requestService.getRequestsForInfluencer();
+                requests = requestService.GetRequestsForInfluencer();
             }
 
             requestsListView.SetValue(ItemsControl.ItemsSourceProperty, requests);
@@ -63,7 +63,7 @@ namespace Iss.Windows
             if (requestsListView.SelectedItem != null)
             {
                 Request request = (Request)requestsListView.SelectedItem;
-                Request selectedRequest = requestService.getRequestWithTitle(request.collaborationTitle);
+                Request selectedRequest = requestService.GetRequestWithTitle(request.collaborationTitle);
                 RequestDetails requestDetails = new RequestDetails(selectedRequest, isAdAccount);
                 if (isAdAccount)
                 {
@@ -99,14 +99,14 @@ namespace Iss.Windows
                 try
                 {
                     Request request = (Request)requestsListView.SelectedItem;
-                    Request selectedRequest = requestService.getRequestWithTitle(request.collaborationTitle);
+                    Request selectedRequest = requestService.GetRequestWithTitle(request.collaborationTitle);
                     selectedRequest.influencerAccept = true;
-                    requestService.deleteRequest(selectedRequest);
+                    requestService.DeleteRequest(selectedRequest);
 
 
                     Collaboration collaboration = new Collaboration(request.collaborationTitle, selectedRequest.adOverview, selectedRequest.compensation, selectedRequest.contentRequirements, selectedRequest.startDate, selectedRequest.endDate, true);
 
-                    collaborationService.addCollaboration(collaboration);
+                    collaborationService.AddCollaboration(collaboration);
                     MessageBox.Show("Request accepted. A new collaboration was created!");
                     this.Content = new ListOfRequests(this.isAdAccount);
                 }
@@ -131,9 +131,9 @@ namespace Iss.Windows
                 try
                 {
                     Request request = (Request)requestsListView.SelectedItem;
-                    Request selectedRequest = requestService.getRequestWithTitle(request.collaborationTitle);
+                    Request selectedRequest = requestService.GetRequestWithTitle(request.collaborationTitle);
                     selectedRequest.influencerAccept = false;
-                    requestService.deleteRequest(selectedRequest);
+                    requestService.DeleteRequest(selectedRequest);
                     MessageBox.Show("Request declined. The request was deleted!");
                     this.Content = new ListOfRequests(this.isAdAccount);
 
@@ -162,7 +162,7 @@ namespace Iss.Windows
                 try
                 {
                     Request request = (Request)requestsListView.SelectedItem;
-                    Request selectedRequest = requestService.getRequestWithTitle(request.collaborationTitle);
+                    Request selectedRequest = requestService.GetRequestWithTitle(request.collaborationTitle);
 
                     NegotiationPage negociationPage = new NegotiationPage(selectedRequest, isAdAccount);
 

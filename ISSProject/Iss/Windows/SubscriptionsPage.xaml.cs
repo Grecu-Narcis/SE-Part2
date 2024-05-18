@@ -29,7 +29,7 @@ namespace Iss.Windows
 
         private void oneAdButton_Click(object sender, RoutedEventArgs e)
         {
-            paymentService.addOneAd();
+            paymentService.AddOneAd();
             int totalAmountToPay = 5;
             Payment paymentPage = new Payment(totalAmountToPay);
             MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
@@ -41,7 +41,7 @@ namespace Iss.Windows
 
         private void oneAdSetButton_Click(object sender, RoutedEventArgs e)
         {
-            paymentService.addOneAdSet();
+            paymentService.AddOneAdSet();
             int totalAmountToPay = 20;
             Payment paymentPage = new Payment(totalAmountToPay);
             MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
@@ -53,7 +53,7 @@ namespace Iss.Windows
 
         private void oneCampaignButton_Click(object sender, RoutedEventArgs e)
         {
-            paymentService.addOneCampaign();
+            paymentService.AddOneCampaign();
             int totalAmountToPay = 150;
             Payment paymentPage = new Payment(totalAmountToPay);
             MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
@@ -65,7 +65,7 @@ namespace Iss.Windows
 
         private void basicSubscriptionButton_Click(object sender, RoutedEventArgs e)
         {
-            paymentService.addBasicSubscription();
+            paymentService.AddBasicSubscription();
             int totalAmountToPay = 250;
             Payment paymentPage = new Payment(totalAmountToPay);
             MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
@@ -77,7 +77,7 @@ namespace Iss.Windows
 
         private void silverSubscriptionButton_Click(object sender, RoutedEventArgs e)
         {
-            paymentService.addSilverSubscription();
+            paymentService.AddSilverSubscription();
             int totalAmountToPay = 350;
             Payment paymentPage = new Payment(totalAmountToPay);
             MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
@@ -89,7 +89,7 @@ namespace Iss.Windows
 
         private void goldSubscriptionButton_Click(object sender, RoutedEventArgs e)
         {
-            paymentService.addGoldSubscription();
+            paymentService.AddGoldSubscription();
             int totalAmountToPay = 500;
             Payment paymentPage = new Payment(totalAmountToPay);
             MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;

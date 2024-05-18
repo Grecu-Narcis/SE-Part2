@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,33 +10,33 @@ namespace Iss.Service
 {
     internal class CollaborationService : ICollaborationService
     {
-
         private IColaborationRepository collaborationRepository;
 
-        public CollaborationService(IColaborationRepository collaborationRepository) {
-            this.collaborationRepository= collaborationRepository;
+        public CollaborationService(IColaborationRepository collaborationRepository)
+        {
+            this.collaborationRepository = collaborationRepository;
         }
-        public CollaborationService() {
+        public CollaborationService()
+        {
             this.collaborationRepository = new CollaborationRepository();
         }
-        public void addCollaboration(Collaboration collaboration)
+        public void AddCollaboration(Collaboration collaboration)
         {
-            collaborationRepository.createCollaboration(collaboration);
+            collaborationRepository.CreateCollaboration(collaboration);
         }
 
-        public List<Collaboration> getCollaborationForAdAccount()
+        public List<Collaboration> GetCollaborationForAdAccount()
         {
             return collaborationRepository.GetCollaborationsForAdAccount();
         }
 
-        public List<Collaboration> getCollaborationForInfluencer()
+        public List<Collaboration> GetCollaborationForInfluencer()
         {
-            return collaborationRepository.getCollaborationsForInfluencer();
+            return collaborationRepository.GetCollaborationsForInfluencer();
         }
 
-        public List<Collaboration> getActiveCollaborationForAdAccount()
+        public List<Collaboration> GetActiveCollaborationForAdAccount()
         {
-
             return collaborationRepository.GetCollaborationsForAdAccount().Where(c => c.status).ToList();
         }
     }

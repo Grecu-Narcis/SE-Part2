@@ -1,9 +1,10 @@
-﻿using Iss.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Iss.Repository;
 
 namespace Iss.Service
 {
@@ -21,34 +22,34 @@ namespace Iss.Service
             this.paymentRepository = paymentRepository;
         }
 
-        public void addOneAd()
+        public void AddOneAd()
         {
-            paymentRepository.addOneAd();
+            paymentRepository.AddOneAd();
         }
 
-        public void addOneAdSet()
+        public void AddOneAdSet()
         {
-            paymentRepository.addOneAdSet();
+            paymentRepository.AddOneAdSet();
         }
 
-        public void addOneCampaign()
+        public void AddOneCampaign()
         {
-            paymentRepository.addOneCampaign();
+            paymentRepository.AddOneCampaign();
         }
 
-        public void addBasicSubscription()
+        public void AddBasicSubscription()
         {
-            paymentRepository.addSubscription("Basic");
+            paymentRepository.AddSubscription("Basic");
         }
 
-        public void addSilverSubscription()
+        public void AddSilverSubscription()
         {
-            paymentRepository.addSubscription("Silver");
+            paymentRepository.AddSubscription("Silver");
         }
 
-        public void addGoldSubscription()
+        public void AddGoldSubscription()
         {
-            paymentRepository.addSubscription("Gold");
+            paymentRepository.AddSubscription("Gold");
         }
     }
 }

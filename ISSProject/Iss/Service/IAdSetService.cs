@@ -1,21 +1,22 @@
-﻿using Iss.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Iss.Entity;
+
 namespace Iss.Service
 {
     internal interface IAdSetService
     {
-        public void addAdSet(AdSet adSetToAdd);
-        public void addAdToAdSet(AdSet adSet, Ad adToAdd);
-        public void removeAdFromAdSet(AdSet adSet, Ad adToRemove);
-        public List<AdSet> getAdSetsThatAreNotInCampaign();
-        public List<AdSet> getAdSetsInCampaign(string id);
-        public AdSet getAdSetByName(AdSet adSet);
-        public void updateAdSet(AdSet adSetToUpdate);
-        public void deleteAdSet(AdSet adSetToDelete);
+        public void AddAdSet(AdSet adSetToAdd);
+        public void AddAdToAdSet(AdSet adSet, Ad adToAdd);
+        public void RemoveAdFromAdSet(AdSet adSet, Ad adToRemove);
+        public List<AdSet> GetAdSetsThatAreNotInCampaign();
+        public List<AdSet> GetAdSetsInCampaign(string id);
+        public AdSet GetAdSetByName(AdSet adSet);
+        public void UpdateAdSet(AdSet adSetToUpdate);
+        public void DeleteAdSet(AdSet adSetToDelete);
     }
 }

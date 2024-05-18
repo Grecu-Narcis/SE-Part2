@@ -57,7 +57,6 @@ namespace Iss.Entity
         /// <param name="photo">The path to the photo associated with the advertisement.</param>
         /// <param name="description">The description of the product being advertised.</param>
         /// <param name="websiteLink">The website link related to the advertisement.</param>
-
         public Ad(string id, string productName, string photo, string description, string websiteLink)
         {
             this.Id = id;
@@ -73,7 +72,7 @@ namespace Iss.Entity
         /// <returns>A string containing the product name, description, and website link.</returns>
         public override string ToString()
         {
-            return "PRODUCT NAME: " + ProductName + "-" +"DESCRIPTION: " + Description + "-" + "URL: " + WebsiteLink;
+            return "PRODUCT NAME: " + ProductName + "-" + "DESCRIPTION: " + Description + "-" + "URL: " + WebsiteLink;
         }
     }
 }
