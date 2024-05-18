@@ -24,31 +24,31 @@ namespace Iss.Windows
     /// </summary>
     public partial class CampaignDetails : UserControl
     {
-        Campaign campaign;
-        CampaignService campaignService =  new CampaignService();
-        AdSetService adSetService = new AdSetService();
-        List<AdSet> currentAdSets = new List<AdSet>();
-        List<AdSet> availableAdSets = new List<AdSet>();
+        private Campaign campaign;
+        private CampaignService campaignService = new CampaignService();
+        private AdSetService adSetService = new AdSetService();
+        private List<AdSet> currentAdSets = new List<AdSet>();
+        private List<AdSet> availableAdSets = new List<AdSet>();
 
         public CampaignDetails(Campaign campaign)
         {
             InitializeComponent();
             this.campaign = campaignService.getCampaignByName(campaign);
-            this.populate();
+            this.Populate();
         }
 
-        public void populate()
+        public void Populate()
         {
             nameTextBox.Text = campaign.campaignName;
             durationTextBox.Text = campaign.duration.ToString();
             startDatePicker.SelectedDate = campaign.startDate;
-            availableAdSets = adSetService.getAdSetsThatAreNotInCampaign();
-            currentAdSets = adSetService.getAdSetsInCampaign(campaign.campaignId);
+            availableAdSets = adSetService.GetAdSetsThatAreNotInCampaign();
+            currentAdSets = adSetService.GetAdSetsInCampaign(campaign.campaignId);
             itemListBox2.SetValue(ItemsControl.ItemsSourceProperty, availableAdSets);
             itemListBox1.SetValue(ItemsControl.ItemsSourceProperty, currentAdSets);
         }
 
-        public void deleteBtn_Click(object sender, EventArgs e)
+        public void DeleteBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -63,9 +63,8 @@ namespace Iss.Windows
             }
         }
 
-        public void updateBtn_Click(Object sender, EventArgs e)
+        public void UpdateBtn_Click(object sender, EventArgs e)
         {
-            
             if (string.IsNullOrEmpty(nameTextBox.Text) || string.IsNullOrEmpty(durationTextBox.Text))
             {
                 MessageBox.Show("Target audience and name must not be empty!");
@@ -88,7 +87,6 @@ namespace Iss.Windows
                 MessageBox.Show("Please select a start date!");
                 return; // Exit the method without performing the update
             }
-
 
             try
             {
@@ -127,9 +125,6 @@ namespace Iss.Windows
                 AdSet selectedAdSet = (AdSet)itemListBox1.SelectedItem;
 
                 // Remove the selected item from list2
-
-
-
                 // Add the selected item to list1
                 availableAdSets.Add(selectedAdSet);
 
@@ -153,7 +148,7 @@ namespace Iss.Windows
                 if (selectedIndex != -1)
                 {
                     availableAdSets.RemoveAt(selectedIndex);
-                };
+                }
 
                 // Add the selected item to list2
                 currentAdSets.Add(selectedAdSet);
@@ -184,6 +179,5 @@ namespace Iss.Windows
             AdAccountOverview adAccountOverview = new AdAccountOverview();
             this.Content = adAccountOverview;
         }
-
     }
 }

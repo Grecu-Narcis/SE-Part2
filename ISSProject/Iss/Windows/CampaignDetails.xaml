@@ -93,10 +93,10 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="updateButton" Content="Update" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" 
-HorizontalAlignment="Center" VerticalAlignment="Center" Margin="100,0,0,0" Click="updateBtn_Click"
+HorizontalAlignment="Center" VerticalAlignment="Center" Margin="100,0,0,0" Click="UpdateBtn_Click"
  Style="{StaticResource RoundCornerButton}"/>
                 <Button x:Name="deleteButton" Content="Delete Campaign" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" 
-HorizontalAlignment="Center" VerticalAlignment="Center" Margin="70,0,0,0" Click="deleteBtn_Click"
+HorizontalAlignment="Center" VerticalAlignment="Center" Margin="70,0,0,0" Click="DeleteBtn_Click"
  Style="{StaticResource RoundCornerButton}"/>
             </StackPanel>
         </StackPanel>

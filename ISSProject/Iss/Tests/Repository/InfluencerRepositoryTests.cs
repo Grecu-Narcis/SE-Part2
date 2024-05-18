@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.Collections.Generic;
-using Iss.Entity;
-using Iss.Repository;
 using System.Data.SqlClient;
 using System.Data;
+
+using Iss.Entity;
+using Iss.Repository;
+
 using Moq;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
@@ -22,7 +23,6 @@ namespace Iss.Tests.Repository
             public void GetInfluencers_ReturnsListOfInfluencers()
             {
                 // Arrange
-
                 InfluencerRepository testInfluencerRepository = new InfluencerRepository();
 
                 List<Influencer> result = testInfluencerRepository.GetInfluencers();

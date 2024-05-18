@@ -1,6 +1,4 @@
-﻿using Iss.Entity;
-using Iss.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Iss.Entity;
+using Iss.Service;
+
 namespace Iss.Windows
 {
     /// <summary>
@@ -21,15 +22,15 @@ namespace Iss.Windows
     /// </summary>
     public partial class CreateCampaign : UserControl
     {
-        AdSetService AdSetService = new AdSetService();
-        CampaignService CampaignService = new CampaignService();
+        private AdSetService adSetService = new AdSetService();
+        private CampaignService campaignService = new CampaignService();
         public CreateCampaign()
         {
             InitializeComponent();
-            itemListBox.SetValue(ItemsControl.ItemsSourceProperty, AdSetService.getAdSetsThatAreNotInCampaign());
+            itemListBox.SetValue(ItemsControl.ItemsSourceProperty, adSetService.GetAdSetsThatAreNotInCampaign());
         }
 
-        private void createCampaignButton_Click(object sender, RoutedEventArgs e)
+        private void CreateCampaignButton_Click(object sender, RoutedEventArgs e)
         {
             List<AdSet> adSets = new List<AdSet>();
             if (itemListBox.Items.Count == 0)
@@ -42,7 +43,7 @@ namespace Iss.Windows
                 adSets.Add(adSet);
             }
             Campaign campaign = new Campaign(nameTextBox.Text, startDatePicker.SelectedDate.Value, int.Parse(durationTextBox.Text), adSets);
-            CampaignService.addCampaign(campaign);
+            campaignService.addCampaign(campaign);
 
             MessageBox.Show("Camapign created with " + adSets.Count + " ad sets", "Camapign Created", MessageBoxButton.OK, MessageBoxImage.Information);
 

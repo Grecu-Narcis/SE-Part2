@@ -1,7 +1,4 @@
-﻿using Iss.Entity;
-using Iss.Repository;
-using Iss.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Iss.Entity;
+using Iss.Repository;
+using Iss.Service;
+
 namespace Iss.Windows
 {
     /// <summary>
@@ -22,16 +23,16 @@ namespace Iss.Windows
     /// </summary>
     public partial class CreateAdSet : UserControl
     {
-        AdService AdService = new AdService();
-        AdSetService AdSetService = new AdSetService();
+        private AdService adService = new AdService();
+        private AdSetService adSetService = new AdSetService();
         public CreateAdSet()
         {
             InitializeComponent();
-            itemListBox.SetValue(ItemsControl.ItemsSourceProperty, AdService.getAdsThatAreNotInAdSet());
+            itemListBox.SetValue(ItemsControl.ItemsSourceProperty, adService.getAdsThatAreNotInAdSet());
             selectionComboBox.SelectedIndex = 0;
         }
 
-        private void createAdSetButton_Click(object sender, RoutedEventArgs e)
+        private void CreateAdSetButton_Click(object sender, RoutedEventArgs e)
         {
             List<Ad> ads = new List<Ad>();
             if (itemListBox.Items.Count == 0)
@@ -44,7 +45,7 @@ namespace Iss.Windows
                 ads.Add(ad);
             }
             AdSet adSet = new AdSet(nameTextBox.Text, selectionComboBox.Text, ads);
-            AdSetService.addAdSet(adSet);
+            adSetService.AddAdSet(adSet);
 
             MessageBox.Show("Ad set created with " + ads.Count + " ads", "Ad Set Created", MessageBoxButton.OK, MessageBoxImage.Information);
 

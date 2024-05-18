@@ -1,6 +1,4 @@
-﻿using Iss.Entity;
-using Iss.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Iss.Entity;
+using Iss.Service;
+
 namespace Iss.Windows
 {
     /// <summary>
@@ -21,10 +22,10 @@ namespace Iss.Windows
     /// </summary>
     public partial class NegotiationHistory : UserControl
     {
-        AdAccountService adAccountService;
+        private AdAccountService adAccountService;
         // TODO - NegotiationService has to be added after implementation, I don't want to add it now because
         // it will cause conflicts
-        List<Request> requests;
+        private List<Request> requests;
         public NegotiationHistory()
         {
             InitializeComponent();
@@ -36,9 +37,9 @@ namespace Iss.Windows
             throw new NotImplementedException();
         }
 
-        private void homeButton_Click(object sender, RoutedEventArgs e)
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            HomePage homePage = new();
+            HomePage homePage = new ();
             if (Window.GetWindow(this) is MainWindow mainWindow)
             {
                 mainWindow.contentContainer.Content = homePage;

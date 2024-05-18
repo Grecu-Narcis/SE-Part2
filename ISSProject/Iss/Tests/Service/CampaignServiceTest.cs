@@ -1,24 +1,25 @@
-﻿using Iss.Entity;
-using Iss.Repository;
-using Iss.Service;
-using Moq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Iss.Entity;
+using Iss.Repository;
+using Iss.Service;
+using Moq;
+
 using Xunit;
 
 namespace Iss.Tests.Service
 {
     public class CampaignServiceTest
     {
-
         private Campaign testingCampaign = new Campaign(campaignId: "1",
                                         campaignName: "New Campaign",
                                         startDate: DateTime.Now,
                                         duration: 50);
-        private AdSet testingAdSet = new AdSet(adSetId: "1",
+        private AdSet testingAdSet = new AdSet(id: "1",
                                     name: "New AdSet",
                                     targetAudience: "Gen Z");
 
@@ -109,6 +110,6 @@ namespace Iss.Tests.Service
 
             // Assert
             mockCampaignRepository.Verify(x => x.updateCampaign(updatedCampaign), Times.Once);
-        }   
+        }
     }
 }

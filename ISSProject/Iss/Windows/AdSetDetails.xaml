@@ -87,8 +87,8 @@ SelectionMode="Multiple" SelectionChanged="ListBox2_SelectionChanged">
                     </StackPanel>
                 </StackPanel>
 
-                <Button Name="updateAdSetButton" Content="Update Ad Set" Width="250" Margin="0,10,0,0" Background="#800080" Foreground="White" Click="updateBtn_Click"/>
-                <Button Name="deleteAdSetButton" Content="Delete Ad Set" Width="250" Margin="0,10,0,0" Background="#800080" Foreground="White" Click="deleteBtn_Click"/>
+                <Button Name="updateAdSetButton" Content="Update Ad Set" Width="250" Margin="0,10,0,0" Background="#800080" Foreground="White" Click="UpdateBtn_Click"/>
+                <Button Name="deleteAdSetButton" Content="Delete Ad Set" Width="250" Margin="0,10,0,0" Background="#800080" Foreground="White" Click="DeleteBtn_Click"/>
             </StackPanel>
 
 

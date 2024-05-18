@@ -1,5 +1,4 @@
-﻿using Iss.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using Iss.Service;
 using Iss.Entity;
 
 namespace Iss.Windows
@@ -22,35 +23,35 @@ namespace Iss.Windows
     /// </summary>
     public partial class AdSetDetails : UserControl
     {
-        AdService AdService = new AdService();
-        AdSetService AdSetService = new AdSetService();
-        AdSet adSet;
-        string id;
-        List<Ad> list1 = new List<Ad>();
-        List<Ad> list2 = new List<Ad>();
+        private AdService adService = new AdService();
+        private AdSetService adSetService = new AdSetService();
+        private AdSet adSet;
+        private string id;
+        private List<Ad> list1 = new List<Ad>();
+        private List<Ad> list2 = new List<Ad>();
+
         public AdSetDetails(AdSet adSet)
         {
             InitializeComponent();
 
             this.adSet = adSet;
-            nameTextBox.Text = adSet.name;
-            selectionComboBox.Text = adSet.targetAudience;
+            nameTextBox.Text = adSet.Name;
+            selectionComboBox.Text = adSet.TargetAudience;
 
-
-            list2 = AdService.getAdsThatAreNotInAdSet();
-            itemListBox2.SetValue(ItemsControl.ItemsSourceProperty,list2);
-            populateCurrentAds();
+            list2 = adService.getAdsThatAreNotInAdSet();
+            itemListBox2.SetValue(ItemsControl.ItemsSourceProperty, list2);
+            PopulateCurrentAds();
         }
 
-        public void populateCurrentAds()
+        public void PopulateCurrentAds()
         {
-            id = AdSetService.getAdSetByName(adSet).adSetId;
-            adSet.adSetId = id;
-            list1 = AdService.GetAdsFromAdSet(id);
+            id = adSetService.GetAdSetByName(adSet).Id;
+            adSet.Id = id;
+            list1 = adService.GetAdsFromAdSet(id);
             itemListBox1.SetValue(ItemsControl.ItemsSourceProperty, list1);
         }
 
-        public void updateBtn_Click(object sender, RoutedEventArgs e)
+        public void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             string targetAudience = selectionComboBox.Text;
 
@@ -77,21 +78,22 @@ namespace Iss.Windows
 
                 try
                 {
-                AdSet newAdSet = new AdSet(adSet.adSetId, name, targetAudience);
-                AdSetService.updateAdSet(newAdSet);
+                AdSet newAdSet = new AdSet(adSet.Id, name, targetAudience);
+                adSetService.UpdateAdSet(newAdSet);
                 foreach (Ad ad in itemListBox1.Items)
                 {
-                    this.AdSetService.addAdToAdSet(adSet, ad);
+                    this.adSetService.AddAdToAdSet(adSet, ad);
                 }
                 foreach (Ad ad in itemListBox2.Items)
                 {
-                    this.AdSetService.removeAdFromAdSet(adSet, ad);
+                    this.adSetService.RemoveAdFromAdSet(adSet, ad);
                 }
                 MessageBox.Show("Ad Set updated successfully!");
                 AdAccountOverview adAccountOverview = new AdAccountOverview();
                 this.Content = adAccountOverview;
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
@@ -109,8 +111,6 @@ namespace Iss.Windows
                 Ad selectedAd = (Ad)itemListBox1.SelectedItem;
 
                 // Remove the selected item from list2
-                
-                
 
                 // Add the selected item to list1
                 list2.Add(selectedAd);
@@ -135,7 +135,7 @@ namespace Iss.Windows
                 if (selectedIndex != -1)
                 {
                     list2.RemoveAt(selectedIndex);
-                };
+                }
 
                 // Add the selected item to list2
                 list1.Add(selectedAd);
@@ -147,11 +147,11 @@ namespace Iss.Windows
                 itemListBox1.ItemsSource = list1;
             }
         }
-        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                this.AdSetService.deleteAdSet(adSet);
+                this.adSetService.DeleteAdSet(adSet);
                 MessageBox.Show("Ad Set deleted succesfully");
                 AdAccountOverview adAccountOverview = new AdAccountOverview();
                 this.Content = adAccountOverview;
@@ -181,5 +181,4 @@ namespace Iss.Windows
             this.Content = adAccountOverview;
         }
     }
-
 }
