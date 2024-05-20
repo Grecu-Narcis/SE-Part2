@@ -1,0 +1,143 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|c:\\users\\narci\\desktop\\se-part2\\restapi-iss\\controllers\\campaigncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|solutionrelative:controllers\\campaigncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|c:\\users\\narci\\desktop\\se-part2\\restapi-iss\\service\\adsetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|solutionrelative:service\\adsetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|c:\\users\\narci\\desktop\\se-part2\\restapi-iss\\entity\\campaign.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|solutionrelative:entity\\campaign.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|c:\\users\\narci\\desktop\\se-part2\\restapi-iss\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|c:\\users\\narci\\desktop\\se-part2\\restapi-iss\\service\\icampaignservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|solutionrelative:service\\icampaignservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|c:\\users\\narci\\desktop\\se-part2\\restapi-iss\\repository\\campaignrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|solutionrelative:repository\\campaignrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|c:\\users\\narci\\desktop\\se-part2\\restapi-iss\\service\\campaignservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E9AD7C-B1E5-4112-95D6-AA085C0BF16B}|RestApi-ISS.csproj|solutionrelative:service\\campaignservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T11:05:16.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ICampaignService.cs",
+              "DocumentMoniker": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Service\\ICampaignService.cs",
+              "RelativeDocumentMoniker": "Service\\ICampaignService.cs",
+              "ToolTip": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Service\\ICampaignService.cs",
+              "RelativeToolTip": "Service\\ICampaignService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T10:55:40.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdSetService.cs",
+              "DocumentMoniker": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Service\\AdSetService.cs",
+              "RelativeDocumentMoniker": "Service\\AdSetService.cs",
+              "ToolTip": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Service\\AdSetService.cs",
+              "RelativeToolTip": "Service\\AdSetService.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAowAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T10:49:00.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Campaign.cs",
+              "DocumentMoniker": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Entity\\Campaign.cs",
+              "RelativeDocumentMoniker": "Entity\\Campaign.cs",
+              "ToolTip": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Entity\\Campaign.cs",
+              "RelativeToolTip": "Entity\\Campaign.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAzwA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T10:41:35.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CampaignRepository.cs",
+              "DocumentMoniker": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Repository\\CampaignRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\CampaignRepository.cs",
+              "ToolTip": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Repository\\CampaignRepository.cs",
+              "RelativeToolTip": "Repository\\CampaignRepository.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAA7wGcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T10:47:06.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CampaignController.cs",
+              "DocumentMoniker": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Controllers\\CampaignController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CampaignController.cs",
+              "ToolTip": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Controllers\\CampaignController.cs",
+              "RelativeToolTip": "Controllers\\CampaignController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAwwAoAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T10:41:13.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CampaignService.cs",
+              "DocumentMoniker": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Service\\CampaignService.cs",
+              "RelativeDocumentMoniker": "Service\\CampaignService.cs",
+              "ToolTip": "C:\\Users\\narci\\Desktop\\SE-Part2\\RestApi-ISS\\Service\\CampaignService.cs",
+              "RelativeToolTip": "Service\\CampaignService.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAgwBQAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T10:26:18.55Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

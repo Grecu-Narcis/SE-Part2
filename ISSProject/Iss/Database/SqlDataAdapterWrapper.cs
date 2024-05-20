@@ -39,6 +39,5 @@ namespace Iss.Database
 
             command.ExecuteNonQuery();
         }
-
     }
 }

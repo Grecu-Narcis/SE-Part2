@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,25 +26,31 @@ namespace Iss.Windows
     public partial class CampaignDetails : UserControl
     {
         private Campaign campaign;
-        private CampaignService campaignService = new CampaignService();
-        private AdSetService adSetService = new AdSetService();
+        private ICampaignService campaignService;
+        private IAdSetService adSetService;
         private List<AdSet> currentAdSets = new List<AdSet>();
         private List<AdSet> availableAdSets = new List<AdSet>();
 
         public CampaignDetails(Campaign campaign)
         {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:5049");
+
+            campaignService = new CampaignServiceRest(httpClient);
+            adSetService = new AdSetServiceRest(httpClient);
+
             InitializeComponent();
-            this.campaign = campaignService.getCampaignByName(campaign);
+            this.campaign = campaignService.GetCampaignByName(campaign);
             this.Populate();
         }
 
         public void Populate()
         {
-            nameTextBox.Text = campaign.campaignName;
-            durationTextBox.Text = campaign.duration.ToString();
-            startDatePicker.SelectedDate = campaign.startDate;
+            nameTextBox.Text = campaign.CampaignName;
+            durationTextBox.Text = campaign.Duration.ToString();
+            startDatePicker.SelectedDate = campaign.StartDate;
             availableAdSets = adSetService.GetAdSetsThatAreNotInCampaign();
-            currentAdSets = adSetService.GetAdSetsInCampaign(campaign.campaignId);
+            currentAdSets = adSetService.GetAdSetsInCampaign(campaign.CampaignId);
             itemListBox2.SetValue(ItemsControl.ItemsSourceProperty, availableAdSets);
             itemListBox1.SetValue(ItemsControl.ItemsSourceProperty, currentAdSets);
         }
@@ -52,14 +59,14 @@ namespace Iss.Windows
         {
             try
             {
-                this.campaignService.deleteCampaign(campaign);
+                this.campaignService.DeleteCampaign(campaign);
                 MessageBox.Show("Campaign deleted succesfully");
                 AdAccountOverview adAccountOverview = new AdAccountOverview();
                 this.Content = adAccountOverview;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message} \n\n {ex.InnerException}");
             }
         }
 
@@ -90,15 +97,15 @@ namespace Iss.Windows
 
             try
             {
-                Campaign newCampaign = new Campaign(campaign.campaignId, nameTextBox.Text, startDatePicker.SelectedDate.Value, int.Parse(durationTextBox.Text));
-                campaignService.updateCampaign(newCampaign);
+                Campaign newCampaign = new Campaign(campaign.CampaignId, nameTextBox.Text, startDatePicker.SelectedDate.Value, int.Parse(durationTextBox.Text));
+                campaignService.UpdateCampaign(newCampaign);
                 foreach (AdSet adset in itemListBox1.Items)
                 {
-                    this.campaignService.addAdSetToCampaign(newCampaign, adset);
+                    this.campaignService.AddAdSetToCampaign(newCampaign, adset);
                 }
                 foreach (AdSet adset in itemListBox2.Items)
                 {
-                    this.campaignService.deleteAdSetFromCampaign(newCampaign, adset);
+                    this.campaignService.DeleteAdSetFromCampaign(newCampaign, adset);
                 }
 
                 MessageBox.Show("Campaign updated");
@@ -170,7 +177,7 @@ namespace Iss.Windows
             Window window = Window.GetWindow(this);
             if (window != null && window is MainWindow mainWindow)
             {
-                mainWindow.contentContainer.Content = mainWindow.homePage;
+                mainWindow.contentContainer.Content = mainWindow.HomePage;
             }
         }
 

@@ -1,6 +1,4 @@
-﻿using Iss.Entity;
-using Iss.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Iss.Entity;
+using Iss.Service;
+
 namespace Iss.Windows
 {
     /// <summary>
@@ -21,50 +22,50 @@ namespace Iss.Windows
     /// </summary>
     public partial class NegotiationPage : UserControl
     {
-        Request request;
-        bool isAddAccount;
-        RequestService requestService = new RequestService();
+        private Request request;
+        private bool isAddAccount;
+        private RequestService requestService = new RequestService();
         public NegotiationPage(Request request, bool isAddAccount)
         {
             this.request = request;
             this.isAddAccount = isAddAccount;
             InitializeComponent();
-            populateFields();
-            
+            PopulateFields();
         }
 
-        public void populateFields (){
-            collaborationTitleTextBox.Text = request.collaborationTitle;
-            compensationTextBox.Text = request.compensation;
-            adOverviewTextBox.Text = request.adOverview;
-            newRequirementsTextBox.Text = request.contentRequirements;
-        }
-
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        public void PopulateFields()
         {
-            //go back to the request page
+            collaborationTitleTextBox.Text = request.CollaborationTitle;
+            compensationTextBox.Text = request.Compensation;
+            adOverviewTextBox.Text = request.AdOverview;
+            newRequirementsTextBox.Text = request.ContentRequirements;
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            // go back to the request page
             ListOfRequests listOfRequests = new ListOfRequests(isAddAccount);
             this.Content = listOfRequests;
         }
 
-        private void sendNegotiationButton_Click(object sender, RoutedEventArgs e)
+        private void SendNegotiationButton_Click(object sender, RoutedEventArgs e)
         {
             // update the request with the new negotiation
             string newCompensation = newPriceTextBox.Text;
             string newContentRequirements = newRequirementsTextBox.Text;
             if (isAddAccount)
             {
-                request.adAccountAccept = true;
-                request.influencerAccept = false;
+                request.AdAccountAccept = true;
+                request.InfluencerAccept = false;
             }
             else
             {
-                request.adAccountAccept = false;
-                request.influencerAccept = true;
+                request.AdAccountAccept = false;
+                request.InfluencerAccept = true;
             }
-            requestService.updateRequest(request, newCompensation, newContentRequirements);
+            requestService.UpdateRequest(request, newCompensation, newContentRequirements);
             MessageBox.Show("Negotiation sent!");
-            //go back to the request page
+            // go back to the request page
             ListOfRequests listOfRequests = new ListOfRequests(isAddAccount);
             this.Content = listOfRequests;
         }

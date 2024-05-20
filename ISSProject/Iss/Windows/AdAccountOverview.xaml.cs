@@ -1,8 +1,7 @@
-﻿using Iss.Entity;
-using Iss.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Iss.Entity;
+using Iss.Service;
+
 namespace Iss.Windows
 {
     /// <summary>
@@ -22,13 +24,17 @@ namespace Iss.Windows
     /// </summary>
     public partial class AdAccountOverview : UserControl
     {
-        private AdAccountService adAccountService = new AdAccountService();
-        public List<Ad> ads { get; set; }
-        public List<AdSet> adSets { get; set; }
-        public List<Campaign> campaigns { get; set; }
+        private IAdAccountService adAccountService;
+        public List<Ad> Ads { get; set; }
+        public List<AdSet> AdSets { get; set; }
+        public List<Campaign> Campaigns { get; set; }
 
         public AdAccountOverview()
         {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:5049/");
+            adAccountService = new AdAccountServiceRest(httpClient);
+
             InitializeComponent();
             PopulateAccountDetails();
             PopulateAds();
@@ -39,19 +45,19 @@ namespace Iss.Windows
         private void PopulateAds()
         {
             // Get ads for the current user
-            ads = adAccountService.getAdsForCurrentUser();
-            Ads.Items.Clear();
-            foreach (var ad in ads)
+            Ads = adAccountService.GetAdsForCurrentUser();
+            AdsBox.Items.Clear();
+            foreach (var ad in Ads)
             {
-                Ads.Items.Add(ad);
+                AdsBox.Items.Add(ad);
             }
         }
 
         private void PopulateAdSets()
         {
-            adSets = adAccountService.getAdSetsForCurrentUser();
+            AdSets = adAccountService.GetAdSetsForCurrentUser();
             AdSetss.Items.Clear();
-            foreach (var adSet in adSets)
+            foreach (var adSet in AdSets)
             {
                 AdSetss.Items.Add(adSet);
             }
@@ -59,32 +65,32 @@ namespace Iss.Windows
 
         private void PopulateCampaigns()
         {
-            campaigns = adAccountService.getCampaignsForCurrentUser();
-            Campaigns.Items.Clear();
-            foreach (var campaign in campaigns)
+            Campaigns = adAccountService.GetCampaignsForCurrentUser();
+            CampaignsBox.Items.Clear();
+            foreach (var campaign in Campaigns)
             {
-                Campaigns.Items.Add(campaign);
+                CampaignsBox.Items.Add(campaign);
             }
         }
 
         private void PopulateAccountDetails()
         {
             // Get the user's account details
-            AdAccount userAccount = adAccountService.getAccount();
+            AdAccount userAccount = adAccountService.GetAccount();
 
             // Populate the text fields
             if (userAccount != null)
             {
-                companyName.Text = userAccount.nameOfCompany;
-                domainOfActivity.Text = userAccount.domainOfActivity;
-                CIF.Text = userAccount.taxIdentificationNumber;
-                URL.Text = userAccount.siteUrl;
-                address.Text = userAccount.headquartersLocation;
-                legalInstitution.Text = userAccount.authorisingInstituion;
+                companyName.Text = userAccount.NameOfCompany;
+                domainOfActivity.Text = userAccount.DomainOfActivity;
+                CIF.Text = userAccount.TaxIdentificationNumber;
+                URL.Text = userAccount.SiteUrl;
+                address.Text = userAccount.HeadquartersLocation;
+                legalInstitution.Text = userAccount.AuthorisingInstituion;
             }
         }
 
-        private void addAdSetButton_Click(object sender, RoutedEventArgs e)
+        private void AddAdSetButton_Click(object sender, RoutedEventArgs e)
         {
             // Create an instance of the create ad set page
             CreateAdSet createAdSet = new CreateAdSet();
@@ -98,13 +104,11 @@ namespace Iss.Windows
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            
-
             // Replace the current user control with the home page
             Window window = Window.GetWindow(this);
             if (window != null && window is MainWindow mainWindow)
             {
-                mainWindow.contentContainer.Content = mainWindow.homePage;
+                mainWindow.contentContainer.Content = mainWindow.HomePage;
             }
         }
 
@@ -116,9 +120,7 @@ namespace Iss.Windows
             {
                 mainWindow.contentContainer.Content = subscriptionPage;
             }
-
         }
-        
         private void AddAd_Click(object sender, RoutedEventArgs e)
         {
             CreateAd createAd = new CreateAd();
@@ -129,46 +131,43 @@ namespace Iss.Windows
             }
         }
 
-        private void searchAd_Click(object sender, RoutedEventArgs e)
+        private void SearchAd_Click(object sender, RoutedEventArgs e)
         {
-            ads = adAccountService.getAdsForCurrentUser();
-            //filter ads by the text box
-            Ads.Items.Clear();
-            foreach (var ad in ads)
+            Ads = adAccountService.GetAdsForCurrentUser();
+            // filter ads by the text box
+            AdsBox.Items.Clear();
+            foreach (var ad in Ads)
             {
                 if (ad.ProductName.Contains(searchAdBox.Text))
                 {
-                    Ads.Items.Add(ad);
+                    AdsBox.Items.Add(ad);
                 }
             }
-
         }
 
-
-        private void searchAdSet_Click(object sender, RoutedEventArgs e)
+        private void SearchAdSet_Click(object sender, RoutedEventArgs e)
         {
-            adSets = adAccountService.getAdSetsForCurrentUser();
-            //filter ad sets by the text box
+            AdSets = adAccountService.GetAdSetsForCurrentUser();
+            // filter ad sets by the text box
             AdSetss.Items.Clear();
-            foreach (var adSet in adSets)
+            foreach (var adSet in AdSets)
             {
                 if (adSet.Name.Contains(searchAdSetBox.Text))
                 {
                     AdSetss.Items.Add(adSet);
                 }
             }
-
         }
 
-        private void searchCampaign_Click(object sender, RoutedEventArgs e)
+        private void SearchCampaign_Click(object sender, RoutedEventArgs e)
         {
-            campaigns = adAccountService.getCampaignsForCurrentUser();
-            Campaigns.Items.Clear();
-            foreach (var campaign in campaigns)
+            Campaigns = adAccountService.GetCampaignsForCurrentUser();
+            CampaignsBox.Items.Clear();
+            foreach (var campaign in Campaigns)
             {
-                if (campaign.campaignName.Contains(searchCampaignBox.Text))
+                if (campaign.CampaignName.Contains(searchCampaignBox.Text))
                 {
-                    Campaigns.Items.Add(campaign);
+                    CampaignsBox.Items.Add(campaign);
                 }
             }
         }
@@ -186,16 +185,15 @@ namespace Iss.Windows
         private void Ads_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Check if an item is selected
-            if (Ads.SelectedItem != null)
+            if (AdsBox.SelectedItem != null)
             {
-                // Assuming you have a function to navigate to the new screen, 
+                // Assuming you have a function to navigate to the new screen,
                 // pass the selected ad to it
                 MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
                 if (mainWindow != null)
                 {
-                    mainWindow.contentContainer.Content = new AdDetails((Ad)Ads.SelectedItem);
+                    mainWindow.contentContainer.Content = new AdDetails((Ad)AdsBox.SelectedItem);
                 }
-
             }
         }
 
@@ -214,7 +212,7 @@ namespace Iss.Windows
             // Check if an item is selected
             if (AdSetss.SelectedItem != null)
             {
-                // Assuming you have a function to navigate to the new screen, 
+                // Assuming you have a function to navigate to the new screen
                 // pass the selected ad to it
                 MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
                 if (mainWindow != null)
@@ -222,7 +220,6 @@ namespace Iss.Windows
                     mainWindow.contentContainer.Content = new AdSetDetails((AdSet)AdSetss.SelectedItem);
                 }
             }
-
         }
 
         private void Campaign_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -230,11 +227,11 @@ namespace Iss.Windows
             MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.contentContainer.Content = new CampaignDetails((Campaign)Campaigns.SelectedItem);
+                mainWindow.contentContainer.Content = new CampaignDetails((Campaign)CampaignsBox.SelectedItem);
             }
         }
 
-        private void seeActiveCollaborationsButton_Click(object sender, RoutedEventArgs e)
+        private void SeeActiveCollaborationsButton_Click(object sender, RoutedEventArgs e)
         {
             bool isAdAccount = true;
             CollaborationPage activeCollaborations = new CollaborationPage(isAdAccount);
@@ -243,7 +240,6 @@ namespace Iss.Windows
             {
                 mainWindow.contentContainer.Content = activeCollaborations;
             }
-
         }
     }
 }

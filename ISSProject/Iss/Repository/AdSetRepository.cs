@@ -6,8 +6,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Iss.Database;
 using Iss.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Iss.Repository
 {
@@ -15,132 +16,132 @@ namespace Iss.Repository
     {
         private DatabaseConnection databaseConnection = new DatabaseConnection();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
+        private DatabaseContext databaseContext = new DatabaseContext();
 
-        public void addAdSet(AdSet adSet)
+        public void AddAdSet(AdSet adSet)
         {
-            databaseConnection.OpenConnection();
-            string query = "INSERT INTO AdSet(Name, TargetAudience, AdAccountID) values (@name, @targetAudience, @AdAccountID)";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
-            command.Parameters.AddWithValue("@name", adSet.Name);
-            command.Parameters.AddWithValue("@targetAudience", adSet.TargetAudience);
-            command.Parameters.AddWithValue("@AdAccountID", User.User.getInstance().Id);
-            dataAdapter.InsertCommand = command;
-            dataAdapter.InsertCommand.ExecuteNonQuery();
-            databaseConnection.CloseConnection();
-        }
+            adSet.AdAccountId = User.User.GetInstance().Id;
 
-        public void deleteAdSet(AdSet adSet)
-        {
-            databaseConnection.OpenConnection();
-            string query = "DELETE FROM AdSet WHERE ID=@id";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
-            command.Parameters.AddWithValue("@id", adSet.Id);
-            dataAdapter.DeleteCommand = command;
-            dataAdapter.DeleteCommand.ExecuteNonQuery();
-            databaseConnection.CloseConnection();
-        }
-
-        public void updateAdSet(AdSet adSet)
-        {
-            databaseConnection.OpenConnection();
-            string query = "UPDATE AdSet SET Name=@Name, TargetAudience=@audience";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
-            command.Parameters.AddWithValue("@name", adSet.Name);
-            command.Parameters.AddWithValue("@audience", adSet.TargetAudience);
-            dataAdapter.UpdateCommand = command;
-            dataAdapter.UpdateCommand.ExecuteNonQuery();
-            databaseConnection.CloseConnection();
-        }
-
-        public AdSet getAdSetByName(AdSet adSet)
-        {
-            DataSet dataSet = new DataSet();
-            databaseConnection.OpenConnection();
-            string query = "SELECT * FROM AdSet WHERE Name = @name";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
-            command.Parameters.AddWithValue("@name", adSet.Name);
-            dataAdapter.SelectCommand = command;
-            dataAdapter.SelectCommand.ExecuteNonQuery();
-            dataAdapter.Fill(dataSet);
-
-            if (dataSet.Tables[0].Rows.Count > 0)
+            foreach (var ad in adSet.Ads)
             {
-                DataRow dataRow = dataSet.Tables[0].Rows[0];
-                string id = dataRow["ID"].ToString();
-                adSet.Id = id;
+                databaseContext.Entry(ad).State = EntityState.Modified;
             }
 
-            databaseConnection.CloseConnection();
-            return adSet;
+            databaseContext.AdSet.Add(adSet);
+            databaseContext.SaveChanges();
         }
 
-        public void addAdToAdSet(AdSet adSet, Ad ad)
+        public void DeleteAdSet(AdSet adSet)
         {
-            databaseConnection.OpenConnection();
-            string query = "UPDATE Ad SET AdSetID = @adSetID WHERE ID = @adID";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
-            command.Parameters.AddWithValue("@adSetID", adSet.Id);
-            command.Parameters.AddWithValue("@adID", ad.Id);
-            dataAdapter.UpdateCommand = command;
-            dataAdapter.UpdateCommand.ExecuteNonQuery();
-            databaseConnection.CloseConnection();
+            databaseContext.ChangeTracker.Clear();
+
+            databaseContext.AdSet.Remove(adSet);
+            databaseContext.SaveChanges();
         }
 
-        public void removeAdFromAdSet(AdSet adSet, Ad ad)
+        public void UpdateAdSet(AdSet adSet)
         {
-            databaseConnection.OpenConnection();
-            string query = "UPDATE Ad SET AdSetID = NULL WHERE ID = @adID";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
-            command.Parameters.AddWithValue("@adSetID", adSet.Id);
-            command.Parameters.AddWithValue("@adID", ad.Id);
-            dataAdapter.UpdateCommand = command;
-            dataAdapter.UpdateCommand.ExecuteNonQuery();
-            databaseConnection.CloseConnection();
+            databaseContext.ChangeTracker.Clear();
+
+            adSet.AdAccountId = User.User.GetInstance().Id;
+            databaseContext.AdSet.Update(adSet);
+            databaseContext.SaveChanges();
         }
 
-        public List<AdSet> getAdSetsThatAreNotInCampaign()
+        public AdSet GetAdSetByName(AdSet adSet)
+        {
+            AdSet requiredAdSet = databaseContext.AdSet.Where(a => a.Name == adSet.Name).FirstOrDefault();
+
+            return requiredAdSet;
+        }
+
+        public void AddAdToAdSet(AdSet adSet, Ad ad)
+        {
+            ad.AdSetId = adSet.AdSetId;
+
+            databaseContext.ChangeTracker.Clear();
+
+            databaseContext.Ad.Update(ad);
+            databaseContext.SaveChanges();
+
+            // databaseConnection.OpenConnection();
+            // string query = "UPDATE Ad SET AdSetID = @adSetID WHERE ID = @adID";
+            // SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
+            // command.Parameters.AddWithValue("@adSetID", adSet.AdSetId);
+            // command.Parameters.AddWithValue("@adID", ad.AdId);
+            // dataAdapter.UpdateCommand = command;
+            // dataAdapter.UpdateCommand.ExecuteNonQuery();
+            // databaseConnection.CloseConnection();
+        }
+
+        public void RemoveAdFromAdSet(AdSet adSet, Ad ad)
+        {
+            ad.AdSetId = null;
+
+            databaseContext.ChangeTracker.Clear();
+
+            databaseContext.Ad.Update(ad);
+            databaseContext.SaveChanges();
+
+            // databaseConnection.OpenConnection();
+            // string query = "UPDATE Ad SET AdSetID = NULL WHERE ID = @adID";
+            // SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
+            // command.Parameters.AddWithValue("@adSetID", adSet.AdSetId);
+            // command.Parameters.AddWithValue("@adID", ad.AdId);
+            // dataAdapter.UpdateCommand = command;
+            // dataAdapter.UpdateCommand.ExecuteNonQuery();
+            // databaseConnection.CloseConnection();
+        }
+
+        public List<AdSet> GetAdSetsThatAreNotInCampaign()
         {
             List<AdSet> adSets = new List<AdSet>();
-            DataSet dataSet = new DataSet();
-            databaseConnection.OpenConnection();
-            string query = "SELECT * FROM AdSet WHERE CampaignID IS NULL AND AdAccountID=@id";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
-            command.Parameters.AddWithValue("@id", User.User.getInstance().Id);
-            dataAdapter.SelectCommand = command;
-            dataAdapter.SelectCommand.ExecuteNonQuery();
-            dataAdapter.Fill(dataSet);
-            foreach (DataRow dataRow in dataSet.Tables[0].Rows)
-            {
-                string id = dataRow["ID"].ToString();
-                string name = dataRow["Name"].ToString();
-                string targetAudience = dataRow["TargetAudience"].ToString();
-                AdSet adSet = new AdSet(id, name, targetAudience);
-                adSets.Add(adSet);
-            }
-            databaseConnection.CloseConnection();
+
+            adSets = databaseContext.AdSet.Where(a => a.CampaignId == null && a.AdAccountId == User.User.GetInstance().Id).ToList();
+
+            // DataSet dataSet = new DataSet();
+            // databaseConnection.OpenConnection();
+            // string query = "SELECT * FROM AdSet WHERE CampaignID IS NULL AND AdAccountID=@id";
+            // SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
+            // command.Parameters.AddWithValue("@id", User.User.GetInstance().Id);
+            // dataAdapter.SelectCommand = command;
+            // dataAdapter.SelectCommand.ExecuteNonQuery();
+            // dataAdapter.Fill(dataSet);
+            // foreach (DataRow dataRow in dataSet.Tables[0].Rows)
+            // {
+            //     string id = dataRow["ID"].ToString();
+            //     string name = dataRow["Name"].ToString();
+            //     string targetAudience = dataRow["TargetAudience"].ToString();
+            //     AdSet adSet = new AdSet(id, name, targetAudience);
+            //     adSets.Add(adSet);
+            // }
+            // databaseConnection.CloseConnection();
             return adSets;
         }
 
-        public List<AdSet> getAdSetsInCampaign(string id)
+        public List<AdSet> GetAdSetsInCampaign(string id)
         {
             List<AdSet> adSets = new List<AdSet>();
-            DataSet dataSet = new DataSet();
-            databaseConnection.OpenConnection();
-            string query = "SELECT * FROM AdSet WHERE CampaignID=@id";
-            SqlCommand command = new SqlCommand(query, databaseConnection.sqlConnection);
-            command.Parameters.AddWithValue("@id", id);
-            dataAdapter.SelectCommand = command;
-            dataAdapter.SelectCommand.ExecuteNonQuery();
-            dataAdapter.Fill(dataSet);
-            foreach (DataRow dataRow in dataSet.Tables[0].Rows)
-            {
-                string adSetId = dataRow["ID"].ToString();
-                string name = dataRow["Name"].ToString();
-                string targetAudience = dataRow["TargetAudience"].ToString();
-                AdSet adSet = new AdSet(adSetId, name, targetAudience);
-                adSets.Add(adSet);
-            }
-            databaseConnection.CloseConnection();
+
+            adSets = databaseContext.AdSet.Where(a => a.CampaignId == id).ToList();
+
+            // DataSet dataSet = new DataSet();
+            // databaseConnection.OpenConnection();
+            // string query = "SELECT * FROM AdSet WHERE CampaignID=@id";
+            // SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
+            // command.Parameters.AddWithValue("@id", id);
+            // dataAdapter.SelectCommand = command;
+            // dataAdapter.SelectCommand.ExecuteNonQuery();
+            // dataAdapter.Fill(dataSet);
+            // foreach (DataRow dataRow in dataSet.Tables[0].Rows)
+            // {
+            //     string adSetId = dataRow["ID"].ToString();
+            //     string name = dataRow["Name"].ToString();
+            //     string targetAudience = dataRow["TargetAudience"].ToString();
+            //     AdSet adSet = new AdSet(adSetId, name, targetAudience);
+            //     adSets.Add(adSet);
+            // }
+            // databaseConnection.CloseConnection();
             return adSets;
         }
     }

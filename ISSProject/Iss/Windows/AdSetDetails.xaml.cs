@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using Iss.Service;
 using Iss.Entity;
+using System.Net.Http;
 
 namespace Iss.Windows
 {
@@ -23,8 +24,8 @@ namespace Iss.Windows
     /// </summary>
     public partial class AdSetDetails : UserControl
     {
-        private AdService adService = new AdService();
-        private AdSetService adSetService = new AdSetService();
+        private IAdService adService;
+        private IAdSetService adSetService;
         private AdSet adSet;
         private string id;
         private List<Ad> list1 = new List<Ad>();
@@ -32,21 +33,27 @@ namespace Iss.Windows
 
         public AdSetDetails(AdSet adSet)
         {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:5049/");
+
+            adService = new AdServiceRest(httpClient);
+            adSetService = new AdSetServiceRest(httpClient);
+
             InitializeComponent();
 
             this.adSet = adSet;
             nameTextBox.Text = adSet.Name;
             selectionComboBox.Text = adSet.TargetAudience;
 
-            list2 = adService.getAdsThatAreNotInAdSet();
+            list2 = adService.GetAdsThatAreNotInAdSet();
             itemListBox2.SetValue(ItemsControl.ItemsSourceProperty, list2);
             PopulateCurrentAds();
         }
 
         public void PopulateCurrentAds()
         {
-            id = adSetService.GetAdSetByName(adSet).Id;
-            adSet.Id = id;
+            id = adSetService.GetAdSetByName(adSet).AdSetId;
+            adSet.AdSetId = id;
             list1 = adService.GetAdsFromAdSet(id);
             itemListBox1.SetValue(ItemsControl.ItemsSourceProperty, list1);
         }
@@ -78,12 +85,13 @@ namespace Iss.Windows
 
                 try
                 {
-                AdSet newAdSet = new AdSet(adSet.Id, name, targetAudience);
+                AdSet newAdSet = new AdSet(adSet.AdSetId, name, targetAudience);
                 adSetService.UpdateAdSet(newAdSet);
                 foreach (Ad ad in itemListBox1.Items)
                 {
                     this.adSetService.AddAdToAdSet(adSet, ad);
                 }
+
                 foreach (Ad ad in itemListBox2.Items)
                 {
                     this.adSetService.RemoveAdFromAdSet(adSet, ad);
@@ -94,7 +102,7 @@ namespace Iss.Windows
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + "\n" + ex.InnerException);
             }
         }
 
@@ -171,7 +179,7 @@ namespace Iss.Windows
             Window window = Window.GetWindow(this);
             if (window != null && window is MainWindow mainWindow)
             {
-                mainWindow.contentContainer.Content = mainWindow.homePage;
+                mainWindow.contentContainer.Content = mainWindow.HomePage;
             }
         }
 

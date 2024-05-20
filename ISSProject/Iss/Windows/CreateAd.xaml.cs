@@ -1,9 +1,7 @@
-﻿using Iss.Entity;
-using Iss.Service;
-using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Iss.Entity;
+using Iss.Service;
+using Microsoft.Win32;
+
 namespace Iss.Windows
 {
     /// <summary>
@@ -22,10 +24,15 @@ namespace Iss.Windows
     /// </summary>
     public partial class CreateAd : UserControl
     {
-        private AdService adService = new AdService();
+        private IAdService adService;
         private string selectedImagePath;
         public CreateAd()
         {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:5049");
+
+            adService = new AdServiceRest(httpClient);
+
             InitializeComponent();
         }
 
@@ -47,21 +54,19 @@ namespace Iss.Windows
                 string link = textLink.Text;
 
                 // Create Ad object
-                Ad ad = new Ad
-                (
+                Ad ad = new Ad(
                     productName,
                     selectedImagePath,
                     description,
-                    link
+                    link);
                     // Add photo logic here if needed
-                );
 
                 // Add the ad using AdService
-                adService.addAd(ad);
+                adService.AddAd(ad);
 
                 // Show success message or navigate to another page
                 MessageBox.Show("Ad created successfully!");
-                clearAll();
+                ClearAll();
             }
             catch (Exception ex)
             {
@@ -78,7 +83,7 @@ namespace Iss.Windows
             Window window = Window.GetWindow(this);
             if (window != null && window is MainWindow mainWindow)
             {
-                mainWindow.contentContainer.Content = mainWindow.homePage;
+                mainWindow.contentContainer.Content = mainWindow.HomePage;
             }
         }
 
@@ -90,7 +95,6 @@ namespace Iss.Windows
 
         private void UploadPhotoButton_Click(object sender, RoutedEventArgs e)
         {
-
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
@@ -101,12 +105,10 @@ namespace Iss.Windows
 
                 // Show the "Clear Image" button
                 ClearImageButton.Visibility = Visibility.Visible;
-
-                
             }
         }
 
-        private void clearAll()
+        private void ClearAll()
         {
             textProductName.Text = string.Empty;
             textDescription.Text = string.Empty;
@@ -119,12 +121,10 @@ namespace Iss.Windows
         private void ClearImageButton_Click(object sender, RoutedEventArgs e)
         {
             // Clear the selected image
-            //UploadedImage.Source = null;
-            selectedImagePath = "";
+            // UploadedImage.Source = null;
+            selectedImagePath = string.Empty;
             SelectedImageTitle.Text = string.Empty;
             ClearImageButton.Visibility = Visibility.Collapsed;
         }
     }
-
-
 }

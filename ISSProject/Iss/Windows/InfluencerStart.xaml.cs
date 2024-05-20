@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,9 +32,9 @@ namespace Iss.Windows
             {
                 mainWindow.contentContainer.Content = listOfRequests;
             }
-
         }
-        private void goToCollaborationClick(object sender, RoutedEventArgs e)
+
+        private void GoToCollaborationClick(object sender, RoutedEventArgs e)
         {
             bool isAdAccount = false;
             CollaborationPage collaborationPage = new CollaborationPage(isAdAccount);
@@ -44,7 +43,6 @@ namespace Iss.Windows
             {
                 mainWindow.contentContainer.Content = collaborationPage;
             }
-
         }
     }
 }

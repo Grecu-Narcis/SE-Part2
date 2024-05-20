@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,10 +24,15 @@ namespace Iss.Windows
     public partial class AdDetails : UserControl
     {
         private Ad ad;
-        private AdService adService = new AdService();
+        private IAdService adService;
         private string selectedImagePath;
         public AdDetails(Ad ad)
         {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:5049");
+
+            adService = new AdServiceRest(httpClient);
+
             this.ad = ad;
             InitializeComponent();
             FillTextBoxes();
@@ -42,12 +48,12 @@ namespace Iss.Windows
                 selectedImagePath = ad.Photo;
                 string selectedImageTitle = System.IO.Path.GetFileName(selectedImagePath);
                 SelectedImageTitle.Text = selectedImageTitle;
-               
+
                 ClearImageButton.Visibility = Visibility.Visible;
             }
         }
 
-        public void updateAdBtn_Click(object sender, RoutedEventArgs e)
+        public void UpdateAdBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -63,38 +69,34 @@ namespace Iss.Windows
                 string productName = textProductName.Text;
                 string description = textDescription.Text;
                 string link = textLink.Text;
-                
-                Ad oldAd = this.adService.getAdByName(ad.ProductName);
+
+                Ad oldAd = this.adService.GetAdByName(ad.ProductName);
                 ad = oldAd;
 
                 // Create Ad object
-                Ad newAd = new Ad
-                (
-                    oldAd.Id,
+                Ad newAd = new Ad(
+                    oldAd.AdId,
                     productName,
                     selectedImagePath,
                     description,
-                    link
+                    link);
                 // Add photo logic here if needed
-                );
 
                 // Add the ad using AdService
-                adService.updateAd(newAd);
+                adService.UpdateAd(newAd);
 
                 // Show success message or navigate to another page
                 MessageBox.Show("Ad updated successfully!");
                 AdAccountOverview adAccountOverview = new AdAccountOverview();
                 this.Content = adAccountOverview;
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}\n\n {ex.InnerException}");
             }
         }
         private void UploadPhotoButton_Click(object sender, RoutedEventArgs e)
         {
-
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
@@ -105,24 +107,22 @@ namespace Iss.Windows
 
                 // Show the "Clear Image" button
                 ClearImageButton.Visibility = Visibility.Visible;
-
-
             }
         }
         private void ClearImageButton_Click(object sender, RoutedEventArgs e)
         {
             // Clear the selected image
-            //UploadedImage.Source = null;
-            selectedImagePath = "";
+            // UploadedImage.Source = null;
+            selectedImagePath = string.Empty;
             SelectedImageTitle.Text = string.Empty;
             ClearImageButton.Visibility = Visibility.Collapsed;
         }
 
-        private void deleteAdBtn_Click(object sender, RoutedEventArgs e)
+        private void DeleteAdBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                this.adService.deleteAd(ad);
+                this.adService.DeleteAd(ad);
                 MessageBox.Show("Ad deleted succesfully");
                 AdAccountOverview adAccountOverview = new AdAccountOverview();
                 this.Content = adAccountOverview;
@@ -142,7 +142,7 @@ namespace Iss.Windows
             Window window = Window.GetWindow(this);
             if (window != null && window is MainWindow mainWindow)
             {
-                mainWindow.contentContainer.Content = mainWindow.homePage;
+                mainWindow.contentContainer.Content = mainWindow.HomePage;
             }
         }
 
@@ -152,11 +152,10 @@ namespace Iss.Windows
             this.Content = adAccountOverview;
         }
 
-        private void previewAdBtn_Click(Object sender, RoutedEventArgs e)
+        private void PreviewAdBtn_Click(object sender, RoutedEventArgs e)
         {
             MainFeed mainFeed = new MainFeed(ad);
             this.Content = mainFeed;
         }
-
     }
 }

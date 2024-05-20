@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,10 +23,16 @@ namespace Iss.Windows
     /// </summary>
     public partial class CreateCampaign : UserControl
     {
-        private AdSetService adSetService = new AdSetService();
-        private CampaignService campaignService = new CampaignService();
+        private IAdSetService adSetService;
+        private ICampaignService campaignService;
         public CreateCampaign()
         {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:5049");
+
+            adSetService = new AdSetServiceRest(httpClient);
+            campaignService = new CampaignServiceRest(httpClient);
+
             InitializeComponent();
             itemListBox.SetValue(ItemsControl.ItemsSourceProperty, adSetService.GetAdSetsThatAreNotInCampaign());
         }
@@ -42,8 +49,9 @@ namespace Iss.Windows
             {
                 adSets.Add(adSet);
             }
+
             Campaign campaign = new Campaign(nameTextBox.Text, startDatePicker.SelectedDate.Value, int.Parse(durationTextBox.Text), adSets);
-            campaignService.addCampaign(campaign);
+            campaignService.AddCampaign(campaign);
 
             MessageBox.Show("Camapign created with " + adSets.Count + " ad sets", "Camapign Created", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -60,7 +68,7 @@ namespace Iss.Windows
             Window window = Window.GetWindow(this);
             if (window != null && window is MainWindow mainWindow)
             {
-                mainWindow.contentContainer.Content = mainWindow.homePage;
+                mainWindow.contentContainer.Content = mainWindow.HomePage;
             }
         }
 

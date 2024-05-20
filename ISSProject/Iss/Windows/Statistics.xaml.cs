@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Iss.Service;
 using System.Windows.Controls.DataVisualization.Charting.Compatible;
 using Chart = System.Windows.Controls.DataVisualization.Charting.Chart;
+
+using Iss.Service;
 
 namespace Iss.Windows
 {
@@ -39,7 +40,7 @@ namespace Iss.Windows
             this.ClickThroughRateTextBox.Text = clickThroughRate.ToString();
         }
 
-        private void goBack_Click(object sender, RoutedEventArgs e)
+        private void GoBack_Click(object sender, RoutedEventArgs e)
         {
             CollaborationPage collaborationPage = new CollaborationPage(true);
             MainWindow mainWindow = Window.GetWindow(this) as MainWindow;

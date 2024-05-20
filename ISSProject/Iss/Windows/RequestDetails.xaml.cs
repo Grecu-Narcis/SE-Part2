@@ -21,25 +21,23 @@ namespace Iss.Windows
     /// </summary>
     public partial class RequestDetails : UserControl
     {
-        bool isAdAccount;
+        private bool isAdAccount;
         public RequestDetails(Request request, bool isAdAccount)
         {
             InitializeComponent();
             this.isAdAccount = isAdAccount;
             PopulateFields(request);
-
         }
 
         private void PopulateFields(Request request)
         {
             // Populate fields with request details
-            this.collaborationTitleTextBlock.Text = request.collaborationTitle;
-            this.adOverviewTextBlock.Text = request.adOverview;
-            this.contentRequirementsTextBlock.Text = request.contentRequirements;
-            this.compensationTextBlock.Text = request.compensation;
-            this.startDateTextBlock.Text = request.startDate.ToString("dd/MM/yyyy");
-            this.endDateTextBlock.Text = request.endDate.ToString("dd/MM/yyyy");
-
+            this.collaborationTitleTextBlock.Text = request.CollaborationTitle;
+            this.adOverviewTextBlock.Text = request.AdOverview;
+            this.contentRequirementsTextBlock.Text = request.ContentRequirements;
+            this.compensationTextBlock.Text = request.Compensation;
+            this.startDateTextBlock.Text = request.StartDate.ToString("dd/MM/yyyy");
+            this.endDateTextBlock.Text = request.EndDate.ToString("dd/MM/yyyy");
         }
 
         private void ListOfRequestsButton_Click(object sender, RoutedEventArgs e)

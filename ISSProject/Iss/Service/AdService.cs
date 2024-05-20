@@ -1,10 +1,11 @@
-﻿using Iss.Repository;
-using Iss.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Iss.Repository;
+using Iss.Entity;
 
 namespace Iss.Service
 {
@@ -21,34 +22,34 @@ namespace Iss.Service
             this.adRepository = new AdRepository();
         }
 
-        public void addAd(Ad adToAdd)
+        public void AddAd(Ad adToAdd)
         {
-            this.adRepository.addAd(adToAdd);
+            this.adRepository.AddAd(adToAdd);
         }
 
-        public List<Ad> getAdsThatAreNotInAdSet()
+        public List<Ad> GetAdsThatAreNotInAdSet()
         {
-            return this.adRepository.getAdsThatAreNotInAdSet();
+            return this.adRepository.GetAdsThatAreNotInAdSet();
         }
 
-        public void updateAd(Ad adToUpdate)
+        public void UpdateAd(Ad adToUpdate)
         {
-            this.adRepository.updateAd(adToUpdate);
+            this.adRepository.UpdateAd(adToUpdate);
         }
 
-        public Ad getAdByName(string adName)
+        public Ad GetAdByName(string adName)
         {
-            return this.adRepository.getAdByName(adName);   
+            return this.adRepository.GetAdByName(adName);
         }
 
-        public void deleteAd(Ad adToDelete)
+        public void DeleteAd(Ad adToDelete)
         {
-            this.adRepository.deleteAd(adToDelete);
+            this.adRepository.DeleteAd(adToDelete);
         }
 
         public List<Ad> GetAdsFromAdSet(string adSetId)
         {
-            return this.adRepository.getAdsForAdSet(adSetId);
+            return this.adRepository.GetAdsForAdSet(adSetId);
         }
     }
 }

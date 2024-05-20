@@ -83,7 +83,7 @@
                             <TextBlock Grid.Column="0" Width="238" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="-201,0,0,0" Name="desctiptionTextBox"/>
 
                             <!-- Button -->
-                            <Button Grid.Column="1" Content="Learn More" HorizontalAlignment="Left" Background="MediumPurple" Foreground="White" Padding="10" Margin="10,0,0,10" Width="81" Click="loadMoreBtn_Click"/>
+                            <Button Grid.Column="1" Content="Learn More" HorizontalAlignment="Left" Background="MediumPurple" Foreground="White" Padding="10" Margin="10,0,0,10" Width="81" Click="LoadMoreBtn_Click"/>
                         </Grid>
 
                     </Grid>

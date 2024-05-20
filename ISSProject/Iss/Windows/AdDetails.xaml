@@ -72,13 +72,13 @@
             <!-- Submit Button -->
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Button x:Name="UpdateAdButton" Content="Update Ad" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" 
-    HorizontalAlignment="Center" VerticalAlignment="Center" Click="updateAdBtn_Click" 
+    HorizontalAlignment="Center" VerticalAlignment="Center" Click="UpdateAdBtn_Click" 
      Style="{StaticResource RoundCornerButton}"/>
                 <Button x:Name="DeleteAdButton" Content="Delete Ad" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" 
-HorizontalAlignment="Center" VerticalAlignment="Center" Click="deleteAdBtn_Click" 
+HorizontalAlignment="Center" VerticalAlignment="Center" Click="DeleteAdBtn_Click" 
  Style="{StaticResource RoundCornerButton}"/>
                 <Button x:Name="PreviewAdButton" Content="Preview Ad" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" 
-HorizontalAlignment="Center" VerticalAlignment="Center" Click="previewAdBtn_Click" 
+HorizontalAlignment="Center" VerticalAlignment="Center" Click="PreviewAdBtn_Click" 
  Style="{StaticResource RoundCornerButton}"/>
             </StackPanel>
         </StackPanel>

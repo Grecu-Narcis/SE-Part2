@@ -1,14 +1,15 @@
-﻿using Iss.Entity;
-using Iss.Service;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+
+using Iss.Entity;
+using Iss.Service;
 
 namespace Iss.Windows
 {
     public partial class CreateAdAccount : UserControl
     {
-        public AdAccountService adAccountService = new AdAccountService();
+        public AdAccountService AdAccountService = new AdAccountService();
         public CreateAdAccount()
         {
             InitializeComponent();
@@ -16,7 +17,6 @@ namespace Iss.Windows
             DomainOfActivityComboBox.ItemsSource = Constants.DOMAIN_OF_ACTIVITIES;
             AuthorisingInstitutionComboBox.ItemsSource = Constants.AUTHORIZING_INSTITUTIONS;
         }
-
 
         private void CreateAccountBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -27,14 +27,14 @@ namespace Iss.Windows
             string taxIdentificationNumber = CIF.Text;
             string headquartersLocation = Headquarters.Text;
             string authorisingInstitution = AuthorisingInstitutionComboBox.Text;
-            //TODO! implement the creation of the account
+            // TODO! implement the creation of the account
             AdAccount account = new AdAccount(nameOfCompany, domainOfActivity, siteUrl, password, taxIdentificationNumber, headquartersLocation, authorisingInstitution);
-            adAccountService.addAdAccount(account);
-            adAccountService.login(nameOfCompany, password);
-            //make the main window appear after button click
+            AdAccountService.AddAdAccount(account);
+            AdAccountService.Login(nameOfCompany, password);
+            // make the main window appear after button click
             MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
-            mainWindow.homePage = new HomePage();
-            this.Content = mainWindow.homePage;
+            mainWindow.HomePage = new HomePage();
+            this.Content = mainWindow.HomePage;
         }
     }
 }

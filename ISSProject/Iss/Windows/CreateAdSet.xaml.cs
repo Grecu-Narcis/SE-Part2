@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,12 +24,18 @@ namespace Iss.Windows
     /// </summary>
     public partial class CreateAdSet : UserControl
     {
-        private AdService adService = new AdService();
-        private AdSetService adSetService = new AdSetService();
+        private IAdService adService;
+        private IAdSetService adSetService;
         public CreateAdSet()
         {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:5049/");
+
+            adService = new AdServiceRest(httpClient);
+            adSetService = new AdSetServiceRest(httpClient);
+
             InitializeComponent();
-            itemListBox.SetValue(ItemsControl.ItemsSourceProperty, adService.getAdsThatAreNotInAdSet());
+            itemListBox.SetValue(ItemsControl.ItemsSourceProperty, adService.GetAdsThatAreNotInAdSet());
             selectionComboBox.SelectedIndex = 0;
         }
 
@@ -62,7 +69,7 @@ namespace Iss.Windows
             Window window = Window.GetWindow(this);
             if (window != null && window is MainWindow mainWindow)
             {
-                mainWindow.contentContainer.Content = mainWindow.homePage;
+                mainWindow.contentContainer.Content = mainWindow.HomePage;
             }
         }
 

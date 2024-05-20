@@ -1,6 +1,4 @@
-﻿using Iss.Entity;
-using Iss.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Iss.Entity;
+using Iss.Service;
+
 namespace Iss.Windows
 {
     /// <summary>
@@ -22,8 +23,8 @@ namespace Iss.Windows
     /// </summary>
     public partial class SelectInflucencerAndAd : UserControl
     {
-        AdAccountService AdAccountService = new AdAccountService();
-        InfluencerService InfluencerService = new InfluencerService();
+        public AdAccountService AdAccountService = new AdAccountService();
+        public InfluencerService InfluencerService = new InfluencerService();
         public SelectInflucencerAndAd()
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace Iss.Windows
 
         private void PopulateAds()
         {
-            List<Ad> currentAds = AdAccountService.getAdsForCurrentUser();
+            List<Ad> currentAds = AdAccountService.GetAdsForCurrentUser();
             adListBox.Items.Clear();
             foreach (var ad in currentAds)
             {
@@ -51,22 +52,22 @@ namespace Iss.Windows
             }
         }
 
-        private void searchInfluencerButton_Click(object sender, RoutedEventArgs e)
+        private void SearchInfluencerButton_Click(object sender, RoutedEventArgs e)
         {
             List<Influencer> currentInfluencers = InfluencerService.GetInfluencers();
             influencerListBox.Items.Clear();
             foreach (Influencer influencer in currentInfluencers)
             {
-                if (influencer.influencerName.Contains(searchInfluencerBox.Text))
+                if (influencer.InfluencerName.Contains(searchInfluencerBox.Text))
                 {
                     influencerListBox.Items.Add(influencer);
                 }
             }
         }
 
-        private void searchAdTextButton_Click(object sender, RoutedEventArgs e)
+        private void SearchAdTextButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Ad> currentAds = AdAccountService.getAdsForCurrentUser();
+            List<Ad> currentAds = AdAccountService.GetAdsForCurrentUser();
             adListBox.Items.Clear();
             foreach (Ad ad in currentAds)
             {
@@ -77,7 +78,7 @@ namespace Iss.Windows
             }
         }
 
-        private void continueButton_Click(object sender, RoutedEventArgs e)
+        private void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
             Ad selectedAd = (Ad)adListBox.SelectedItem;
             Influencer selectedInfluencer = (Influencer)influencerListBox.SelectedItem;

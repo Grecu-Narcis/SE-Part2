@@ -1,0 +1,6 @@
+@RestApi_ISS_HostAddress = http://localhost:5049
+
+GET {{RestApi_ISS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
