@@ -2,10 +2,12 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using System.Linq;
+using Backend.Models;
+
 namespace Backend.Controllers
 {
-    using Backend.Models;
-
     public class UserController
     {
         private readonly List<User> listOfUsersWhoCanLogin;

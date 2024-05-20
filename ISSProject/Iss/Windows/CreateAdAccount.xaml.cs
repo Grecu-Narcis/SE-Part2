@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,9 +10,13 @@ namespace Iss.Windows
 {
     public partial class CreateAdAccount : UserControl
     {
-        public AdAccountService AdAccountService = new AdAccountService();
+        public IAdAccountService AdAccountService;
         public CreateAdAccount()
         {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:5049/");
+
+            this.AdAccountService = new AdAccountServiceRest(httpClient);
             InitializeComponent();
             // Set the domain of activities and authorising institutions
             DomainOfActivityComboBox.ItemsSource = Constants.DOMAIN_OF_ACTIVITIES;
@@ -32,7 +37,7 @@ namespace Iss.Windows
             AdAccountService.AddAdAccount(account);
             AdAccountService.Login(nameOfCompany, password);
             // make the main window appear after button click
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             mainWindow.HomePage = new HomePage();
             this.Content = mainWindow.HomePage;
         }

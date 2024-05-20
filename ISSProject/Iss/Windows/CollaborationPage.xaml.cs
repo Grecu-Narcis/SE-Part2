@@ -71,7 +71,7 @@ namespace Iss.Windows
             if (this.isAdAccount)
             {
                 HomePage homePage = new HomePage();
-                MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+                LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
                 if (mainWindow != null)
                 {
                     mainWindow.contentContainer.Content = homePage;
@@ -93,7 +93,7 @@ namespace Iss.Windows
             if (this.isAdAccount)
             {
                 Statistics statistics = new Statistics();
-                MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+                LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
                 if (mainWindow != null)
                 {
                     mainWindow.contentContainer.Content = statistics;

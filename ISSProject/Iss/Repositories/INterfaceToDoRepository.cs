@@ -2,10 +2,11 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using Backend.Models;
+
 namespace Backend.Repositories
 {
-    using Backend.Models;
-
     internal interface INterfaceToDoRepository<T>
     {
         public void AddingTODO(TODOClass newTODO);

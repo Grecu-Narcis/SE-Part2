@@ -4,6 +4,7 @@
 
 namespace Frontend.PaymentsAndBillings
 {
+    using System;
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
@@ -24,7 +25,7 @@ namespace Frontend.PaymentsAndBillings
             this.InitializeComponent();
             this.UpdateFields();
 
-            this.Closed += (sender, EventData) =>
+            this.Closed += (sender, eventData) =>
             {
                 this.MainWindow.Show();
             };

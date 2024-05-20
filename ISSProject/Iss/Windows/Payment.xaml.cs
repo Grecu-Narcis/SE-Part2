@@ -58,7 +58,7 @@ namespace Iss.Windows
             }
 
             Window window = Window.GetWindow(this);
-            if (window != null && window is MainWindow mainWindow)
+            if (window != null && window is LoginInfluencer mainWindow)
             {
                 mainWindow.contentContainer.Content = mainWindow.HomePage;
             }

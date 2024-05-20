@@ -33,7 +33,7 @@ namespace Iss.Windows
             paymentService.AddOneAd();
             int totalAmountToPay = 5;
             Payment paymentPage = new Payment(totalAmountToPay);
-            MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer? mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = paymentPage;
@@ -45,7 +45,7 @@ namespace Iss.Windows
             paymentService.AddOneAdSet();
             int totalAmountToPay = 20;
             Payment paymentPage = new Payment(totalAmountToPay);
-            MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer? mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = paymentPage;
@@ -57,7 +57,7 @@ namespace Iss.Windows
             paymentService.AddOneCampaign();
             int totalAmountToPay = 150;
             Payment paymentPage = new Payment(totalAmountToPay);
-            MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer? mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = paymentPage;
@@ -69,7 +69,7 @@ namespace Iss.Windows
             paymentService.AddBasicSubscription();
             int totalAmountToPay = 250;
             Payment paymentPage = new Payment(totalAmountToPay);
-            MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer? mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = paymentPage;
@@ -81,7 +81,7 @@ namespace Iss.Windows
             paymentService.AddSilverSubscription();
             int totalAmountToPay = 350;
             Payment paymentPage = new Payment(totalAmountToPay);
-            MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer? mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = paymentPage;
@@ -93,7 +93,7 @@ namespace Iss.Windows
             paymentService.AddGoldSubscription();
             int totalAmountToPay = 500;
             Payment paymentPage = new Payment(totalAmountToPay);
-            MainWindow? mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer? mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = paymentPage;

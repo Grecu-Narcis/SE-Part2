@@ -37,7 +37,7 @@ namespace Iss.Windows
             User.User.GetInstance().Password = password;
             MessageBox.Show("Changes saved successfully!");
             AdAccountOverview accountOverview = new AdAccountOverview();
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = accountOverview;

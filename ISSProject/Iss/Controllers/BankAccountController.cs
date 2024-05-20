@@ -2,11 +2,12 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System;
+using Backend.Models;
+using Backend.Repositories;
+
 namespace Backend.Controllers
 {
-    using Backend.Models;
-    using Backend.Repositories;
-
     public class BankAccountController : InterfaceBankAccountController
     {
         private readonly AccountRepository accountRepository;

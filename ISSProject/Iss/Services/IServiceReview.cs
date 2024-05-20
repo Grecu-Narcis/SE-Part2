@@ -2,10 +2,11 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using Backend.Models;
+
 namespace Backend.Services
 {
-    using Backend.Models;
-
     public interface IServiceReview
     {
         List<ReviewClass> GetAllReviews();

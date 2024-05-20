@@ -40,7 +40,7 @@ namespace Iss.Windows
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             HomePage homePage = new ();
-            if (Window.GetWindow(this) is MainWindow mainWindow)
+            if (Window.GetWindow(this) is LoginInfluencer mainWindow)
             {
                 mainWindow.contentContainer.Content = homePage;
             }

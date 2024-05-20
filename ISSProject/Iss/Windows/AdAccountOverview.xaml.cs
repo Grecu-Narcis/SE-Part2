@@ -96,7 +96,7 @@ namespace Iss.Windows
             CreateAdSet createAdSet = new CreateAdSet();
             // Replace the current user control with the create ad set page
             Window window = Window.GetWindow(this);
-            if (window != null && window is MainWindow mainWindow)
+            if (window != null && window is LoginInfluencer mainWindow)
             {
                 mainWindow.contentContainer.Content = createAdSet;
             }
@@ -106,7 +106,7 @@ namespace Iss.Windows
         {
             // Replace the current user control with the home page
             Window window = Window.GetWindow(this);
-            if (window != null && window is MainWindow mainWindow)
+            if (window != null && window is LoginInfluencer mainWindow)
             {
                 mainWindow.contentContainer.Content = mainWindow.HomePage;
             }
@@ -115,7 +115,7 @@ namespace Iss.Windows
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SubscriptionsPage subscriptionPage = new SubscriptionsPage();
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = subscriptionPage;
@@ -124,7 +124,7 @@ namespace Iss.Windows
         private void AddAd_Click(object sender, RoutedEventArgs e)
         {
             CreateAd createAd = new CreateAd();
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = createAd;
@@ -175,7 +175,7 @@ namespace Iss.Windows
         private void AddCampaign_Click(object sender, RoutedEventArgs e)
         {
             CreateCampaign createCampaign = new CreateCampaign();
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = createCampaign;
@@ -189,7 +189,7 @@ namespace Iss.Windows
             {
                 // Assuming you have a function to navigate to the new screen,
                 // pass the selected ad to it
-                MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+                LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
                 if (mainWindow != null)
                 {
                     mainWindow.contentContainer.Content = new AdDetails((Ad)AdsBox.SelectedItem);
@@ -200,7 +200,7 @@ namespace Iss.Windows
         private void RequestButton_Click(object sender, RoutedEventArgs e)
         {
              SelectInflucencerAndAd selectInflucencerAndAd = new SelectInflucencerAndAd();
-             MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+             LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
              if (mainWindow != null)
              {
                  mainWindow.contentContainer.Content = selectInflucencerAndAd;
@@ -214,7 +214,7 @@ namespace Iss.Windows
             {
                 // Assuming you have a function to navigate to the new screen
                 // pass the selected ad to it
-                MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+                LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
                 if (mainWindow != null)
                 {
                     mainWindow.contentContainer.Content = new AdSetDetails((AdSet)AdSetss.SelectedItem);
@@ -224,7 +224,7 @@ namespace Iss.Windows
 
         private void Campaign_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = new CampaignDetails((Campaign)CampaignsBox.SelectedItem);
@@ -235,7 +235,7 @@ namespace Iss.Windows
         {
             bool isAdAccount = true;
             CollaborationPage activeCollaborations = new CollaborationPage(isAdAccount);
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = activeCollaborations;

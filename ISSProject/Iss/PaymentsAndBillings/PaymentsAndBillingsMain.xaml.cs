@@ -13,7 +13,7 @@ namespace Frontend.PaymentsAndBillings
     /// </summary>
     public partial class PaymentsAndBillingsMain : Window
     {
-        public Window mainWindow;
+        public Window MainWindow;
 
         public PaymentsAndBillingsMain()
         {
@@ -21,7 +21,7 @@ namespace Frontend.PaymentsAndBillings
 
             this.Closed += (sender, eventData) =>
             {
-                this.mainWindow.Show();
+                this.MainWindow.Show();
             };
         }
 

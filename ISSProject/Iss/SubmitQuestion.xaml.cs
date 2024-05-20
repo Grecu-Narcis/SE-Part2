@@ -4,6 +4,7 @@
 
 namespace Frontend.FAQ
 {
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
     using Backend.Services;

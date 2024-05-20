@@ -67,7 +67,7 @@ namespace Iss.Windows
                 MessageBox.Show("Request created successfully!");
                 ClearAll();
                 AdAccountOverview accountOverview = new AdAccountOverview();
-                MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+                LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
                 if (mainWindow != null)
                 {
                     mainWindow.contentContainer.Content = accountOverview;

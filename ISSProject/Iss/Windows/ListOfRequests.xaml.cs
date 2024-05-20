@@ -64,7 +64,7 @@ namespace Iss.Windows
                 RequestDetails requestDetails = new RequestDetails(selectedRequest, isAdAccount);
                 if (isAdAccount)
                 {
-                    MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+                    LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
                     if (mainWindow != null)
                     {
                         mainWindow.contentContainer.Content = requestDetails;
@@ -154,7 +154,7 @@ namespace Iss.Windows
                     if (isAdAccount)
                     {
                         negociationPage = new NegotiationPage(selectedRequest, true);
-                        MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+                        LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
                         if (mainWindow != null)
                         {
                             mainWindow.contentContainer.Content = negociationPage;
@@ -195,7 +195,7 @@ namespace Iss.Windows
             {
                 HomePage start = new HomePage();
                 Window window = Window.GetWindow(this);
-                if (window != null && window is MainWindow mainWindow)
+                if (window != null && window is LoginInfluencer mainWindow)
                 {
                     mainWindow.contentContainer.Content = mainWindow.HomePage;
                 }

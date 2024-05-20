@@ -2,11 +2,13 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using System.Linq;
+using Backend.Models;
+using Backend.Repositories;
+
 namespace Backend.Services
 {
-    using Backend.Models;
-    using Backend.Repositories;
-
     public class TODOServices : IServicesTODO
     {
         private static readonly TODOServices TheInstance = new ();

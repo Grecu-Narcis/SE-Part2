@@ -84,7 +84,7 @@ namespace Iss.Windows
             Influencer selectedInfluencer = (Influencer)influencerListBox.SelectedItem;
 
             MakeRequest makeRequest = new MakeRequest(selectedInfluencer, selectedAd);
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = makeRequest;

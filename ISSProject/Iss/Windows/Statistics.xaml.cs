@@ -43,7 +43,7 @@ namespace Iss.Windows
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
             CollaborationPage collaborationPage = new CollaborationPage(true);
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = collaborationPage;

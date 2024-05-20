@@ -10,6 +10,17 @@ namespace IssApi.Controllers
         public string Password { get; set; }
     }
 
+    public class AdAccountRequest
+    {
+        public string CompanyName { get; set; }
+        public string DomainOfActivity { get; set; }
+        public string Password { get; set; }
+        public string SiteUrl { get; set; }
+        public string HeadQuarters { get; set; }
+        public string CIF { get; set; }
+        public string AuthorisingInstitution { get; set; }
+    }
+
     public class EditAccountRequest
     {
         public string NameOfCompany { get; set; }
@@ -104,10 +115,19 @@ namespace IssApi.Controllers
         }
 
         [HttpPost("add")]
-        public ActionResult AddAdAccount([FromBody] AdAccount account)
+        public ActionResult AddAdAccount([FromBody] AdAccountRequest accountRequest)
         {
             try
             {
+                AdAccount account = new AdAccount();
+                account.NameOfCompany = accountRequest.CompanyName;
+                account.DomainOfActivity = accountRequest.DomainOfActivity;
+                account.Password = accountRequest.Password;
+                account.SiteUrl = accountRequest.SiteUrl;
+                account.HeadquartersLocation = accountRequest.HeadQuarters;
+                account.TaxIdentificationNumber = accountRequest.CIF;
+                account.AuthorisingInstituion = accountRequest.AuthorisingInstitution;
+
                 adAccountService.AddAdAccount(account);
                 return Ok("Account added successfully.");
             }

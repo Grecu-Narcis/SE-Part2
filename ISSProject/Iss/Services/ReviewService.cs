@@ -2,11 +2,12 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using Backend.Models;
+using Backend.Repositories;
+
 namespace Backend.Services
 {
-    using Backend.Models;
-    using Backend.Repositories;
-
     public class ReviewService : IServiceReview
     {
         private static readonly ReviewService TheInstance = new ();
@@ -32,6 +33,11 @@ namespace Backend.Services
             string user = "Dan Oliver";
             ReviewClass reviewToAdd = new (user, review);
             this.reviewRepository.AddReview(reviewToAdd);
+        }
+
+        List<ReviewClass> IServiceReview.GetAllReviews()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

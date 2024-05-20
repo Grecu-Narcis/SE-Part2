@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,10 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-using Iss.Service;
 using Iss.Entity;
-using System.Net.Http;
+using Iss.Service;
 
 namespace Iss.Windows
 {
@@ -177,7 +176,7 @@ namespace Iss.Windows
 
             // Replace the current user control with the home page
             Window window = Window.GetWindow(this);
-            if (window != null && window is MainWindow mainWindow)
+            if (window != null && window is LoginInfluencer mainWindow)
             {
                 mainWindow.contentContainer.Content = mainWindow.HomePage;
             }

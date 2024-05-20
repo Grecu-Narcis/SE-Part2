@@ -54,8 +54,8 @@ namespace Iss.Windows
             else
             {
                 ListOfRequests listOfRequests = new ListOfRequests(isAdAccount);
-                MainWindow window = Window.GetWindow(this) as MainWindow;
-                if (window != null && window is MainWindow mainWindow)
+                LoginInfluencer window = Window.GetWindow(this) as LoginInfluencer;
+                if (window != null && window is LoginInfluencer mainWindow)
                 {
                     mainWindow.contentContainer.Content = listOfRequests;
                 }

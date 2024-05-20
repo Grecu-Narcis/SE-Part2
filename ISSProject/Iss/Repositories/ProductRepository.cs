@@ -2,11 +2,12 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using Backend.Models;
+using Backend.Services;
+
 namespace Backend.Repositories
 {
-    using Backend.Models;
-    using Backend.Services;
-
     public class ProductRepository : INterfaceProductRepository
     {
         private readonly DataEncryptionService encryptionService = new ();

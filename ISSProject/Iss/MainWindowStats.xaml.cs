@@ -40,7 +40,7 @@ namespace Frontend
                 {
                     PaymentsAndBillingsMain billingWindow = new ()
                     {
-                        mainWindow = this,
+                        MainWindow = this,
                     };
                     billingWindow.Show();
                     this.Hide();

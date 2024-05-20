@@ -29,7 +29,7 @@ namespace Iss.Windows
         private void AccountOverviewButton_Click(object sender, EventArgs e)
         {
             AdAccountOverview accountOverview = new AdAccountOverview();
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = accountOverview;
@@ -40,7 +40,7 @@ namespace Iss.Windows
         {
             bool isAdAccount = true;
             ListOfRequests listOfRequests = new ListOfRequests(isAdAccount);
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = listOfRequests;
@@ -50,7 +50,7 @@ namespace Iss.Windows
         private void EditAccountButton_Click(object sender, RoutedEventArgs e)
         {
             EditAdAccount editAdAccount = new EditAdAccount();
-            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            LoginInfluencer mainWindow = Window.GetWindow(this) as LoginInfluencer;
             if (mainWindow != null)
             {
                 mainWindow.contentContainer.Content = editAdAccount;

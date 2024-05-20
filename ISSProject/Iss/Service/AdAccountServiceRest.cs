@@ -11,6 +11,17 @@ public class LoginRequest
     public string Password { get; set; }
 }
 
+public class AdAccountRequest
+{
+    public string CompanyName { get; set; }
+    public string DomainOfActivity { get; set; }
+    public string Password { get; set; }
+    public string SiteUrl { get; set; }
+    public string HeadQuarters { get; set; }
+    public string CIF { get; set; }
+    public string AuthorisingInstitution { get; set; }
+}
+
 public class EditAccountRequest
 {
     public string NameOfCompany { get; set; }
@@ -105,7 +116,15 @@ public class AdAccountServiceRest : IAdAccountService
 
     public void AddAdAccount(AdAccount addAccount)
     {
-        var response = httpClient.PostAsJsonAsync("api/AdAccount/add", addAccount).Result;
+        AdAccountRequest adAccountRequest = new AdAccountRequest();
+        adAccountRequest.AuthorisingInstitution = addAccount.AuthorisingInstituion;
+        adAccountRequest.HeadQuarters = addAccount.HeadquartersLocation;
+        adAccountRequest.SiteUrl = addAccount.SiteUrl;
+        adAccountRequest.CompanyName = addAccount.NameOfCompany;
+        adAccountRequest.DomainOfActivity = addAccount.DomainOfActivity;
+        adAccountRequest.Password = addAccount.Password;
+
+        var response = httpClient.PostAsJsonAsync("api/AdAccount/add", adAccountRequest).Result;
         if (!response.IsSuccessStatusCode)
         {
             throw new Exception($"Failed to add account: {response.ReasonPhrase}");

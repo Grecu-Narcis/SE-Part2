@@ -4,10 +4,12 @@
 
 namespace Frontend
 {
+    using System;
     using System.Windows;
     using Backend.Controllers;
     using Backend.Models;
     using Backend.Repositories;
+    using Iss;
     using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
@@ -61,7 +63,12 @@ namespace Frontend
 
             ServiceProvider = services.BuildServiceProvider();
 
-            LoginWindow mainWindow = new();
+            /*LoginWindow mainWindow = new ();
+            mainWindow.Show();
+
+            LoginInfluencer influencerWindow = new ();
+            influencerWindow.Show();*/
+            MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
         }
     }

@@ -8,8 +8,12 @@ namespace Iss
 {
     public static class Constants
     {
+#pragma warning disable SA1010 // Opening square brackets should be spaced correctly
         public static readonly List<string> DOMAIN_OF_ACTIVITIES = ["Food", "Clothing", "Electronics"];
+#pragma warning restore SA1010 // Opening square brackets should be spaced correctly
+#pragma warning disable SA1010 // Opening square brackets should be spaced correctly
         public static readonly List<string> AUTHORIZING_INSTITUTIONS = ["ANAF", "ITM", "ISU"];
+#pragma warning restore SA1010 // Opening square brackets should be spaced correctly
         public static readonly Dictionary<string, int> NUMBER_OF_CAMPAIGNS_FOR_SUBSCRIPTION = new Dictionary<string, int>
         {
             { "Basic", 2 },
