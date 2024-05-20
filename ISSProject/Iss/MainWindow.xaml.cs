@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,27 +23,40 @@ namespace Iss
     /// </summary>
     public partial class MainWindow : Window
     {
-        internal HomePage homePage;
-        internal CreateAdAccount createAdAccount;
-        AdAccountService adAccountService = new AdAccountService();
-        public MainWindow()
+        internal HomePage HomePage;
+        internal CreateAdAccount CreateAdAccount;
+        public IAdAccountService AdAccountService;
+        public MainWindow(IAdAccountService adAccountService)
         {
+            this.AdAccountService = adAccountService;
             InitializeComponent();
             InfluencerStart influencerStart = new InfluencerStart();
             influencerStart.Show();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        public MainWindow()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:5049/");
+
+            AdAccountService = new AdAccountServiceRest(httpClient);
+
+            InitializeComponent();
+            InfluencerStart influencerStart = new InfluencerStart();
+            influencerStart.Show();
+        }
+
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
             string username = textUsername.Text;
             string password = textPassword.Password;
             try
             {
-                adAccountService.Login(username, password);
+                AdAccountService.Login(username, password);
 
                 // Open the new window containing the HomePage user control
-                this.homePage = new HomePage();
-                contentContainer.Content = homePage;
+                this.HomePage = new HomePage();
+                contentContainer.Content = HomePage;
             }
             catch (InvalidOperationException)
             {
@@ -50,10 +64,10 @@ namespace Iss
             }
         }
 
-        private void signupButton_Click(object sender, RoutedEventArgs e)
+        private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
-            this.createAdAccount = new CreateAdAccount();
-            contentContainer.Content = createAdAccount;
+            this.CreateAdAccount = new CreateAdAccount();
+            contentContainer.Content = CreateAdAccount;
         }
     }
 }

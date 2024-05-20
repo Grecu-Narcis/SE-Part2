@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Iss.Database;
 using Iss.Entity;
 using Iss.Repository;
 
@@ -18,6 +18,7 @@ namespace Iss.Repository
     {
         private DatabaseConnection databaseConnection = new DatabaseConnection();
         private SqlDataAdapter databaseDataAdapter = new SqlDataAdapter();
+        private DatabaseContext databaseContext = new DatabaseContext();
 
         /// <summary>
         /// Retrieves a list of influencers from the database.
@@ -26,6 +27,11 @@ namespace Iss.Repository
         public List<Influencer> GetInfluencers()
         {
             List<Influencer> influencers = new List<Influencer>();
+
+            influencers = this.databaseContext.Influencer.ToList();
+
+            return influencers;
+
             DataSet dataSet = new DataSet();
             string query = "SELECT * FROM Influencer";
             SqlCommand command = new SqlCommand(query, this.databaseConnection.SqlConnection);

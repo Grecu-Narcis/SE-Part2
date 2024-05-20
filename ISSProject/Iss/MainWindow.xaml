@@ -48,10 +48,10 @@
                     <TextBox Name="textUsername" Margin="5" Height="30"/>
                     <TextBlock Text="Password" Margin="5" FontSize="16" Style="{StaticResource PurpleTextBlock}"/>
                     <PasswordBox x:Name="textPassword" Margin="5" Height="30"/>
-                    <Button x:Name="loginButton" Content="Login" Click="btnLogin_Click"
+                    <Button x:Name="loginButton" Content="Login" Click="BtnLogin_Click"
                             Style="{StaticResource RoundCornerButton}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <TextBlock Text="Don't have an account?" Margin="5" FontSize="16" Style="{StaticResource PurpleTextBlock}"/>
-                    <Button x:Name="signupButton" Content="Sign Up" Click="signupButton_Click"
+                    <Button x:Name="signupButton" Content="Sign Up" Click="SignupButton_Click"
                             Style="{StaticResource RoundCornerButton}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </StackPanel>
             </ContentControl.Content>

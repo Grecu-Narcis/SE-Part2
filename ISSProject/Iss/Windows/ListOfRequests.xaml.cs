@@ -1,5 +1,4 @@
-﻿using Iss.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -14,9 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Iss.Service;
 using System.Collections.Specialized;
 using System.Collections;
+
+using Iss.Entity;
+using Iss.Service;
 
 namespace Iss.Windows
 {
@@ -28,7 +29,7 @@ namespace Iss.Windows
         private RequestService requestService = new RequestService();
         private CollaborationService collaborationService = new CollaborationService();
 
-        public List<Request> requests { get; set; }
+        public List<Request> Requests { get; set; }
         private bool isAdAccount;
         public ListOfRequests(bool isAdAccount)
         {
@@ -43,27 +44,23 @@ namespace Iss.Windows
             if (isAdAccount)
             {
                 // Get requests for the current user
-                requests = requestService.GetRequestsForAdAccount();
+                Requests = requestService.GetRequestsForAdAccount();
             }
             else
             {
                 // Get requests for the current user
-                requests = requestService.GetRequestsForInfluencer();
+                Requests = requestService.GetRequestsForInfluencer();
             }
 
-            requestsListView.SetValue(ItemsControl.ItemsSourceProperty, requests);
-
-
-
+            requestsListView.SetValue(ItemsControl.ItemsSourceProperty, Requests);
         }
 
         private void DetailsButton_Click(object sender, RoutedEventArgs e)
         {
-
             if (requestsListView.SelectedItem != null)
             {
                 Request request = (Request)requestsListView.SelectedItem;
-                Request selectedRequest = requestService.GetRequestWithTitle(request.collaborationTitle);
+                Request selectedRequest = requestService.GetRequestWithTitle(request.CollaborationTitle);
                 RequestDetails requestDetails = new RequestDetails(selectedRequest, isAdAccount);
                 if (isAdAccount)
                 {
@@ -81,9 +78,6 @@ namespace Iss.Windows
                         influencerStart.contentContainer.Content = requestDetails;
                     }
                 }
-
-
-
             }
             else
             {
@@ -95,16 +89,14 @@ namespace Iss.Windows
         {
             if (requestsListView.SelectedItem != null)
             {
-
                 try
                 {
                     Request request = (Request)requestsListView.SelectedItem;
-                    Request selectedRequest = requestService.GetRequestWithTitle(request.collaborationTitle);
-                    selectedRequest.influencerAccept = true;
+                    Request selectedRequest = requestService.GetRequestWithTitle(request.CollaborationTitle);
+                    selectedRequest.InfluencerAccept = true;
                     requestService.DeleteRequest(selectedRequest);
 
-
-                    Collaboration collaboration = new Collaboration(request.collaborationTitle, selectedRequest.adOverview, selectedRequest.compensation, selectedRequest.contentRequirements, selectedRequest.startDate, selectedRequest.endDate, true);
+                    Collaboration collaboration = new Collaboration(request.CollaborationTitle, selectedRequest.AdOverview, selectedRequest.Compensation, selectedRequest.ContentRequirements, selectedRequest.StartDate, selectedRequest.EndDate, true);
 
                     collaborationService.AddCollaboration(collaboration);
                     MessageBox.Show("Request accepted. A new collaboration was created!");
@@ -114,14 +106,11 @@ namespace Iss.Windows
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
-
             }
             else
             {
                 MessageBox.Show("Please select a request to accept!");
             }
-
-
         }
 
         private void DeclineButton_Click(object sender, RoutedEventArgs e)
@@ -131,16 +120,14 @@ namespace Iss.Windows
                 try
                 {
                     Request request = (Request)requestsListView.SelectedItem;
-                    Request selectedRequest = requestService.GetRequestWithTitle(request.collaborationTitle);
-                    selectedRequest.influencerAccept = false;
+                    Request selectedRequest = requestService.GetRequestWithTitle(request.CollaborationTitle);
+                    selectedRequest.InfluencerAccept = false;
                     requestService.DeleteRequest(selectedRequest);
                     MessageBox.Show("Request declined. The request was deleted!");
                     this.Content = new ListOfRequests(this.isAdAccount);
 
-                    //requestsListView.ItemsSource = null;
-                    //requestsListView.ItemsSource = requests;
-
-
+                    // requestsListView.ItemsSource = null;
+                    // requestsListView.ItemsSource = requests;
                 }
                 catch (Exception ex)
                 {
@@ -153,16 +140,14 @@ namespace Iss.Windows
             }
         }
 
-
         private void NegociateButton_Click(object sender, RoutedEventArgs e)
         {
-
             if (requestsListView.SelectedItem != null)
             {
                 try
                 {
                     Request request = (Request)requestsListView.SelectedItem;
-                    Request selectedRequest = requestService.GetRequestWithTitle(request.collaborationTitle);
+                    Request selectedRequest = requestService.GetRequestWithTitle(request.CollaborationTitle);
 
                     NegotiationPage negociationPage = new NegotiationPage(selectedRequest, isAdAccount);
 
@@ -183,9 +168,6 @@ namespace Iss.Windows
                             influencerStart.contentContainer.Content = negociationPage;
                         }
                     }
-
-
-
                 }
                 catch (Exception ex)
                 {
@@ -196,7 +178,6 @@ namespace Iss.Windows
             {
                 MessageBox.Show("Please select a request to negociate!");
             }
-
         }
 
         private void StartPageButton_Click(object sender, RoutedEventArgs e)
@@ -216,7 +197,7 @@ namespace Iss.Windows
                 Window window = Window.GetWindow(this);
                 if (window != null && window is MainWindow mainWindow)
                 {
-                    mainWindow.contentContainer.Content = mainWindow.homePage;
+                    mainWindow.contentContainer.Content = mainWindow.HomePage;
                 }
             }
         }

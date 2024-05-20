@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "OKk5t6cdNW0oSXzH5KzM+4RuCx44nyjg+M5KRPmENJQ=",
+  "Source": "RestApi-ISS",
+  "BasePath": "_content/RestApi-ISS",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

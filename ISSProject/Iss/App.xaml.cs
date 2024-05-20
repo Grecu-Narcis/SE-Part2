@@ -6,6 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
+using Iss.Service;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Iss
 {
     /// <summary>
@@ -13,6 +16,5 @@ namespace Iss
     /// </summary>
     public partial class App : Application
     {
-
     }
 }

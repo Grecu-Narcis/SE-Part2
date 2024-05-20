@@ -89,7 +89,7 @@
                 Margin="20,0,0,0"
                 Text="Percentage of users who clicked on the influencer-promoted content relative to the total impressions, indicating the effectiveness of content in driving user engagement."
                 TextWrapping="Wrap" />
-            <Button x:Name="goBack" Content="Go Back" Width="200" Margin="20" Background="Purple" Foreground="White" Click="goBack_Click"/>
+            <Button x:Name="goBack" Content="Go Back" Width="200" Margin="20" Background="Purple" Foreground="White" Click="GoBack_Click"/>
         </StackPanel>
 
 

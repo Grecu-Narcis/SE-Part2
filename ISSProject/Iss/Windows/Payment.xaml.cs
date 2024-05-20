@@ -20,27 +20,27 @@ namespace Iss.Windows
     /// </summary>
     public partial class Payment : UserControl
     {
-        int totalAmounttotalAmountToPay { get; set;}
+        public int TotalAmounttotalAmountToPay { get; set; }
         public Payment(int totalAmountToPay)
         {
             InitializeComponent();
-            this.totalAmounttotalAmountToPay = totalAmountToPay;
+            this.TotalAmounttotalAmountToPay = totalAmountToPay;
             crazyPaymentSelection.SetValue(ComboBox.ItemsSourceProperty, Constants.CRAZY_PAYMENTS.Keys);
             crazyPaymentSelection.SelectedIndex = 0;
-            
-            textQuantity.Text = "* " + (this.totalAmounttotalAmountToPay / Constants.CRAZY_PAYMENTS["KFC Wings"]).ToString();
-            textAmount.Text = "= " + this.totalAmounttotalAmountToPay.ToString();
+
+            textQuantity.Text = "* " + (this.TotalAmounttotalAmountToPay / Constants.CRAZY_PAYMENTS["KFC Wings"]).ToString();
+            textAmount.Text = "= " + this.TotalAmounttotalAmountToPay.ToString();
         }
 
-        private void crazyPaymentSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CrazyPaymentSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string selectedItem = (string)crazyPaymentSelection.SelectedItem;
 
-            textQuantity.Text = "* " + (this.totalAmounttotalAmountToPay / Constants.CRAZY_PAYMENTS[selectedItem]).ToString();
-            textAmount.Text = "= " + this.totalAmounttotalAmountToPay.ToString();
+            textQuantity.Text = "* " + (this.TotalAmounttotalAmountToPay / Constants.CRAZY_PAYMENTS[selectedItem]).ToString();
+            textAmount.Text = "= " + this.TotalAmounttotalAmountToPay.ToString();
         }
 
-        private void sumbitPaymentButton_Click(object sender, RoutedEventArgs e)
+        private void SumbitPaymentButton_Click(object sender, RoutedEventArgs e)
         {
             if (creditCardOptionButton.IsChecked == false && crazyOptionButton.IsChecked == false)
             {
@@ -60,7 +60,7 @@ namespace Iss.Windows
             Window window = Window.GetWindow(this);
             if (window != null && window is MainWindow mainWindow)
             {
-                mainWindow.contentContainer.Content = mainWindow.homePage;
+                mainWindow.contentContainer.Content = mainWindow.HomePage;
             }
         }
     }

@@ -1,6 +1,4 @@
-﻿using Iss.Entity;
-using Iss.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +14,9 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Iss.Entity;
+using Iss.Service;
+
 namespace Iss.Windows
 {
     /// <summary>
@@ -28,18 +29,17 @@ namespace Iss.Windows
         {
             InitializeComponent();
             adOverview.Text = selectedAd.Description;
-            compensation.Text = influencer.collaborationPrice.ToString();
+            compensation.Text = influencer.CollaborationPrice.ToString();
         }
 
         private void MakeRequestButton_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                //also check for the calendar selection to not be empty
+                // also check for the calendar selection to not be empty
                 if (string.IsNullOrWhiteSpace(collaborationTitle.Text) ||
                 string.IsNullOrWhiteSpace(adOverview.Text) ||
-            string.IsNullOrWhiteSpace(contentRequirements.Text) || string.IsNullOrEmpty(compensation.Text) || calendar.SelectedDates.Count==0)
+            string.IsNullOrWhiteSpace(contentRequirements.Text) || string.IsNullOrEmpty(compensation.Text) || calendar.SelectedDates.Count == 0)
                 {
                     MessageBox.Show("Please fill in all fields and selected a timeline");
                     return;
@@ -50,23 +50,22 @@ namespace Iss.Windows
                 string adOverviewString = adOverview.Text;
                 string contentRequirementsString = contentRequirements.Text;
                 string compensationString = compensation.Text;
-                //get the selected dates from the calendar
+                // get the selected dates from the calendar
                 DateTime startDate = calendar.SelectedDates[0];
                 DateTime endDate = calendar.SelectedDates[calendar.SelectedDates.Count - 1];
 
                 // Create new Request object
                 bool influencerAccept = false;
                 bool adAccountAccept = true;
-                Request request = new Request(collaborationTitleString, adOverviewString, contentRequirementsString, compensationString,startDate,endDate, influencerAccept, adAccountAccept);
+                Request request = new Request(collaborationTitleString, adOverviewString, contentRequirementsString, compensationString, startDate, endDate, influencerAccept, adAccountAccept);
 
-                //Add the request using RequestService
-               
+                // Add the request using RequestService
                 RequestService requestService = new RequestService();
                 requestService.AddRequest(request);
 
                 // Show success message or navigate to another page
                 MessageBox.Show("Request created successfully!");
-                clearAll();
+                ClearAll();
                 AdAccountOverview accountOverview = new AdAccountOverview();
                 MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
                 if (mainWindow != null)
@@ -80,12 +79,12 @@ namespace Iss.Windows
             }
         }
 
-        private void clearAll()
+        private void ClearAll()
         {
-            collaborationTitle.Text = "";
-            adOverview.Text = "";
-            contentRequirements.Text = "";
-            compensation.Text = "";
+            collaborationTitle.Text = string.Empty;
+            adOverview.Text = string.Empty;
+            contentRequirements.Text = string.Empty;
+            compensation.Text = string.Empty;
             calendar.SelectedDates.Clear();
         }
     }

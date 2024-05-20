@@ -32,7 +32,7 @@ namespace Iss.Repository
             databaseConnection.OpenConnection();
             string query = "INSERT INTO AdPayment(AdAccountID) values (@adAccountId)";
             SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
-            command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);
+            command.Parameters.AddWithValue("@adAccountId", User.User.GetInstance().Id);
             command.ExecuteNonQuery();
             databaseConnection.CloseConnection();
         }
@@ -43,7 +43,7 @@ namespace Iss.Repository
             databaseConnection.OpenConnection();
             string query = "INSERT INTO AdSetPayment(AdAccountID) values (@adAccountId)";
             SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
-            command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);
+            command.Parameters.AddWithValue("@adAccountId", User.User.GetInstance().Id);
             command.ExecuteNonQuery();
             databaseConnection.CloseConnection();
         }
@@ -54,7 +54,7 @@ namespace Iss.Repository
             databaseConnection.OpenConnection();
             string query = "INSERT INTO CampaignPayment(AdAccountID) values (@adAccountId)";
             SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
-            command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);
+            command.Parameters.AddWithValue("@adAccountId", User.User.GetInstance().Id);
             command.ExecuteNonQuery();
             databaseConnection.CloseConnection();
         }
@@ -66,7 +66,7 @@ namespace Iss.Repository
             // delete only one add payment
             string query = "DELETE FROM AdPayment WHERE AdAccountID = @adAccountId AND ID = (SELECT TOP 1 ID FROM AdPayment WHERE AdAccountID = @adAccountId)";
             SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
-            command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);
+            command.Parameters.AddWithValue("@adAccountId", User.User.GetInstance().Id);
             command.ExecuteNonQuery();
             databaseConnection.CloseConnection();
         }
@@ -77,7 +77,7 @@ namespace Iss.Repository
             // delete only one campaign payment
             string query = "DELETE FROM CampaignPayment WHERE AdAccountID = @adAccountId AND ID = (SELECT TOP 1 ID FROM CampaignPayment WHERE AdAccountID = @adAccountId)";
             SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
-            command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);
+            command.Parameters.AddWithValue("@adAccountId", User.User.GetInstance().Id);
             command.ExecuteNonQuery();
             databaseConnection.CloseConnection();
         }
@@ -88,7 +88,7 @@ namespace Iss.Repository
             // delete only one ad set payment
             string query = "DELETE FROM AdSetPayment WHERE AdAccountID = @adAccountId AND ID = (SELECT TOP 1 ID FROM AdSetPayment WHERE AdAccountID = @adAccountId)";
             SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
-            command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);
+            command.Parameters.AddWithValue("@adAccountId", User.User.GetInstance().Id);
             command.ExecuteNonQuery();
             databaseConnection.CloseConnection();
         }
@@ -102,7 +102,7 @@ namespace Iss.Repository
             SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
             command.Parameters.AddWithValue("@name", name);
             command.Parameters.AddWithValue("@number_of_campaigns", number_of_campaigns);
-            command.Parameters.AddWithValue("@adAccountId", User.User.getInstance().Id);
+            command.Parameters.AddWithValue("@adAccountId", User.User.GetInstance().Id);
             command.ExecuteNonQuery();
             databaseConnection.CloseConnection();
         }

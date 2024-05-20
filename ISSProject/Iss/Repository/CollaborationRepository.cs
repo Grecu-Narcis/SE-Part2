@@ -15,6 +15,7 @@ namespace Iss.Repository
     {
         private IDatabaseConnection databaseConnection;
         private ISqlDataAdapterWrapper adapter;
+        private DatabaseContext databaseContext;
 
         public CollaborationRepository()
         {
@@ -31,25 +32,31 @@ namespace Iss.Repository
         {
             databaseConnection.OpenConnection();
 
-            string influencerQuery = "SELECT ID FROM Influencer WHERE Name='Selly'";
+            Influencer requiredInfluencer = databaseContext.Influencer.Where(influencer => influencer.InfluencerName == "Selly").FirstOrDefault();
 
-            SqlCommand influencerCommand = new SqlCommand(influencerQuery, databaseConnection.SqlConnection);
+            collaboration.AdAccountId = User.User.GetInstance().Id;
+            collaboration.InfluencerId = requiredInfluencer.InfluencerId;
+
+            databaseContext.Collaboration.Add(collaboration);
+            databaseContext.SaveChanges();
+
+            return;
+
             // Execute the query to get the influencer ID
-            int influencerId = Convert.ToInt32(influencerCommand.ExecuteScalar());
-
+            // int influencerId = Convert.ToInt32(influencerCommand.ExecuteScalar());
             string query = @"INSERT INTO Collaboration (AdAccountID, InfluencerID, Status, AdOverview, CollaborationTitle, ContentRequirements, CollaborationFee,  StartDate, EndDate) 
                                 VALUES (@AdAccountID, @InfluencerID, @Status, @AdOverview, @CollaborationTitle, @ContentRequirements, @CollaborationFee, @StartDate, @EndDate)";
 
             SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
-            command.Parameters.AddWithValue("@AdAccountID", User.User.getInstance().Id);
-            command.Parameters.AddWithValue("@InfluencerID", influencerId);
-            command.Parameters.AddWithValue("@Status", collaboration.status);
-            command.Parameters.AddWithValue("@AdOverview", collaboration.adOverview);
-            command.Parameters.AddWithValue("@ContentRequirements", collaboration.contentRequirement);
-            command.Parameters.AddWithValue("@CollaborationTitle", collaboration.collaborationTitle);
-            command.Parameters.AddWithValue("@CollaborationFee", collaboration.collaborationFee);
-            command.Parameters.AddWithValue("@StartDate", collaboration.startDate);
-            command.Parameters.AddWithValue("@EndDate", collaboration.endDate);
+            command.Parameters.AddWithValue("@AdAccountID", User.User.GetInstance().Id);
+            // command.Parameters.AddWithValue("@InfluencerID", influencerId);
+            command.Parameters.AddWithValue("@Status", collaboration.Status);
+            command.Parameters.AddWithValue("@AdOverview", collaboration.AdOverview);
+            command.Parameters.AddWithValue("@ContentRequirements", collaboration.ContentRequirement);
+            command.Parameters.AddWithValue("@CollaborationTitle", collaboration.CollaborationTitle);
+            command.Parameters.AddWithValue("@CollaborationFee", collaboration.CollaborationFee);
+            command.Parameters.AddWithValue("@StartDate", collaboration.StartDate);
+            command.Parameters.AddWithValue("@EndDate", collaboration.EndDate);
 
             adapter.InsertCommand(command);
             adapter.ExecuteNonQuery(command);
@@ -59,14 +66,18 @@ namespace Iss.Repository
         public List<Collaboration> GetCollaborationsForAdAccount()
         {
             List<Collaboration> collaborations = new List<Collaboration>();
+
+            collaborations = databaseContext.Collaboration.Where(c => c.AdAccountId == User.User.GetInstance().Id).ToList();
+            return collaborations;
+
             DataSet dataSet = new DataSet();
             databaseConnection.OpenConnection();
 
             string query = "SELECT * FROM Collaboration WHERE AdAccountID = @AdAccountID";
 
             SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
-            System.Diagnostics.Debug.WriteLine(User.User.getInstance().Id);
-            command.Parameters.AddWithValue("@AdAccountID", User.User.getInstance().Id);
+            System.Diagnostics.Debug.WriteLine(User.User.GetInstance().Id);
+            command.Parameters.AddWithValue("@AdAccountID", User.User.GetInstance().Id);
 
             // Set the SelectCommand property of the SqlDataAdapter
             adapter.SelectCommand(command);
@@ -90,6 +101,10 @@ namespace Iss.Repository
         public List<Collaboration> GetCollaborationsForInfluencer()
         {
             List<Collaboration> collaborations = new List<Collaboration>();
+            collaborations = databaseContext.Collaboration.Where(c => c.InfluencerId == User.User.GetInstance().Id).ToList();
+
+            return collaborations;
+
             DataSet dataSet = new DataSet();
             databaseConnection.OpenConnection();
 
@@ -97,7 +112,7 @@ namespace Iss.Repository
 
             SqlCommand command = new SqlCommand(query, databaseConnection.SqlConnection);
 
-            System.Diagnostics.Debug.WriteLine(User.User.getInstance().Id);
+            System.Diagnostics.Debug.WriteLine(User.User.GetInstance().Id);
             command.Parameters.AddWithValue("@InfluencerID", 1);
 
             // Set the SelectCommand property of the SqlDataAdapter

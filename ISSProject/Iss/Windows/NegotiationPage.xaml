@@ -17,8 +17,8 @@
         <TextBox x:Name="newPriceTextBox" Margin="305,154,266,0" Text="Input" Foreground="Gray" VerticalAlignment="Top" Height="26"/>
         <TextBlock Text="Please input the new content requirements" VerticalAlignment="Top" Margin="305,194,-265,0"/>
         <TextBox x:Name="newRequirementsTextBox" Margin="305,226,36,0" Text="New content requirements input" Foreground="Gray" VerticalAlignment="Top" Height="132"/>
-        <Button x:Name="sendNegotiationButton" Content="SEND NEGOTIATION" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="587,151,0,0" Width="177" Background="#800080" Foreground="White" Height="32" Click="sendNegotiationButton_Click"/>
-        <Button x:Name="cancelButton" Content="CANCEL" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="668,380,0,0" Width="96" BorderBrush="#800080" Foreground="#800080" Height="24" Click="cancelButton_Click"/>
+        <Button x:Name="sendNegotiationButton" Content="SEND NEGOTIATION" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="587,151,0,0" Width="177" Background="#800080" Foreground="White" Height="32" Click="SendNegotiationButton_Click"/>
+        <Button x:Name="cancelButton" Content="CANCEL" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="668,380,0,0" Width="96" BorderBrush="#800080" Foreground="#800080" Height="24" Click="CancelButton_Click"/>
 
     </Grid>
 </UserControl>

@@ -28,14 +28,14 @@ namespace Iss.Windows
         {
             InitializeComponent();
             this.ad = ad;
-            populate();
+            Populate();
         }
 
-        private void populate()
+        private void Populate()
         {
             desctiptionTextBox.Text = ad.Description;
             productTitleTextBox.Text = ad.ProductName;
-            firmaTextBox.Text = User.User.getInstance().Name;
+            firmaTextBox.Text = User.User.GetInstance().Name;
 
             BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
@@ -46,10 +46,9 @@ namespace Iss.Windows
 
         private void PreviousImageButtonClick(object sender, RoutedEventArgs e)
         {
-
         }
-        
-        private void loadMoreBtn_Click(object sender, RoutedEventArgs e)
+
+        private void LoadMoreBtn_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(ad.WebsiteLink))
             {
@@ -70,7 +69,7 @@ namespace Iss.Windows
             Window window = Window.GetWindow(this);
             if (window != null && window is MainWindow mainWindow)
             {
-                mainWindow.contentContainer.Content = mainWindow.homePage;
+                mainWindow.contentContainer.Content = mainWindow.HomePage;
             }
         }
 
@@ -79,6 +78,5 @@ namespace Iss.Windows
             AdAccountOverview adAccountOverview = new AdAccountOverview();
             this.Content = adAccountOverview;
         }
-
     }
 }

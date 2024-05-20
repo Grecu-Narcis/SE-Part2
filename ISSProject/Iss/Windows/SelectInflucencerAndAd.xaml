@@ -30,7 +30,7 @@
                 <TextBlock Text="Select your Influencer" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Margin="0,5,1,1" Background="White" HorizontalAlignment="Center" >
                     <TextBox Name="searchInfluencerBox" Width="200" Height="20" Margin="2,0,0,0" Opacity="0.5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Button Name="searchInfluencerButton" Content="Search" Width="50" Height="20" Margin="2,0,0,0" Foreground="Black" Background="{x:Null}" BorderBrush="Purple" Click="searchInfluencerButton_Click"/>
+                    <Button Name="searchInfluencerButton" Content="Search" Width="50" Height="20" Margin="2,0,0,0" Foreground="Black" Background="{x:Null}" BorderBrush="Purple" Click="SearchInfluencerButton_Click"/>
                 </StackPanel>
                 <ListBox x:Name="influencerListBox" Height="200" Margin="10" SelectionMode="Single"/>
             </StackPanel>
@@ -40,7 +40,7 @@
                 <TextBlock Text="Choose Which Ad to Promote" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Margin="0,5,1,1" Background="White" HorizontalAlignment="Center" >
                     <TextBox Name="searchAdTextBox" Width="200" Height="20" Margin="2,0,0,0" Opacity="0.5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Button Name="searchAdTextButton" Content="Search" Width="50" Height="20" Margin="2,0,0,0" Foreground="Black" Background="{x:Null}" BorderBrush="Purple" Click="searchAdTextButton_Click"/>
+                    <Button Name="searchAdTextButton" Content="Search" Width="50" Height="20" Margin="2,0,0,0" Foreground="Black" Background="{x:Null}" BorderBrush="Purple" Click="SearchAdTextButton_Click"/>
                 </StackPanel>
                 <ListBox x:Name="adListBox" Height="200" Margin="10" SelectionMode="Single"/>
             </StackPanel>
@@ -48,7 +48,7 @@
 
         <!-- Button Row -->
         <Button Content="Continue" Grid.Row="2" Background="Purple" Foreground="White" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                Margin="0,10,20,10" Click="continueButton_Click"/>
+                Margin="0,10,20,10" Click="ContinueButton_Click"/>
 
     </Grid>
 </UserControl>

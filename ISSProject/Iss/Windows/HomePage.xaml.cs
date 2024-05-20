@@ -1,5 +1,4 @@
-﻿using Iss.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Iss.Service;
+
 namespace Iss.Windows
 {
     /// <summary>
@@ -25,7 +26,7 @@ namespace Iss.Windows
             InitializeComponent();
         }
 
-        private void accountOverviewButton_Click(object sender, EventArgs e)
+        private void AccountOverviewButton_Click(object sender, EventArgs e)
         {
             AdAccountOverview accountOverview = new AdAccountOverview();
             MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
@@ -34,7 +35,6 @@ namespace Iss.Windows
                 mainWindow.contentContainer.Content = accountOverview;
             }
         }
-
 
         private void NegotiationHistoryButton_Click(object sender, RoutedEventArgs e)
         {
@@ -47,7 +47,7 @@ namespace Iss.Windows
             }
         }
 
-        private void editAccountButton_Click(object sender, RoutedEventArgs e)
+        private void EditAccountButton_Click(object sender, RoutedEventArgs e)
         {
             EditAdAccount editAdAccount = new EditAdAccount();
             MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
@@ -55,7 +55,6 @@ namespace Iss.Windows
             {
                 mainWindow.contentContainer.Content = editAdAccount;
             }
-
         }
     }
 }

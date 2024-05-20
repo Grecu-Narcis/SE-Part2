@@ -41,14 +41,14 @@
         <StackPanel>
             <TextBlock Text="Home page" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="10" Foreground="Purple"/>
             <Button x:Name="accountOverviewButton" Content="Go To Account Overview" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" 
-        HorizontalAlignment="Center" VerticalAlignment="Center" Click="accountOverviewButton_Click"
+        HorizontalAlignment="Center" VerticalAlignment="Center" Click="AccountOverviewButton_Click"
          Style="{StaticResource RoundCornerButton}"/>
             <Button x:Name="NegotiationHistoryButton" Content="Go To Requests" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" 
 HorizontalAlignment="Center" VerticalAlignment="Center" Click="NegotiationHistoryButton_Click"
  Style="{StaticResource RoundCornerButton}"/>
             <Button x:Name="editAccountButton" Content="Edit Your Ad Account" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" 
 HorizontalAlignment="Center" VerticalAlignment="Center" 
- Style="{StaticResource RoundCornerButton}" Click="editAccountButton_Click"/>
+ Style="{StaticResource RoundCornerButton}" Click="EditAccountButton_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

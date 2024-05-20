@@ -1,7 +1,4 @@
-﻿
-using Iss.Entity;
-using Iss.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -17,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Iss.Entity;
+using Iss.Service;
+
 namespace Iss.Windows
 {
     /// <summary>
@@ -26,25 +26,24 @@ namespace Iss.Windows
     {
         private bool isAdAccount;
         private ICollaborationService collaborationService = new CollaborationService();
-        private List<Collaboration> collaborations = new();
+        private List<Collaboration> collaborations = new ();
         public CollaborationPage(bool isAdAccount)
         {
             InitializeComponent();
             this.isAdAccount = isAdAccount;
             if (this.isAdAccount)
             {
-                populateListViewAdAccount();
+                PopulateListViewAdAccount();
             }
             else
             {
-                populateListView();
+                PopulateListView();
                 this.seeStatistics.Visibility = Visibility.Hidden;
             }
         }
 
-        public void populateListViewAdAccount()
+        public void PopulateListViewAdAccount()
         {
-            
             collaborations = collaborationService.GetActiveCollaborationForAdAccount();
 
             foreach (Collaboration collaboration in collaborations)
@@ -55,9 +54,8 @@ namespace Iss.Windows
             }
         }
 
-        public void populateListView()
+        public void PopulateListView()
         {
-            
             collaborations = collaborationService.GetCollaborationForInfluencer();
 
             foreach (Collaboration collaboration in collaborations)
@@ -68,7 +66,7 @@ namespace Iss.Windows
             }
         }
 
-        public void redirectToHome_OnClick(object sender, RoutedEventArgs e)
+        public void RedirectToHome_OnClick(object sender, RoutedEventArgs e)
         {
             if (this.isAdAccount)
             {
@@ -87,22 +85,19 @@ namespace Iss.Windows
                 {
                     mainWindow.contentContainer.Content = influencerStart.Content;
                 }
-
             }
         }
 
         private void SeeStatistics_OnClick(object sender, RoutedEventArgs e)
         {
-
-            if (this.isAdAccount) {
-
+            if (this.isAdAccount)
+            {
                 Statistics statistics = new Statistics();
                 MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
                 if (mainWindow != null)
                 {
                     mainWindow.contentContainer.Content = statistics;
                 }
-
             }
         }
     }
