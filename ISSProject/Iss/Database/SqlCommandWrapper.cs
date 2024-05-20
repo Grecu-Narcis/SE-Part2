@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Iss.Database
+namespace Backend.Database
 {
     public class SqlCommandWrapper : ISqlCommandWrapper
     {

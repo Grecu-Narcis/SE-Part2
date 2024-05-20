@@ -1,0 +1,33 @@
+﻿<Window x:Class="Frontend.FAQ.AdminMode"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frontend.FAQ"
+        mc:Ignorable="d"
+        Title="AdminMode" Height="450" Width="800" Background="LightGray">
+    <Grid>
+        <Label Content="ADMIN MODE" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" FontSize="24"/>
+
+        <ScrollViewer x:Name="todoScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                      VerticalAlignment="Top" HorizontalAlignment="Left"
+                      Margin="43,112,0,70" Width="250" Height="150">
+            <TextBlock x:Name="todoTextBlock" TextWrapping="Wrap"/>
+        </ScrollViewer>
+
+        <Label Content="TODO List" FontSize="20" HorizontalAlignment="Left" Margin="157,67,0,0" VerticalAlignment="Top"/>
+        <Label Content="Finished task:" HorizontalAlignment="Left" Margin="43,295,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.261,0.283"/>
+        <TextBox x:Name="removeText" HorizontalAlignment="Left" Margin="129,298,0,0" TextWrapping="Wrap" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Text="Input number of finished task" VerticalAlignment="Top" Width="184"/>
+        <Label Content="Need to work on something later? Add your task:" HorizontalAlignment="Left" Margin="43,321,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="addTask" HorizontalAlignment="Left" Margin="43,352,0,0" TextWrapping="Wrap" GotFocus="AddTask_GotFocus" LostFocus="AddTask_LostFocus" Text="Input new task here" VerticalAlignment="Top" Width="270"/>
+        <Button x:Name="removeTaskButton" Content="Remove" HorizontalAlignment="Left" Margin="318,298,0,0" VerticalAlignment="Top" Click="RemoveTaskButton_Click"/>
+        <Button x:Name="addTaskButton" Content="Add" HorizontalAlignment="Left" Margin="318,350,0,0" VerticalAlignment="Top" Width="46" Click="AddTaskButton_Click"/>
+        <Label Content="Reviews" FontSize="20" HorizontalAlignment="Left" Margin="564,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.281,0.793"/>
+
+        <ScrollViewer x:Name="reviewScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                      VerticalAlignment="Top" HorizontalAlignment="Right"
+                      Margin="0,112,43,70" Width="250" Height="150">
+            <TextBlock x:Name="reviewBlock" TextWrapping="Wrap"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

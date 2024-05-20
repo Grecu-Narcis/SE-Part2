@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RestApi-ISS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de3a7c8d290b368f9fd9c82f275d888c7cd321e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d88923b8c1a119651c74b3c32cb06a0dfd33005d")]
 [assembly: System.Reflection.AssemblyProductAttribute("RestApi-ISS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RestApi-ISS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

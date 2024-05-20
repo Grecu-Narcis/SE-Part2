@@ -1,0 +1,102 @@
+﻿<Window x:Class="Frontend.PaymentsAndBillings.BankAccountsRepositoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frontend.PaymentsAndBillings"
+        mc:Ignorable="d"
+        Title="Bank Account Details" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border x:Name="headerBorder" Background="DimGray" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="homePageBlock" Grid.Column="0" Text="Logo" FontSize="18" Foreground="White" 
+                                   VerticalAlignment="Center"
+                                   MouseLeftButtonDown="HomePage_MouseLeftButtonDown"
+                                   MouseEnter="HomePage_MouseEnter" 
+                                   MouseLeave="HomePage_MouseLeave"/>
+                <TextBlock x:Name="profileBlock" Grid.Column="1" Text="Profile" FontSize="18" Foreground="White" 
+                                   Margin="10,0,0,0"
+                                   HorizontalAlignment="Right"
+                                   MouseLeftButtonDown="Profile_MouseLeftButtonDown"
+                                   MouseEnter="Profile_MouseEnter" 
+                                   MouseLeave="Profile_MouseLeave"/>
+            </Grid>
+        </Border>
+
+        <StackPanel Grid.Row="1" Margin="10">
+            <StackPanel>
+                <TextBlock Text="Contact Details" FontSize="18" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Email: " Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="textEmail" Margin="0,0,0,5" Width="200" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Name: " Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="textName" Margin="0,0,0,5" Width="200" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Surname: " Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="textSurname" Margin="0,0,0,5" Width="200" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Phone Number: " Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="textPhoneNumber" Margin="0,0,0,5" Width="200" />
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="Shipping Details" FontSize="18" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="County: " Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="textCounty" Margin="0,0,0,5" Width="200"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="City: " Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="textCity" Margin="0,0,0,5" Width="200"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Address:" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="textAddress" Margin="0,0,0,5" Width="200"/>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="Card Details" FontSize="18" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Card Number:" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="textNumber" Margin="0,0,0,5" Width="200"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Card Holder Name:" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="textHolderName" Margin="0,0,0,5" Width="200"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Card Expiry Date:" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="textExpiryDate" Margin="0,0,0,5" Width="200"/>
+            </StackPanel>
+
+            <Button Content="Save Changes" Click="SaveChanges_Click" HorizontalAlignment="Right"/>
+        </StackPanel>
+    </Grid>
+</Window>

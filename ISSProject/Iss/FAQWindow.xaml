@@ -1,0 +1,66 @@
+﻿<Window x:Class="Frontend.FAQWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frontend.FAQ"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800" Background="LightGray">
+    <Grid>
+        <TextBox IsReadOnly="True" Background="Gray" HorizontalAlignment="Left" Margin="191,41,0,0" TextWrapping="Wrap" 
+         Text="Hello! I am ExpertAd, I can help you find information quickly. Select one of the questions below, or add one and we’ll get back to you." VerticalAlignment="Top" Width="248" Height="72" 
+         TextAlignment="Center">
+            <TextBox.Template>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" BorderThickness="2" BorderBrush="Black">
+                        <ScrollViewer x:Name="PART_ContentHost"/>
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+
+        <TextBox IsReadOnly="True" Background="Transparent" HorizontalAlignment="Left" Margin="10,287,0,0" TextWrapping="Wrap" 
+            Text="Was this helpful? If not, leave some feedback here: " VerticalAlignment="Top" Width="155" Height="115" 
+            TextAlignment="Center">
+            <TextBox.Template>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" BorderThickness="2" BorderBrush="Black">
+                        <ScrollViewer x:Name="PART_ContentHost"/>
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+
+
+
+
+        <ListBox x:Name="listFAQ" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="191,154,245,29" SelectionChanged="ListFAQ_SelectionChanged" />
+        <TextBox x:Name="searchBox" TextChanged="SearchBox_TextChanged" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Background="Gray" HorizontalAlignment="Left" Margin="191,126,0,0" TextWrapping="Wrap" 
+            Text="Search questions/topic..." VerticalAlignment="Top" Width="347" Height="23" 
+            TextAlignment="Left">
+            <TextBox.Template>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" BorderThickness="2" BorderBrush="Black">
+                        <ScrollViewer x:Name="PART_ContentHost"/>
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+        <Image Source="robot.png" HorizontalAlignment="Left" Height="77" Margin="39,36,0,0" VerticalAlignment="Top" Width="134"/>
+        <TextBox x:Name="inputBox" GotFocus="InputBox_GotFocus" LostFocus="InputBox_LostFocus" HorizontalAlignment="Left" Margin="19,327,0,0" TextWrapping="Wrap" Text="Write feedback..." VerticalAlignment="Top" Width="134" Height="67"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="118,373,0,0" VerticalAlignment="Top" Height="16" Width="27" FontSize="6" Padding="2" Click="Button_Click"/>
+        <Popup x:Name="answerPopup" Placement="Right" PlacementTarget="{Binding ElementName=listFAQ}" IsOpen="False" Height="100" Width="100">
+            <Border Background="White" BorderBrush="Black" BorderThickness="1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="100" MaxWidth="100">
+                    <StackPanel>
+                        <TextBlock x:Name="answerTextBlock" TextWrapping="Wrap" Padding="10"/>
+                        <Button Content="Close" Click="ClosePopup_Click" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Popup>
+        <Button x:Name="submitQuestionButton" BorderBrush="Black" BorderThickness="2" Content="Submit a new question" HorizontalAlignment="Left" Margin="609,258,0,0" VerticalAlignment="Top" Height="34" Width="153" Click="SubmitQuestionButton_Click"/>
+        <Button x:Name="adminButton_Copy" BorderBrush="Black" BorderThickness="2" Content="Go to Admin Mode - reviews" HorizontalAlignment="Left" Margin="596,327,0,0" VerticalAlignment="Top" Height="37" Width="178" RenderTransformOrigin="0.536,0.165" Click="AdminButton_Copy_Click"/>
+
+    </Grid>
+</Window>

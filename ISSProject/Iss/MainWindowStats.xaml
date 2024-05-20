@@ -1,0 +1,20 @@
+﻿<Window x:Class="Frontend.MainWindowStats"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frontend"
+        mc:Ignorable="d"
+        Title="Main" Height="540" Width="960" Background="LightGray">
+    <Grid>
+        <Button x:Name="StatsButton" Content="Stats Window" HorizontalAlignment="Left" Margin="526,161,0,0" VerticalAlignment="Top" Height="33" Width="179"/>
+        <Button x:Name="ExportButton" Content="Export Window" HorizontalAlignment="Left" Margin="526,382,0,0" VerticalAlignment="Top" Height="33" Width="179"/>
+        <Button x:Name="BillingButton" Content="Billing Window" HorizontalAlignment="Left" Margin="526,307,0,0" VerticalAlignment="Top" Height="33" Width="179"/>
+        <Button x:Name="faqButton" Content="FAQ Window" HorizontalAlignment="Left" Margin="526,229,0,0" VerticalAlignment="Top" Height="33" Width="179"/>
+        <Label Content="Welcome to Ad Statistics and Information!" FontSize="26" HorizontalAlignment="Left" Margin="39,32,0,0" VerticalAlignment="Top"/>
+        <Label Content="Check out the graphs!" FontSize="20" HorizontalAlignment="Left" Margin="296,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.65,0.086"/>
+        <Label Content="For more user-friendly information, refer here:" FontSize="20" HorizontalAlignment="Left" Margin="85,225,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.65,0.086"/>
+        <Label Content="See your information here:" FontSize="20" HorizontalAlignment="Left" Margin="256,303,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.65,0.086"/>
+        <Label Content="Export the data:" FontSize="20" HorizontalAlignment="Left" Margin="351,378,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.65,0.086"/>
+    </Grid>
+</Window>
