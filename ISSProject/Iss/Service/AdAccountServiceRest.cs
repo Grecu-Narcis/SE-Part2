@@ -123,6 +123,7 @@ public class AdAccountServiceRest : IAdAccountService
         adAccountRequest.CompanyName = addAccount.NameOfCompany;
         adAccountRequest.DomainOfActivity = addAccount.DomainOfActivity;
         adAccountRequest.Password = addAccount.Password;
+        adAccountRequest.CIF = addAccount.TaxIdentificationNumber;
 
         var response = httpClient.PostAsJsonAsync("api/AdAccount/add", adAccountRequest).Result;
         if (!response.IsSuccessStatusCode)
