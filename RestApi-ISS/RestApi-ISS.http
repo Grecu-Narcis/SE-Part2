@@ -6,13 +6,13 @@ Accept: application/json
 
 ###
 
-<<<<<<< HEAD
+
 POST {{RestApi-ISS_HostAddress}}/api/review/add
 Content-Type: application/json
 
 {
   //AddReviewRequest
-=======
+
 GET {{RestApi-ISS_HostAddress}}/api/bankaccount
 
 ###
@@ -53,9 +53,9 @@ Content-Type: application/json
 
 ###
 
-<<<<<<< HEAD
+
 GET {{RestApi-ISS_HostAddress}}/api/review/getallReviews
-=======
+
 GET {{RestApi-ISS_HostAddress}}/api/bankaccount
 
 ###
@@ -74,6 +74,6 @@ Content-Type: application/json
 {
   //BankAccount
 }
->>>>>>> 0c3f6aaea50b365d27407121d435afea6f07cc95
+
 
 ###

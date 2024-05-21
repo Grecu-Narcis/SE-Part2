@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 using Backend.Models;
 using Iss.Entity;
 using Microsoft.EntityFrameworkCore;
-<<<<<<< HEAD
 using Backend.Models;
-=======
 using RestApi_ISS.Entity;
->>>>>>> 0c3f6aaea50b365d27407121d435afea6f07cc95
 
 namespace Iss.Database
 {
@@ -38,11 +35,8 @@ namespace Iss.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-<<<<<<< HEAD
             optionsBuilder.UseSqlServer("Data Source = DESKTOP-56RUGQC\\SQLEXPRESS; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;");
-=======
             optionsBuilder.UseSqlServer("Data Source = .\\SQLEXPRESS; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;");
->>>>>>> 0c3f6aaea50b365d27407121d435afea6f07cc95
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -93,16 +87,14 @@ namespace Iss.Database
                 .HasForeignKey(campaign => campaign.AdAccountId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-<<<<<<< HEAD
             modelBuilder.Entity<ReviewClass>()
                 .HasNoKey();
 
             modelBuilder.Entity<ReviewClass>()
-                .Property(a => a.User)
-=======
+                .Property(a => a.User);
+
             modelBuilder.Entity<BankAccount>()
                 .Property(i => i.Id)
->>>>>>> 0c3f6aaea50b365d27407121d435afea6f07cc95
                 .ValueGeneratedOnAdd();
         }
     }

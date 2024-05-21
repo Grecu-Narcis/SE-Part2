@@ -22,7 +22,7 @@ namespace RestApi_ISS.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-<<<<<<< HEAD
+
             modelBuilder.Entity("Backend.Models.ReviewClass", b =>
                 {
                     b.Property<string>("Review")
@@ -35,428 +35,428 @@ namespace RestApi_ISS.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.ToTable("Review");
-=======
-            modelBuilder.Entity("Backend.Models.BankAccount", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    modelBuilder.Entity("Backend.Models.BankAccount", b =>
+                        {
+                            b.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Address")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("County")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("City")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("County")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ExpiryDate")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Email")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("HolderName")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("ExpiryDate")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("HolderName")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Name")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Number")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Surname")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("PhoneNumber")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                            b.Property<string>("Surname")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("BankAccount");
->>>>>>> 0c3f6aaea50b365d27407121d435afea6f07cc95
-                });
+                            b.HasKey("Id");
 
-            modelBuilder.Entity("Iss.Entity.Ad", b =>
-                {
-                    b.Property<string>("AdId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                            b.ToTable("BankAccount");
+                        });
 
-                    b.Property<string>("AdAccountId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    modelBuilder.Entity("Iss.Entity.Ad", b =>
+                        {
+                            b.Property<string>("AdId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("AdSetId")
-                        .HasColumnType("nvarchar(450)");
+                            b.Property<string>("AdAccountId")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("AdSetId")
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Photo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Description")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Photo")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WebsiteLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("ProductName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AdId");
+                            b.Property<string>("WebsiteLink")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("AdAccountId");
+                            b.HasKey("AdId");
 
-                    b.HasIndex("AdSetId");
+                            b.HasIndex("AdAccountId");
 
-                    b.ToTable("Ad");
-                });
+                            b.HasIndex("AdSetId");
 
-            modelBuilder.Entity("Iss.Entity.AdAccount", b =>
-                {
-                    b.Property<string>("AdAccountId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                            b.ToTable("Ad");
+                        });
 
-                    b.Property<string>("AuthorisingInstituion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    modelBuilder.Entity("Iss.Entity.AdAccount", b =>
+                        {
+                            b.Property<string>("AdAccountId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("DomainOfActivity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("AuthorisingInstituion")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("HeadquartersLocation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("DomainOfActivity")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NameOfCompany")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("HeadquartersLocation")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("NameOfCompany")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SiteUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Password")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TaxIdentificationNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("SiteUrl")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AdAccountId");
+                            b.Property<string>("TaxIdentificationNumber")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("AdAccount");
-                });
+                            b.HasKey("AdAccountId");
 
-            modelBuilder.Entity("Iss.Entity.AdSet", b =>
-                {
-                    b.Property<string>("AdSetId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                            b.ToTable("AdAccount");
+                        });
 
-                    b.Property<string>("AdAccountId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    modelBuilder.Entity("Iss.Entity.AdSet", b =>
+                        {
+                            b.Property<string>("AdSetId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CampaignId")
-                        .HasColumnType("nvarchar(450)");
+                            b.Property<string>("AdAccountId")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("CampaignId")
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("TargetAudience")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AdSetId");
+                            b.Property<string>("TargetAudience")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("AdAccountId");
+                            b.HasKey("AdSetId");
 
-                    b.HasIndex("CampaignId");
+                            b.HasIndex("AdAccountId");
 
-                    b.ToTable("AdSet");
-                });
+                            b.HasIndex("CampaignId");
 
-            modelBuilder.Entity("Iss.Entity.Campaign", b =>
-                {
-                    b.Property<string>("CampaignId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                            b.ToTable("AdSet");
+                        });
 
-                    b.Property<string>("AdAccountId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    modelBuilder.Entity("Iss.Entity.Campaign", b =>
+                        {
+                            b.Property<string>("CampaignId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CampaignName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("AdAccountId")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
+                            b.Property<string>("CampaignName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                            b.Property<int>("Duration")
+                                .HasColumnType("int");
 
-                    b.HasKey("CampaignId");
+                            b.Property<DateTime>("StartDate")
+                                .HasColumnType("datetime2");
 
-                    b.HasIndex("AdAccountId");
+                            b.HasKey("CampaignId");
 
-                    b.ToTable("Campaign");
-                });
+                            b.HasIndex("AdAccountId");
 
-            modelBuilder.Entity("Iss.Entity.Collaboration", b =>
-                {
-                    b.Property<int>("CollaborationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                            b.ToTable("Campaign");
+                        });
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CollaborationId"));
+                    modelBuilder.Entity("Iss.Entity.Collaboration", b =>
+                        {
+                            b.Property<int>("CollaborationId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
 
-                    b.Property<string>("AdAccountId")
-                        .HasColumnType("nvarchar(450)");
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CollaborationId"));
 
-                    b.Property<string>("AdOverview")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("AdAccountId")
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CollaborationFee")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("AdOverview")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CollaborationTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("CollaborationFee")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ContentRequirement")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("CollaborationTitle")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                            b.Property<string>("ContentRequirement")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("InfluencerId")
-                        .HasColumnType("nvarchar(450)");
+                            b.Property<DateTime>("EndDate")
+                                .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                            b.Property<string>("InfluencerId")
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
+                            b.Property<DateTime>("StartDate")
+                                .HasColumnType("datetime2");
 
-                    b.HasKey("CollaborationId");
+                            b.Property<bool>("Status")
+                                .HasColumnType("bit");
 
-                    b.HasIndex("AdAccountId");
+                            b.HasKey("CollaborationId");
 
-                    b.HasIndex("InfluencerId");
+                            b.HasIndex("AdAccountId");
 
-                    b.ToTable("Collaboration");
-                });
+                            b.HasIndex("InfluencerId");
 
-            modelBuilder.Entity("Iss.Entity.Influencer", b =>
-                {
-                    b.Property<string>("InfluencerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                            b.ToTable("Collaboration");
+                        });
 
-                    b.Property<int>("CollaborationPrice")
-                        .HasColumnType("int");
+                    modelBuilder.Entity("Iss.Entity.Influencer", b =>
+                        {
+                            b.Property<string>("InfluencerId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("FollowerCount")
-                        .HasColumnType("int");
+                            b.Property<int>("CollaborationPrice")
+                                .HasColumnType("int");
 
-                    b.Property<string>("InfluencerName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<int>("FollowerCount")
+                                .HasColumnType("int");
 
-                    b.HasKey("InfluencerId");
+                            b.Property<string>("InfluencerName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Influencer");
-                });
+                            b.HasKey("InfluencerId");
 
-            modelBuilder.Entity("Iss.Entity.Request", b =>
-                {
-                    b.Property<int>("RequestId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                            b.ToTable("Influencer");
+                        });
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestId"));
+                    modelBuilder.Entity("Iss.Entity.Request", b =>
+                        {
+                            b.Property<int>("RequestId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
 
-                    b.Property<bool>("AdAccountAccept")
-                        .HasColumnType("bit");
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestId"));
 
-                    b.Property<string>("AdAccountId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                            b.Property<bool>("AdAccountAccept")
+                                .HasColumnType("bit");
 
-                    b.Property<string>("AdOverview")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("AdAccountId")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CollaborationTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("AdOverview")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Compensation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("CollaborationTitle")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ContentRequirements")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Compensation")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                            b.Property<string>("ContentRequirements")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("InfluencerAccept")
-                        .HasColumnType("bit");
+                            b.Property<DateTime>("EndDate")
+                                .HasColumnType("datetime2");
 
-                    b.Property<string>("InfluencerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                            b.Property<bool>("InfluencerAccept")
+                                .HasColumnType("bit");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                            b.Property<string>("InfluencerId")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("RequestId");
+                            b.Property<DateTime>("StartDate")
+                                .HasColumnType("datetime2");
 
-                    b.HasIndex("AdAccountId");
+                            b.HasKey("RequestId");
 
-                    b.HasIndex("InfluencerId");
+                            b.HasIndex("AdAccountId");
 
-                    b.ToTable("Request");
-                });
+                            b.HasIndex("InfluencerId");
 
-            modelBuilder.Entity("RestApi_ISS.Entity.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                            b.ToTable("Request");
+                        });
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    modelBuilder.Entity("RestApi_ISS.Entity.Product", b =>
+                        {
+                            b.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Description")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Image")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                            b.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                            b.Property<decimal>("Price")
+                                .HasColumnType("decimal(18,2)");
 
-                    b.ToTable("Product");
-                });
+                            b.HasKey("Id");
 
-            modelBuilder.Entity("Iss.Entity.Ad", b =>
-                {
-                    b.HasOne("Iss.Entity.AdAccount", null)
-                        .WithMany("Ads")
-                        .HasForeignKey("AdAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                            b.ToTable("Product");
+                        });
 
-                    b.HasOne("Iss.Entity.AdSet", null)
-                        .WithMany("Ads")
-                        .HasForeignKey("AdSetId");
-                });
+                    modelBuilder.Entity("Iss.Entity.Ad", b =>
+                        {
+                            b.HasOne("Iss.Entity.AdAccount", null)
+                                .WithMany("Ads")
+                                .HasForeignKey("AdAccountId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
 
-            modelBuilder.Entity("Iss.Entity.AdSet", b =>
-                {
-                    b.HasOne("Iss.Entity.AdAccount", null)
-                        .WithMany("AdSets")
-                        .HasForeignKey("AdAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                            b.HasOne("Iss.Entity.AdSet", null)
+                                .WithMany("Ads")
+                                .HasForeignKey("AdSetId");
+                        });
 
-                    b.HasOne("Iss.Entity.Campaign", null)
-                        .WithMany("AdSets")
-                        .HasForeignKey("CampaignId");
-                });
+                    modelBuilder.Entity("Iss.Entity.AdSet", b =>
+                        {
+                            b.HasOne("Iss.Entity.AdAccount", null)
+                                .WithMany("AdSets")
+                                .HasForeignKey("AdAccountId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
 
-            modelBuilder.Entity("Iss.Entity.Campaign", b =>
-                {
-                    b.HasOne("Iss.Entity.AdAccount", "AdAccount")
-                        .WithMany("Campaigns")
-                        .HasForeignKey("AdAccountId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                            b.HasOne("Iss.Entity.Campaign", null)
+                                .WithMany("AdSets")
+                                .HasForeignKey("CampaignId");
+                        });
 
-                    b.Navigation("AdAccount");
-                });
+                    modelBuilder.Entity("Iss.Entity.Campaign", b =>
+                        {
+                            b.HasOne("Iss.Entity.AdAccount", "AdAccount")
+                                .WithMany("Campaigns")
+                                .HasForeignKey("AdAccountId")
+                                .OnDelete(DeleteBehavior.Restrict)
+                                .IsRequired();
 
-            modelBuilder.Entity("Iss.Entity.Collaboration", b =>
-                {
-                    b.HasOne("Iss.Entity.AdAccount", null)
-                        .WithMany("Collaborations")
-                        .HasForeignKey("AdAccountId");
+                            b.Navigation("AdAccount");
+                        });
 
-                    b.HasOne("Iss.Entity.Influencer", null)
-                        .WithMany("Collaborations")
-                        .HasForeignKey("InfluencerId");
-                });
+                    modelBuilder.Entity("Iss.Entity.Collaboration", b =>
+                        {
+                            b.HasOne("Iss.Entity.AdAccount", null)
+                                .WithMany("Collaborations")
+                                .HasForeignKey("AdAccountId");
 
-            modelBuilder.Entity("Iss.Entity.Request", b =>
-                {
-                    b.HasOne("Iss.Entity.AdAccount", "AdAccount")
-                        .WithMany()
-                        .HasForeignKey("AdAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                            b.HasOne("Iss.Entity.Influencer", null)
+                                .WithMany("Collaborations")
+                                .HasForeignKey("InfluencerId");
+                        });
 
-                    b.HasOne("Iss.Entity.Influencer", "Influencer")
-                        .WithMany()
-                        .HasForeignKey("InfluencerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    modelBuilder.Entity("Iss.Entity.Request", b =>
+                        {
+                            b.HasOne("Iss.Entity.AdAccount", "AdAccount")
+                                .WithMany()
+                                .HasForeignKey("AdAccountId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
 
-                    b.Navigation("AdAccount");
+                            b.HasOne("Iss.Entity.Influencer", "Influencer")
+                                .WithMany()
+                                .HasForeignKey("InfluencerId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
 
-                    b.Navigation("Influencer");
-                });
+                            b.Navigation("AdAccount");
 
-            modelBuilder.Entity("Iss.Entity.AdAccount", b =>
-                {
-                    b.Navigation("AdSets");
+                            b.Navigation("Influencer");
+                        });
 
-                    b.Navigation("Ads");
+                    modelBuilder.Entity("Iss.Entity.AdAccount", b =>
+                        {
+                            b.Navigation("AdSets");
 
-                    b.Navigation("Campaigns");
+                            b.Navigation("Ads");
 
-                    b.Navigation("Collaborations");
-                });
+                            b.Navigation("Campaigns");
 
-            modelBuilder.Entity("Iss.Entity.AdSet", b =>
-                {
-                    b.Navigation("Ads");
-                });
+                            b.Navigation("Collaborations");
+                        });
 
-            modelBuilder.Entity("Iss.Entity.Campaign", b =>
-                {
-                    b.Navigation("AdSets");
-                });
+                    modelBuilder.Entity("Iss.Entity.AdSet", b =>
+                        {
+                            b.Navigation("Ads");
+                        });
 
-            modelBuilder.Entity("Iss.Entity.Influencer", b =>
-                {
-                    b.Navigation("Collaborations");
-                });
+                    modelBuilder.Entity("Iss.Entity.Campaign", b =>
+                        {
+                            b.Navigation("AdSets");
+                        });
+
+                    modelBuilder.Entity("Iss.Entity.Influencer", b =>
+                        {
+                            b.Navigation("Collaborations");
+                        });
 #pragma warning restore 612, 618
-        }
+                });
+    }
     }
 }
