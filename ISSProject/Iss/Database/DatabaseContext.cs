@@ -71,6 +71,8 @@ namespace Iss.Database
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<ReviewClass>()
+                .HasNoKey();
+            modelBuilder.Entity<ReviewClass>()
                 .Property(a => a.User)
                 .ValueGeneratedOnAdd();
         }
