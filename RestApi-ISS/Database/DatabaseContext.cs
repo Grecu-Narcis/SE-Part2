@@ -20,6 +20,7 @@ namespace Iss.Database
         public DbSet<Influencer> Influencer { get; set; }
         public DbSet<Request> Request { get; set; }
         public DbSet<BankAccount> BankAccount { get; set; }
+        public DbSet<FAQ> FAQ { get; set; }
 
         public DatabaseContext()
         {
@@ -75,6 +76,10 @@ namespace Iss.Database
 
             modelBuilder.Entity<Request>()
                 .Property(r => r.RequestId)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<FAQ>()
+                .Property(f => f.Id)
                 .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Campaign>()
