@@ -1,4 +1,11 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\ISSProject",
+    "\\ISSProject\\Iss",
+    "\\ISSProject\\Iss\\Migrations",
+    "\\RestApi-ISS"
+  ],
+  "SelectedNode": "\\ISSProject\\Iss\\Migrations\\20240518092351_test.cs",
   "PreviewInSolutionExplorer": false
 }

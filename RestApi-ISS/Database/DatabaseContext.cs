@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Iss.Entity;
 using Microsoft.EntityFrameworkCore;
+using RestApi_ISS.Entity;
 
 namespace Iss.Database
 {
@@ -17,14 +18,19 @@ namespace Iss.Database
         public DbSet<Collaboration> Collaboration { get; set; }
         public DbSet<Influencer> Influencer { get; set; }
         public DbSet<Request> Request { get; set; }
+        public DbSet<Product> Product { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source = NARCIS\\SQLEXPRESS02; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Data Source = OMG\\MSSQLSERVER01; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
+
             modelBuilder.Entity<Ad>()
                 .Property(a => a.AdId)
                 .ValueGeneratedOnAdd();
