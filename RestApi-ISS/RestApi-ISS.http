@@ -1,6 +1,37 @@
+@RestApi-ISS_HostAddress = http://localhost:5049
 @RestApi_ISS_HostAddress = http://localhost:5049
 
 GET {{RestApi_ISS_HostAddress}}/weatherforecast/
 Accept: application/json
+
+###
+
+GET {{RestApi-ISS_HostAddress}}/api/bankaccount
+
+###
+
+POST {{RestApi-ISS_HostAddress}}/api/bankaccount
+Content-Type: application/json
+
+{
+  //BankAccount
+}
+
+###
+
+GET {{RestApi-ISS_HostAddress}}/api/bankaccount/0
+
+###
+
+DELETE {{RestApi-ISS_HostAddress}}/api/bankaccount/0
+
+###
+
+PUT {{RestApi-ISS_HostAddress}}/api/bankaccount/0
+Content-Type: application/json
+
+{
+  //BankAccount
+}
 
 ###

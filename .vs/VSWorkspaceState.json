@@ -1,4 +1,16 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\ISSProject",
+    "\\ISSProject\\Iss",
+    "\\ISSProject\\Iss\\Entity",
+    "\\ISSProject\\Iss\\Service",
+    "\\ISSProject\\Iss\\Services",
+    "\\RestApi-ISS",
+    "\\RestApi-ISS\\Database",
+    "\\RestApi-ISS\\Entity",
+    "\\RestApi-ISS\\Repository"
+  ],
+  "SelectedNode": "\\ISSProject\\Iss\\Service\\AdService.cs",
   "PreviewInSolutionExplorer": false
 }
