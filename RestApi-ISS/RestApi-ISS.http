@@ -35,3 +35,33 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{RestApi-ISS_HostAddress}}/api/bankaccount
+Content-Type: application/json
+
+{
+  //BankAccount
+}
+
+###
+
+GET {{RestApi-ISS_HostAddress}}/api/bankaccount
+
+###
+
+GET {{RestApi-ISS_HostAddress}}/api/bankaccount/0
+
+###
+
+DELETE {{RestApi-ISS_HostAddress}}/api/bankaccount/0
+
+###
+
+PUT {{RestApi-ISS_HostAddress}}/api/bankaccount/0
+Content-Type: application/json
+
+{
+  //BankAccount
+}
+
+###

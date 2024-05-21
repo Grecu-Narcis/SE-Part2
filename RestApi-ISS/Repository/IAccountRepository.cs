@@ -2,8 +2,10 @@
 
 namespace Iss.Repository
 {
-    internal interface IAccountRepository
+    public interface IAccountRepository
     {
-        BankAccount BankAccount { get; set; }
+        BankAccount GetBankAccount();
+        void AddBankAccount(BankAccount bankAccount);
+        void EditBankAccount(BankAccount bankAccount);
     }
 }
