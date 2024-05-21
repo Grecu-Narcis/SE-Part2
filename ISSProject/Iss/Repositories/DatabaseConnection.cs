@@ -11,7 +11,9 @@ namespace Backend.Repositories
     public class DatabaseConnection : IDatabaseConnection
     {
         // public static string ConnectionString = "Data Source = NARCIS\\SQLEXPRESS02; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;";
-        public static string ConnectionString = "Data Source = DESKTOP-EBHU28B\\SQLEXPRESS; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;";
+        // public static string ConnectionString = "Data Source = DESKTOP-EBHU28B\\SQLEXPRESS; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;";
+        // public static string ConnectionString = "Data Source = DESKTOP-56RUGQC\\SQLEXPRESS; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;";
+        public static string ConnectionString = "Data Source = .\\SQLEXPRESS; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;";
 
         public SqlConnection SqlConnection { get; private set; } = new SqlConnection(ConnectionString);
 

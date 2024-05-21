@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Backend.Models;
 using Iss.Entity;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,9 +19,11 @@ namespace Iss.Database
         public DbSet<Influencer> Influencer { get; set; }
         public DbSet<Request> Request { get; set; }
 
+        public DbSet<ReviewClass> Review { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source = NARCIS\\SQLEXPRESS02; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Data Source = .\\SQLEXPRESS; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -66,6 +69,12 @@ namespace Iss.Database
                 .WithMany(adAccount => adAccount.Campaigns)
                 .HasForeignKey(campaign => campaign.AdAccountId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ReviewClass>()
+                .HasNoKey();
+            modelBuilder.Entity<ReviewClass>()
+                .Property(a => a.User)
+                .ValueGeneratedOnAdd();
         }
     }
 }

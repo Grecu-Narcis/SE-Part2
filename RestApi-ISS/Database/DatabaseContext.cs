@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Backend.Models;
 using Iss.Entity;
 using Microsoft.EntityFrameworkCore;
+using Backend.Models;
 using RestApi_ISS.Entity;
 
 namespace Iss.Database
@@ -30,6 +31,8 @@ namespace Iss.Database
         {
         }
         public DbSet<Product> Product { get; set; }
+
+        public DbSet<ReviewClass> Review { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -87,6 +90,12 @@ namespace Iss.Database
                 .WithMany(adAccount => adAccount.Campaigns)
                 .HasForeignKey(campaign => campaign.AdAccountId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ReviewClass>()
+                .HasNoKey();
+
+            modelBuilder.Entity<ReviewClass>()
+                .Property(a => a.User);
 
             modelBuilder.Entity<BankAccount>()
                 .Property(i => i.Id)

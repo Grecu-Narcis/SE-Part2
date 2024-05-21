@@ -180,3 +180,60 @@ INSERT INTO Influencer VALUES ('Selly', 10000, 1000)
 
 INSERT INTO Influencer VALUES ('Lebron James', 6000000, 150), ('Dua Lipa', 250000, 60), ('Mihai Bendeac', 10000, 15)
 
+CREATE TABLE FAQ (
+Id INT IDENTITY(1,1) PRIMARY KEY,
+Question NVARCHAR(255) NOT NULL,
+Answer NVARCHAR(MAX) NOT NULL,
+Topic NVARCHAR(255) NOT NULL
+);
+
+drop table FAQ;
+
+INSERT INTO FAQ(Question, Answer, Topic) VALUES
+('What is the return policy?', 'Our return policy allows returns within 30 days of purchase.', 'Policies'),
+('How do I reset my password?', 'To reset your password, click on the "Forgot Password" link on the login page.', 'Account'),
+('Where are you located?', 'We are located at 1234 Main Street, Anytown, USA.', 'General'),
+('What payment methods do you accept?', 'We accept Visa, MasterCard, American Express, and PayPal.', 'Payments'),
+('How can I track my order?', 'You can track your order using the tracking number provided in the confirmation email.', 'Orders'),
+('Do you offer gift wrapping?', 'Yes, we offer gift wrapping for an additional fee.', 'Services'),
+('What are your business hours?', 'Our business hours are Monday to Friday, 9 AM to 5 PM.', 'General'),
+('Can I change my shipping address?', 'You can change your shipping address within 24 hours of placing the order by contacting customer service.', 'Shipping');
+
+select * from FAQ;
+
+
+
+
+
+
+
+CREATE TABLE ACCOUNTS (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Email NVARCHAR(255) NOT NULL,
+    Name NVARCHAR(255) NOT NULL,
+    Surname NVARCHAR(255) NOT NULL,
+    PhoneNumber NVARCHAR(50) NOT NULL,
+    County NVARCHAR(255) NOT NULL,
+    City NVARCHAR(255) NOT NULL,
+    Address NVARCHAR(255) NOT NULL,
+    Number NVARCHAR(50) NOT NULL,
+    HolderName NVARCHAR(255) NOT NULL,
+    ExpiryDate NVARCHAR(50) NOT NULL
+);
+
+drop table ACCOUNTS;
+
+INSERT INTO ACCOUNTS (Email, Name, Surname, PhoneNumber, County, City, Address, Number, HolderName, ExpiryDate)
+VALUES
+('user1@example.com', 'John', 'Doe', '123456789', 'County A', 'City X', 'Address 1', '1234567890123456', 'John Doe', '12/25'),
+('user2@example.com', 'Jane', 'Smith', '987654321', 'County B', 'City Y', 'Address 2', '9876543210987654', 'Jane Smith', '06/23'),
+('user3@example.com', 'Michael', 'Johnson', '555555555', 'County C', 'City Z', 'Address 3', '1111222233334444', 'Michael Johnson', '09/24'),
+('user4@example.com', 'Emily', 'Brown', '444444444', 'County D', 'City W', 'Address 4', '5555666677778888', 'Emily Brown', '03/26'),
+('user5@example.com', 'William', 'Wilson', '666666666', 'County E', 'City V', 'Address 5', '9999000011112222', 'William Wilson', '08/25'),
+('user6@example.com', 'Sophia', 'Martinez', '777777777', 'County F', 'City U', 'Address 6', '3333444455556666', 'Sophia Martinez', '11/23'),
+('user7@example.com', 'Alexander', 'Anderson', '888888888', 'County G', 'City T', 'Address 7', '7777888899990000', 'Alexander Anderson', '02/27'),
+('user8@example.com', 'Olivia', 'Garcia', '999999999', 'County H', 'City S', 'Address 8', '4444555566667777', 'Olivia Garcia', '07/22');
+ 
+
+select * from ACCOUNTS;
+
