@@ -31,7 +31,7 @@ namespace Iss.Database
         }
         public DbSet<Product> Product { get; set; }
 
-        public DbSet<ReviewClass> Review { get; set; }
+        public DbSet<ReviewClass> ReviewClass { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -88,10 +88,8 @@ namespace Iss.Database
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<ReviewClass>()
-                .HasNoKey();
-
-            modelBuilder.Entity<ReviewClass>()
-                .Property(a => a.User);
+                .Property(a => a.ReviewId)
+                .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<BankAccount>()
                 .Property(i => i.Id)

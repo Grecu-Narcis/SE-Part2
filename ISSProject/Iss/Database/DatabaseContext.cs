@@ -19,7 +19,7 @@ namespace Iss.Database
         public DbSet<Influencer> Influencer { get; set; }
         public DbSet<Request> Request { get; set; }
 
-        public DbSet<ReviewClass> Review { get; set; }
+        public DbSet<ReviewClass> ReviewClass { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -71,9 +71,7 @@ namespace Iss.Database
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<ReviewClass>()
-                .HasNoKey();
-            modelBuilder.Entity<ReviewClass>()
-                .Property(a => a.User)
+                .Property(a => a.ReviewId)
                 .ValueGeneratedOnAdd();
         }
     }

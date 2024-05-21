@@ -2,12 +2,22 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System.ComponentModel.DataAnnotations;
+
 namespace Backend.Models
 {
     public class ReviewClass
     {
         private string user;
         private string review;
+        private int reviewId;
+
+        [Key]
+        public int ReviewId
+        {
+            get { return this.reviewId; }
+            set { this.reviewId = value; }
+        }
 
         public ReviewClass(string user, string review)
         {

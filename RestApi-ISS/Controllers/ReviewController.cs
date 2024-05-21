@@ -8,6 +8,7 @@ namespace RestApi_ISS.Controllers
 {
     public class AddReviewRequest
     {
+        public int ReviewId { get; set; }
         public string User { get; set; }
 
         public string Review { get; set; }
@@ -15,6 +16,7 @@ namespace RestApi_ISS.Controllers
 
     public class UpdateReviewRequest
     {
+        public int ReviewId { get; set; }
         public string User { get; set; }
 
         public string Review { get; set; }

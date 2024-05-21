@@ -11,14 +11,16 @@ namespace RestApi_ISS.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Review",
+                name: "ReviewClass",
                 columns: table => new
                 {
+                    ReviewId = table.Column<string>("int", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     User = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Review = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_ReviewClass", x => x.ReviewId);
                 });
         }
 
@@ -26,7 +28,7 @@ namespace RestApi_ISS.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Review");
+                name: "ReviewClass");
         }
     }
 }

@@ -1,9 +1,20 @@
-﻿namespace Backend.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Backend.Models
 {
     public class ReviewClass
     {
         private string user;
         private string review;
+        private int reviewId;
+
+        [Key]
+        public int ReviewId
+        {
+            get { return this.reviewId; }
+            set { this.reviewId = value; }
+        }
 
         public ReviewClass(string user, string review)
         {

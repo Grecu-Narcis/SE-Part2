@@ -45,17 +45,15 @@ namespace Backend.Repositories
 
         public void AddReview(ReviewClass newR)
         {
-            databaseContext.Review.Add(newR);
+            databaseContext.ReviewClass.Add(newR);
             databaseContext.SaveChanges();
-            /*this.reviewList.Add(newR);
-            this.SaveToXml();*/
         }
 
         public void DeleteReview(ReviewClass reviewToDelete)
         {
             databaseContext.ChangeTracker.Clear();
 
-            databaseContext.Review.Remove(reviewToDelete);
+            databaseContext.ReviewClass.Remove(reviewToDelete);
             databaseContext.SaveChanges();
         }
 
@@ -70,7 +68,7 @@ namespace Backend.Repositories
 
         public ReviewClass GetReviewByName(string adName)
         {
-            ReviewClass ad = databaseContext.Review.Where(a => a.User == adName).FirstOrDefault();
+            ReviewClass ad = databaseContext.ReviewClass.Where(a => a.User == adName).FirstOrDefault();
 
             return ad;
         }
