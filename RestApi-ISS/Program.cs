@@ -7,6 +7,9 @@ using RestApi_ISS.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<DatabaseContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 // Add services to the container.
 builder.Services.AddControllers();
 
@@ -21,6 +24,12 @@ builder.Services.AddScoped<IAdSetService, AdSetService>();
 
 builder.Services.AddScoped<ICampaignRepository, CampaignRepository>();
 builder.Services.AddScoped<ICampaignService, CampaignService>();
+
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<InterfaceBankAccountService, BankAccountService>();
+
+builder.Services.AddScoped<DataEncryptionService>();
+
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();

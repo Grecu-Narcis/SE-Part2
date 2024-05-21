@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Backend.Models;
 using Iss.Entity;
 using Microsoft.EntityFrameworkCore;
 using RestApi_ISS.Entity;
@@ -18,11 +19,20 @@ namespace Iss.Database
         public DbSet<Collaboration> Collaboration { get; set; }
         public DbSet<Influencer> Influencer { get; set; }
         public DbSet<Request> Request { get; set; }
+        public DbSet<BankAccount> BankAccount { get; set; }
+
+        public DatabaseContext()
+        {
+        }
+        public DatabaseContext(DbContextOptions<DatabaseContext> options)
+            : base(options)
+        {
+        }
         public DbSet<Product> Product { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source = OMG\\MSSQLSERVER01; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Data Source = DESKTOP-G5O4MNS\\SQLEXPRESS; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -72,6 +82,10 @@ namespace Iss.Database
                 .WithMany(adAccount => adAccount.Campaigns)
                 .HasForeignKey(campaign => campaign.AdAccountId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<BankAccount>()
+                .Property(i => i.Id)
+                .ValueGeneratedOnAdd();
         }
     }
 }

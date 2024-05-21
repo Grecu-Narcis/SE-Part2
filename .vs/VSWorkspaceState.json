@@ -7,5 +7,18 @@
     "\\RestApi-ISS"
   ],
   "SelectedNode": "\\ISSProject\\Iss\\Migrations\\20240518092351_test.cs",
+  "ExpandedNodes": [
+    "",
+    "\\ISSProject",
+    "\\ISSProject\\Iss",
+    "\\ISSProject\\Iss\\Controllers",
+    "\\ISSProject\\Iss\\Migrations",
+    "\\ISSProject\\Iss\\Models",
+    "\\RestApi-ISS",
+    "\\RestApi-ISS\\Controllers",
+    "\\RestApi-ISS\\Migrations",
+    "\\RestApi-ISS\\Service"
+  ],
+  "SelectedNode": "\\RestApi-ISS\\RestApi-ISS.sln",
   "PreviewInSolutionExplorer": false
 }
