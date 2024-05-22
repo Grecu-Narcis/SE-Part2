@@ -8,6 +8,8 @@ namespace Backend.Models
 
     public class BankAccount
     {
+        public int Id { get; set; }
+
         public string? Email { get; set; }
 
         public string? Name { get; set; }

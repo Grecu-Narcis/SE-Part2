@@ -38,13 +38,13 @@ namespace Backend.Controllers
             }
             else
             {
-                this.accountRepository.BankAccount = updatedAccount;
+                this.accountRepository.EditBankAccount(updatedAccount);
             }
         }
 
         public BankAccount GetBankAccount()
         {
-            return this.accountRepository.BankAccount;
+            return this.accountRepository.GetBankAccount();
         }
     }
 }

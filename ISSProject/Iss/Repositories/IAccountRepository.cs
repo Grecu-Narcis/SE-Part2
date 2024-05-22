@@ -4,6 +4,8 @@ namespace Backend.Repositories
 {
     internal interface IAccountRepository
     {
-        BankAccount BankAccount { get; set; }
+        public BankAccount GetBankAccount();
+        public void AddBankAccount(BankAccount account);
+        public void EditBankAccount(BankAccount updatedAccount);
     }
 }

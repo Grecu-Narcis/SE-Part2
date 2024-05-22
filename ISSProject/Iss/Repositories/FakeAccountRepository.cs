@@ -31,5 +31,20 @@ namespace Backend.Tests.Fakes
                 bankAccount = value;
             }
         }
+
+        public void AddBankAccount(BankAccount account)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditBankAccount(BankAccount updatedAccount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BankAccount GetBankAccount()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
