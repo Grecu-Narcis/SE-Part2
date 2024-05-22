@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,9 +25,13 @@ namespace Iss.Windows
     public partial class SelectInflucencerAndAd : UserControl
     {
         public AdAccountService AdAccountService = new AdAccountService();
-        public InfluencerService InfluencerService = new InfluencerService();
+        public InfluencerServiceREST InfluencerServiceREST;
         public SelectInflucencerAndAd()
         {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:5049/");
+            InfluencerServiceREST = new InfluencerServiceREST(httpClient);
+
             InitializeComponent();
             PopulateInfluencers();
             PopulateAds();
@@ -34,7 +39,7 @@ namespace Iss.Windows
 
         private void PopulateInfluencers()
         {
-            List<Influencer> currentInfluencers = InfluencerService.GetInfluencers();
+            List<Influencer> currentInfluencers = InfluencerServiceREST.GetInfluencers();
             influencerListBox.Items.Clear();
             foreach (var influencer in currentInfluencers)
             {
@@ -54,7 +59,7 @@ namespace Iss.Windows
 
         private void SearchInfluencerButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Influencer> currentInfluencers = InfluencerService.GetInfluencers();
+            List<Influencer> currentInfluencers = InfluencerServiceREST.GetInfluencers();
             influencerListBox.Items.Clear();
             foreach (Influencer influencer in currentInfluencers)
             {
