@@ -38,8 +38,7 @@ namespace Frontend
                 HolderName = "Name Surname",
                 ExpiryDate = "12/23",
             };
-            services.AddSingleton(bankAccount);
-
+            // services.AddSingleton(bankAccount);
             var mockProduct = new ProductMock
             {
                 Name = "Product",
@@ -49,7 +48,8 @@ namespace Frontend
             };
             services.AddSingleton(mockProduct);
 
-            var accountRepository = new AccountRepository(bankAccount);
+            var accountRepository = new AccountRepository();
+            accountRepository.AddBankAccount(bankAccount);
             services.AddSingleton(accountRepository);
 
             var productRepository = new ProductRepository(mockProduct);

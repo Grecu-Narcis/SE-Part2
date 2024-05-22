@@ -18,7 +18,7 @@ namespace Iss.Database
         public DbSet<Collaboration> Collaboration { get; set; }
         public DbSet<Influencer> Influencer { get; set; }
         public DbSet<Request> Request { get; set; }
-
+        public DbSet<BankAccount> BankAccount { get; set; }
         public DbSet<ReviewClass> Review { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -75,6 +75,9 @@ namespace Iss.Database
             modelBuilder.Entity<ReviewClass>()
                 .Property(a => a.User)
                 .ValueGeneratedOnAdd();
+            modelBuilder.Entity<BankAccount>()
+               .Property(i => i.Id)
+               .ValueGeneratedOnAdd();
         }
     }
 }
