@@ -24,6 +24,14 @@
             this.topic = topic;
         }
 
+        public FAQ(int id, string question, string answer, string topic)
+        {
+            this.id = id;
+            this.question = question;
+            this.answer = answer;
+            this.topic = topic;
+        }
+
         public int Id
         {
             get { return this.id; }
