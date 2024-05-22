@@ -16,12 +16,17 @@ namespace RestApi_ISS.Service
     {
         private static readonly FAQService InstanceValue = new ();
         private readonly List<string> topics = new ();
-        private readonly FAQRepository repository;
+        private IFAQRepository fAQRepository;
         private readonly List<FAQ> submittedQuestions;
+
+        public FAQService(IFAQRepository fAQRepository)
+        {
+            this.fAQRepository = fAQRepository;
+        }
 
         public FAQService()
         {
-            this.repository = new FAQRepository();
+            this.fAQRepository = new FAQRepository();
             this.submittedQuestions = new ();
         }
 
@@ -32,7 +37,7 @@ namespace RestApi_ISS.Service
 
         public List<FAQ> GetAllFAQs()
         {
-            return this.repository.GetFAQList();
+            return this.fAQRepository.GetFAQList();
         }
 
         public List<string> GetTopics()
@@ -56,10 +61,10 @@ namespace RestApi_ISS.Service
 
         public void DeleteFAQ(int id)
         {
-            FAQ faqToDelete = this.repository.GetFAQList().FirstOrDefault(f => f.Id == id);
+            FAQ faqToDelete = this.fAQRepository.GetFAQList().FirstOrDefault(f => f.Id == id);
             if (faqToDelete != null)
             {
-                this.repository.DeleteFAQ(faqToDelete); // Delete from the database
+                this.fAQRepository.DeleteFAQ(faqToDelete); // Delete from the database
             }
         }
 

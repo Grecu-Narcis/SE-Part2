@@ -9,17 +9,21 @@ using Iss.Services;
 
 namespace Backend.Services
 {
-    public class ReviewService : IServiceReview
+    public class ReviewService<T> : IServiceReview
     {
-        private static readonly ReviewService TheInstance = new ();
-        private readonly ReviewRepository reviewRepository;
+        private static readonly ReviewService<T> TheInstance = new ();
+        private readonly INterfaceReview<T> reviewRepository;
 
+        private ReviewService(INterfaceReview<T> reviewRepository)
+        {
+            this.reviewRepository = reviewRepository;
+        }
         private ReviewService()
         {
-            this.reviewRepository = new ReviewRepository();
+            this.reviewRepository = new ReviewRepository() as INterfaceReview<T>;
         }
 
-        public static ReviewService Instance
+        public static ReviewService<T> Instance
         {
             get { return TheInstance; }
         }

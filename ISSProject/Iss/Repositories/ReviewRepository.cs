@@ -27,15 +27,6 @@ namespace Backend.Repositories
         public ReviewRepository()
         {
             this.reviewList = new List<ReviewClass>();
-            /*string binDirectory = "\\bin";
-            string basePath = AppDomain.CurrentDomain.BaseDirectory;
-            string pathUntilBin;
-
-            int index = basePath.IndexOf(binDirectory);
-            pathUntilBin = basePath[..index];
-            string pathToReviewsXML = $"\\XMLFiles\\REVIEWitems.xml";
-            this.xmlFilePath = pathUntilBin + pathToReviewsXML;
-            this.LoadFromXml();*/
         }
 
         public List<ReviewClass> GetReviewList()
@@ -47,8 +38,6 @@ namespace Backend.Repositories
         {
             databaseContext.Review.Add(newR);
             databaseContext.SaveChanges();
-            /*this.reviewList.Add(newR);
-            this.SaveToXml();*/
         }
 
         public void DeleteReview(ReviewClass reviewToDelete)
@@ -74,39 +63,5 @@ namespace Backend.Repositories
 
             return ad;
         }
-        /*private void LoadFromXml()
-        {
-            try
-            {
-                if (File.Exists(this.xmlFilePath))
-                {
-                    XmlSerializer serializer = new(typeof(ReviewClass), new XmlRootAttribute("ReviewClass"));
-
-                    this.reviewList = new List<ReviewClass>();
-                    using FileStream fileStream = new(this.xmlFilePath, FileMode.Open);
-                    using XmlReader reader = XmlReader.Create(fileStream);
-                    while (reader.ReadToFollowing("ReviewClass"))
-                    {
-                        ReviewClass review = (ReviewClass)serializer.Deserialize(reader);
-                        this.reviewList.Add(review);
-                    }
-                }
-                else
-                {
-                    this.reviewList = new List<ReviewClass>();
-                }
-            }
-            catch
-            {
-            }
-        }*/
-
-        /*private void SaveToXml()
-        {
-            XmlSerializer serializer = new(typeof(List<ReviewClass>), new XmlRootAttribute("Reviews"));
-
-            using FileStream fileStream = new(this.xmlFilePath, FileMode.Create);
-            serializer.Serialize(fileStream, this.reviewList);
-        }*/
     }
 }
