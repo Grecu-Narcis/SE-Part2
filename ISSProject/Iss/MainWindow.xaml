@@ -7,7 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Business Influencer" Width="100" Height="50" Margin="10" Click="InfluencerClick"/>
-        <Button Content="Business Company" Width="100" Height="50" Margin="10,70,0,0" Click="CompanyClick"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Influencer" Width="150" Height="50" Click="InfluencerClick" Background="CornflowerBlue" Foreground="White" FontSize="16" FontWeight="Bold" BorderBrush="Black" BorderThickness="2" Padding="10"/>
+            <Button Content="Company" Width="150" Height="50" Click="CompanyClick" Background="ForestGreen" Foreground="White" FontSize="16" FontWeight="Bold" BorderBrush="Black" BorderThickness="2" Padding="10"/>
+        </StackPanel>
     </Grid>
 </Window>
