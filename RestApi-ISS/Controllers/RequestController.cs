@@ -95,6 +95,7 @@ namespace RestApi_ISS.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        /*
         [HttpPut("updateRequest")]
         public ActionResult UpdateRequest([FromBody] Request requestToUpdate, [FromBody] string newCompensation, [FromBody]string newContentRequirements)
         {
@@ -108,5 +109,6 @@ namespace RestApi_ISS.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        */
     }
 }
