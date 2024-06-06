@@ -1,20 +1,23 @@
-﻿// <copyright file="ReviewRepository.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-
-namespace Backend.Repositories
+﻿namespace Backend.Repositories
 {
     using System;
     using System.Collections.Generic;
+    using System.Data;
     using System.Data.SqlClient;
     using System.IO;
     using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
     using System.Xml;
     using System.Xml.Serialization;
-    using Backend.Controllers;
     using Backend.Models;
     using Iss.Database;
+    using Iss.Entity;
+    using Iss.Repository;
     using Iss.User;
+    using Microsoft.Data.SqlClient;
+    using RestApi_ISS.Controllers;
 
     public class ReviewRepository : INterfaceReview<ReviewClass>
     {
@@ -63,7 +66,7 @@ namespace Backend.Repositories
         {
             databaseContext.ChangeTracker.Clear();
 
-            reviewToUpdate.User = Iss.User.User.GetInstance().Name;
+            reviewToUpdate.User = User.GetInstance().Name;
             databaseContext.Update(reviewToUpdate);
             databaseContext.SaveChanges();
         }

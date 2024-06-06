@@ -2,6 +2,8 @@ using Iss.Database;
 using Iss.Repository;
 using Iss.Service;
 using Microsoft.EntityFrameworkCore;
+using RestApi_ISS.Repository;
+using RestApi_ISS.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllers();
+
 builder.Services.AddScoped<IAdAccountRepository, AdAccountRepository>();
 builder.Services.AddScoped<IAdAccountService, AdAccountService>();
 
@@ -26,6 +29,10 @@ builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<InterfaceBankAccountService, BankAccountService>();
 
 builder.Services.AddScoped<DataEncryptionService>();
+
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

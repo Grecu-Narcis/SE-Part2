@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Backend.Models;
 using Iss.Entity;
 using Microsoft.EntityFrameworkCore;
+using Backend.Models;
+using RestApi_ISS.Entity;
 
 namespace Iss.Database
 {
@@ -19,6 +21,7 @@ namespace Iss.Database
         public DbSet<Influencer> Influencer { get; set; }
         public DbSet<Request> Request { get; set; }
         public DbSet<BankAccount> BankAccount { get; set; }
+        public DbSet<FAQ> FAQ { get; set; }
 
         public DatabaseContext()
         {
@@ -27,14 +30,21 @@ namespace Iss.Database
             : base(options)
         {
         }
+        public DbSet<Product> Product { get; set; }
+
+        public DbSet<ReviewClass> Review { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source = DESKTOP-G5O4MNS\\SQLEXPRESS; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Data Source = .\\SQLEXPRESS; Initial Catalog = db_ISS; Integrated Security = True; TrustServerCertificate=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
+
             modelBuilder.Entity<Ad>()
                 .Property(a => a.AdId)
                 .ValueGeneratedOnAdd();
@@ -71,11 +81,21 @@ namespace Iss.Database
                 .Property(r => r.RequestId)
                 .ValueGeneratedOnAdd();
 
+            modelBuilder.Entity<FAQ>()
+                .Property(f => f.Id)
+                .ValueGeneratedOnAdd();
+
             modelBuilder.Entity<Campaign>()
                 .HasOne(campaign => campaign.AdAccount)
                 .WithMany(adAccount => adAccount.Campaigns)
                 .HasForeignKey(campaign => campaign.AdAccountId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ReviewClass>()
+                .HasNoKey();
+
+            modelBuilder.Entity<ReviewClass>()
+                .Property(a => a.User);
 
             modelBuilder.Entity<BankAccount>()
                 .Property(i => i.Id)

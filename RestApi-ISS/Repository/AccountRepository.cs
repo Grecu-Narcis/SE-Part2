@@ -12,11 +12,17 @@ namespace Iss.Repository
     {
         private readonly DatabaseContext databaseContext;
         private readonly DataEncryptionService encryptionService;
+        private BankAccount bankAccount;
 
         public AccountRepository(DatabaseContext databaseContext, DataEncryptionService encryptionService)
         {
             this.databaseContext = databaseContext ?? throw new ArgumentNullException(nameof(databaseContext));
             this.encryptionService = encryptionService ?? throw new ArgumentNullException(nameof(encryptionService));
+        }
+
+        public AccountRepository(BankAccount bankAccount)
+        {
+            this.bankAccount = bankAccount;
         }
 
         public BankAccount GetBankAccount()

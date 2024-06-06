@@ -1,9 +1,9 @@
 ﻿using System;
 using Backend.Models;
-using Backend.Repositories;
-using Backend.Services;
+using Iss.Service;
+using Newtonsoft.Json.Linq;
 
-namespace Backend.Tests.Fakes
+namespace Iss.Repository
 {
     public class FakeAccountRepository : IAccountRepository
     {
@@ -16,35 +16,27 @@ namespace Backend.Tests.Fakes
             bankAccount = account ?? throw new ArgumentNullException(nameof(account));
         }
 
-        public BankAccount BankAccount
+        public void AddBankAccount(BankAccount bankAccount)
         {
-            get
+            if (bankAccount == null)
             {
-                return bankAccount;
+                throw new ArgumentNullException(nameof(bankAccount));
             }
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value));
-                }
-                bankAccount = value;
-            }
+            bankAccount = bankAccount;
         }
 
-        public void AddBankAccount(BankAccount account)
+        public void EditBankAccount(BankAccount bankAccount)
         {
-            throw new NotImplementedException();
-        }
-
-        public void EditBankAccount(BankAccount updatedAccount)
-        {
-            throw new NotImplementedException();
+            if (bankAccount == null)
+            {
+                throw new ArgumentNullException(nameof(bankAccount));
+            }
+            bankAccount = bankAccount;
         }
 
         public BankAccount GetBankAccount()
         {
-            throw new NotImplementedException();
+            return bankAccount;
         }
     }
 }

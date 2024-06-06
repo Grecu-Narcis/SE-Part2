@@ -25,7 +25,7 @@ namespace Backend.Controllers
         public Task SendPaymentConfirmationMailAsync()
         {
             var sender = "osvathrobert03@gmail.com";
-            var receiver = this.accountRepository.BankAccount.Email;
+            var receiver = this.accountRepository.GetBankAccount().Email;
             var password = "daes ndml ukpj qvuj";
 
             var product = this.productRepository.Product;
